@@ -14,13 +14,13 @@ class category extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(9.0),
+      padding: const EdgeInsets.symmetric(horizontal: 5,vertical: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Container(
-            height: 80,
-            width: 80,
+            height: 70,
+            width: 70,
             decoration: BoxDecoration(
               color: Colors.green[50],
               shape: BoxShape.circle,

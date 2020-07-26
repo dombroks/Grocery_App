@@ -15,7 +15,7 @@ class CartScreen extends StatelessWidget {
         children: <Widget>[
           Container(
             width: size.width,
-            height: size.height * 0.13,
+            height: size.height * 0.12,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(
@@ -44,7 +44,7 @@ class CartScreen extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(15.0),
+                  padding: const EdgeInsets.all(10.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
@@ -68,10 +68,48 @@ class CartScreen extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(
-            height: 20,
-          ),
-          cartElement(total: 940.00,elementName: "Broccli",amountPerElement: 1,price: 200.0,amount: 4,),
+         
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                width: double.infinity,
+                child: ListView(
+                  scrollDirection: Axis.vertical,
+                  children: <Widget>[
+                    cartElement(
+                      total: 940.00,
+                      elementName: "Broccli",
+                      amountPerElement: 1,
+                      price: 200.0,
+                      amount: 4,
+                    ),
+                    cartElement(
+                      total: 940.00,
+                      elementName: "Broccli",
+                      amountPerElement: 1,
+                      price: 200.0,
+                      amount: 4,
+                    ),
+                    cartElement(
+                      total: 940.00,
+                      elementName: "Broccli",
+                      amountPerElement: 1,
+                      price: 200.0,
+                      amount: 4,
+                    ),
+                    cartElement(
+                      total: 940.00,
+                      elementName: "Broccli",
+                      amountPerElement: 1,
+                      price: 200.0,
+                      amount: 4,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          )
         ],
       ),
     );

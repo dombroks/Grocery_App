@@ -21,7 +21,7 @@ class _homeScreenState extends State<homeScreen> {
       child: Column(
         children: <Widget>[
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
             width: double.infinity,
             decoration: BoxDecoration(
                 color: Colors.white,
@@ -40,7 +40,7 @@ class _homeScreenState extends State<homeScreen> {
                   ],
                 ),
                 Container(
-                  height: 140,
+                  height: 130,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
                     children: <Widget>[
@@ -54,11 +54,11 @@ class _homeScreenState extends State<homeScreen> {
                       ),
                       category(
                         title: "Drinks",
-                        icon: Icons.home,
+                        icon: Icons.local_drink,
                       ),
                       category(
                         title: "Pharmacy",
-                        icon: Icons.home,
+                        icon: Icons.local_pharmacy,
                       ),
                       category(
                         title: "Frozen Food",
