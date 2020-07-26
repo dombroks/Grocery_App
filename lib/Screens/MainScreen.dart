@@ -1,0 +1,198 @@
+import 'package:flutter/material.dart';
+import 'package:grocery_app/components/category.dart';
+import 'package:grocery_app/components/vegetaleAndFruit.dart';
+
+class homeScreen extends StatefulWidget {
+  List<IconData> iconsList = [
+    Icons.home,
+    Icons.shopping_cart,
+    Icons.local_drink,
+    Icons.home
+  ];
+  @override
+  _homeScreenState createState() => _homeScreenState();
+}
+
+class _homeScreenState extends State<homeScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.grey[200],
+      child: Column(
+        children: <Widget>[
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+            width: double.infinity,
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(20),
+                    bottomRight: Radius.circular(20))),
+            child: Column(
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    Text(
+                      "All Categories",
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+                Container(
+                  height: 140,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: <Widget>[
+                      category(
+                        title: "Household",
+                        icon: Icons.home,
+                      ),
+                      category(
+                        title: "Vegetables",
+                        icon: Icons.category,
+                      ),
+                      category(
+                        title: "Drinks",
+                        icon: Icons.home,
+                      ),
+                      category(
+                        title: "Pharmacy",
+                        icon: Icons.home,
+                      ),
+                      category(
+                        title: "Frozen Food",
+                        icon: Icons.home,
+                      ),
+                      category(
+                        title: "Fruits",
+                        icon: Icons.home,
+                      ),
+                      category(
+                        title: "Fish",
+                        icon: Icons.home,
+                      ),
+                      category(
+                        title: "Meat",
+                        icon: Icons.home,
+                      ),
+                      category(
+                        title: "Chicken",
+                        icon: Icons.home,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 17, vertical: 2),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text(
+                  "Fruits",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                      fontSize: 17),
+                ),
+                Text("View all >")
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              height: 180,
+              width: double.infinity,
+              child:
+                  ListView(scrollDirection: Axis.horizontal, children: <Widget>[
+                VegetaleAndFruit(
+                  price: 300,
+                  resource: 490.00,
+                  vegetaleOrFruitName: "broccli",
+                ),
+                VegetaleAndFruit(
+                  price: 300,
+                  resource: 490.00,
+                  vegetaleOrFruitName: "broccli",
+                ),
+                VegetaleAndFruit(
+                  price: 300,
+                  resource: 490.00,
+                  vegetaleOrFruitName: "broccli",
+                ),
+                VegetaleAndFruit(
+                  price: 300,
+                  resource: 490.00,
+                  vegetaleOrFruitName: "broccli",
+                ),
+                VegetaleAndFruit(
+                  price: 300,
+                  resource: 490.00,
+                  vegetaleOrFruitName: "broccli",
+                ),
+              ]),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 17, vertical: 2),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text(
+                  "Vegetables",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                      fontSize: 17),
+                ),
+                Text("View all >")
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              height: 180,
+              width: double.infinity,
+              child:
+                  ListView(scrollDirection: Axis.horizontal, children: <Widget>[
+                VegetaleAndFruit(
+                  price: 300,
+                  resource: 490.00,
+                  vegetaleOrFruitName: "broccli",
+                ),
+                VegetaleAndFruit(
+                  price: 300,
+                  resource: 490.00,
+                  vegetaleOrFruitName: "broccli",
+                ),
+                VegetaleAndFruit(
+                  price: 300,
+                  resource: 490.00,
+                  vegetaleOrFruitName: "broccli",
+                ),
+                VegetaleAndFruit(
+                  price: 300,
+                  resource: 490.00,
+                  vegetaleOrFruitName: "broccli",
+                ),
+                VegetaleAndFruit(
+                  price: 300,
+                  resource: 490.00,
+                  vegetaleOrFruitName: "broccli",
+                ),
+              ]),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
