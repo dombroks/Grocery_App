@@ -19,4 +19,9 @@ class FirebaseSource {
 
   //Sign Out
 
+  //User state : logged or not
+  Future get user async {
+    var result = await _auth.currentUser();
+    return result;
+  }
 }

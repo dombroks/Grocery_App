@@ -9,4 +9,7 @@ class Repository {
 
 // Sign out
 
+//Get user state
+
+
 }
