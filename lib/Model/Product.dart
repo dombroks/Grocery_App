@@ -1,19 +1,17 @@
-
-
 class Product {
-  final int productId;
   final String productName;
   final double productPrice;
   final String productImage;
   final String productAmount;
+  final double productRessource;
 
   Product(this.productName, this.productPrice, this.productImage,
-      this.productAmount, this.productId);
+      this.productAmount, this.productRessource);
 
   Product.fromJson(Map<String, dynamic> parsedJson)
-      : productId = parsedJson['id'],
-        productName = parsedJson['name'],
+      : productName = parsedJson['name'],
         productImage = parsedJson['image'],
         productAmount = parsedJson['amount'],
+        productRessource = parsedJson['ressource'],
         productPrice = parsedJson['price'];
 }

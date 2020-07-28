@@ -2,15 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:grocery_app/constants.dart';
 
 class VegetaleAndFruit extends StatefulWidget {
-  final int price;
+  final double price;
   final String vegetaleOrFruitName;
   final double resource;
+  final String imageUrl;
 
   const VegetaleAndFruit({
     Key key,
     this.price,
     this.vegetaleOrFruitName,
     this.resource,
+    this.imageUrl,
   }) : super(key: key);
 
   @override
@@ -71,8 +73,8 @@ class _VegetaleAndFruitState extends State<VegetaleAndFruit> {
             Container(
               height: 60,
               width: 100,
-              child: Image.asset(
-                "assets/images/carrot.png",
+              child: Image.network(
+                "https://firebasestorage.googleapis.com/v0/b/grocery-app-2c74b.appspot.com/o/Fruits%26Vegetables%2Fapricot.png?alt=media&token=74bb23e4-a567-4c00-87ee-e58e59d5774a",
               ),
             ),
             Padding(

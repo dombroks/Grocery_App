@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_app/Model/Product.dart';
 import 'package:grocery_app/components/category.dart';
 import 'package:grocery_app/components/vegetaleAndFruit.dart';
+import 'package:provider/provider.dart';
 
 class homeScreen extends StatefulWidget {
   List<IconData> iconsList = [
@@ -16,6 +18,7 @@ class homeScreen extends StatefulWidget {
 class _homeScreenState extends State<homeScreen> {
   @override
   Widget build(BuildContext context) {
+    var fruits = Provider.of<List<Product>>(context);
     return Container(
       color: Colors.grey[200],
       child: Column(
@@ -110,34 +113,19 @@ class _homeScreenState extends State<homeScreen> {
             child: Container(
               height: 180,
               width: double.infinity,
-              child:
-                  ListView(scrollDirection: Axis.horizontal, children: <Widget>[
-                VegetaleAndFruit(
-                  price: 300,
-                  resource: 490.00,
-                  vegetaleOrFruitName: "broccli",
-                ),
-                VegetaleAndFruit(
-                  price: 300,
-                  resource: 490.00,
-                  vegetaleOrFruitName: "broccli",
-                ),
-                VegetaleAndFruit(
-                  price: 300,
-                  resource: 490.00,
-                  vegetaleOrFruitName: "broccli",
-                ),
-                VegetaleAndFruit(
-                  price: 300,
-                  resource: 490.00,
-                  vegetaleOrFruitName: "broccli",
-                ),
-                VegetaleAndFruit(
-                  price: 300,
-                  resource: 490.00,
-                  vegetaleOrFruitName: "broccli",
-                ),
-              ]),
+              child: ListView.builder(
+                  itemCount: fruits.length,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    Product product = fruits[index];
+
+                    return VegetaleAndFruit(
+                      vegetaleOrFruitName: product.productName,
+                      price: product.productPrice,
+                      resource: product.productRessource,
+                      imageUrl: product.productImage,
+                    );
+                  }),
             ),
           ),
           Padding(
@@ -161,34 +149,8 @@ class _homeScreenState extends State<homeScreen> {
             child: Container(
               height: 180,
               width: double.infinity,
-              child:
-                  ListView(scrollDirection: Axis.horizontal, children: <Widget>[
-                VegetaleAndFruit(
-                  price: 300,
-                  resource: 490.00,
-                  vegetaleOrFruitName: "broccli",
-                ),
-                VegetaleAndFruit(
-                  price: 300,
-                  resource: 490.00,
-                  vegetaleOrFruitName: "broccli",
-                ),
-                VegetaleAndFruit(
-                  price: 300,
-                  resource: 490.00,
-                  vegetaleOrFruitName: "broccli",
-                ),
-                VegetaleAndFruit(
-                  price: 300,
-                  resource: 490.00,
-                  vegetaleOrFruitName: "broccli",
-                ),
-                VegetaleAndFruit(
-                  price: 300,
-                  resource: 490.00,
-                  vegetaleOrFruitName: "broccli",
-                ),
-              ]),
+              child: ListView(
+                  scrollDirection: Axis.horizontal, children: <Widget>[]),
             ),
           ),
         ],
