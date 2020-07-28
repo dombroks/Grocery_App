@@ -1,6 +1,7 @@
+
 import 'package:firebase_auth/firebase_auth.dart';
 
-class FirebaseSource {
+class firebaseAuth{
   FirebaseAuth _auth = FirebaseAuth.instance;
 
   //Sign in with credentials

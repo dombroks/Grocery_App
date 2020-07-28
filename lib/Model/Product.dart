@@ -9,4 +9,11 @@ class Product {
 
   Product(this.productName, this.productPrice, this.productImage,
       this.productAmount, this.productId);
+
+  Product.toJson(Map<String, dynamic> parsedJson)
+      : productId = parsedJson['id'],
+        productName = parsedJson['name'],
+        productImage = parsedJson['image'],
+        productAmount = parsedJson['amount'],
+        productPrice = parsedJson['price'];
 }
