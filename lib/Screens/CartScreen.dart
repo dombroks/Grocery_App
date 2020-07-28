@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_app/components/CartElement.dart';
 
-import '../constants.dart';
 
 class CartScreen extends StatelessWidget {
   @override
