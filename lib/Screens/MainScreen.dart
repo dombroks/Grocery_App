@@ -18,7 +18,7 @@ class homeScreen extends StatefulWidget {
 class _homeScreenState extends State<homeScreen> {
   @override
   Widget build(BuildContext context) {
-    var fruits = Provider.of<List<Product>>(context);
+    var fruits = Provider.of<List<FruitOrVegetable>>(context);
     return Container(
       color: Colors.grey[200],
       child: Column(
@@ -117,13 +117,13 @@ class _homeScreenState extends State<homeScreen> {
                   itemCount: fruits.length,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
-                    Product product = fruits[index];
+                    FruitOrVegetable fruit = fruits[index];
 
                     return VegetaleAndFruit(
-                      vegetaleOrFruitName: product.productName,
-                      price: product.productPrice,
-                      resource: product.productRessource,
-                      imageUrl: product.productImage,
+                      vegetaleOrFruitName: fruit.Name,
+                      price: fruit.Price,
+                      resource: fruit.Ressource,
+                      imageUrl: fruit.Image,
                     );
                   }),
             ),

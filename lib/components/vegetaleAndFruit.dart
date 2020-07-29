@@ -74,7 +74,7 @@ class _VegetaleAndFruitState extends State<VegetaleAndFruit> {
               height: 60,
               width: 100,
               child: Image.network(
-                "https://firebasestorage.googleapis.com/v0/b/grocery-app-2c74b.appspot.com/o/Fruits%26Vegetables%2Fapricot.png?alt=media&token=74bb23e4-a567-4c00-87ee-e58e59d5774a",
+                "https://firebasestorage.googleapis.com/v0/b/grocery-app-2c74b.appspot.com/o/Fruits%26Vegetables%2FFruits%26Vegetables%2Fstrawberry.png?alt=media&token=23cdd7d9-c629-4233-85aa-664b384211f2",
               ),
             ),
             Padding(

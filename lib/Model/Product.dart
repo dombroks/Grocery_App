@@ -1,17 +1,17 @@
-class Product {
-  final String productName;
-  final double productPrice;
-  final String productImage;
-  final String productAmount;
-  final double productRessource;
+class FruitOrVegetable {
+  final String Name;
+  final double Price;
+  final String Image;
+  final String Amount;
+  final double Ressource;
 
-  Product(this.productName, this.productPrice, this.productImage,
-      this.productAmount, this.productRessource);
+  FruitOrVegetable(
+      this.Name, this.Price, this.Image, this.Amount, this.Ressource);
 
-  Product.fromJson(Map<String, dynamic> parsedJson)
-      : productName = parsedJson['name'],
-        productImage = parsedJson['image'],
-        productAmount = parsedJson['amount'],
-        productRessource = parsedJson['ressource'],
-        productPrice = parsedJson['price'];
+  FruitOrVegetable.fromJson(Map<String, dynamic> parsedJson)
+      : Name = parsedJson['name'],
+        Image = parsedJson['image'],
+        Amount = parsedJson['amount'],
+        Ressource = parsedJson['ressource'],
+        Price = parsedJson['price'];
 }
