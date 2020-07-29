@@ -19,6 +19,8 @@ class _homeScreenState extends State<homeScreen> {
   @override
   Widget build(BuildContext context) {
     var fruits = Provider.of<List<FruitOrVegetable>>(context);
+    var vegetables = Provider.of<List<FruitOrVegetable>>(context);
+
     return Container(
       color: Colors.grey[200],
       child: Column(
@@ -149,8 +151,19 @@ class _homeScreenState extends State<homeScreen> {
             child: Container(
               height: 180,
               width: double.infinity,
-              child: ListView(
-                  scrollDirection: Axis.horizontal, children: <Widget>[]),
+              child: ListView.builder(
+                  itemCount: vegetables.length,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    FruitOrVegetable vegetable = vegetables[index];
+
+                    return VegetaleAndFruit(
+                      vegetaleOrFruitName: vegetable.Name,
+                      price: vegetable.Price,
+                      amount: vegetable.Amount,
+                      imageUrl: vegetable.Image,
+                    );
+                  }),
             ),
           ),
         ],

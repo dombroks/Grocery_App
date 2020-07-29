@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_app/Screens/MainScreen.dart';
 import 'package:grocery_app/Services/firebaseFirestore.dart';
+import 'package:grocery_app/components/vegetaleAndFruit.dart';
 import 'package:grocery_app/constants.dart';
 import 'package:provider/provider.dart';
 
 import 'Screens/CartScreen.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized(); 
+  WidgetsFlutterBinding.ensureInitialized();
 
   runApp(MyApp());
 }
@@ -19,9 +20,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        StreamProvider(
-          create: (context) => _firestore.getProducts(),
-        )
+        StreamProvider.value(value: _firestore.getFruits()),
+        StreamProvider.value(value: _firestore.getVegetables())
       ],
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
