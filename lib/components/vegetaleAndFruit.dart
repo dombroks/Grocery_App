@@ -4,15 +4,14 @@ import 'package:grocery_app/constants.dart';
 class VegetaleAndFruit extends StatefulWidget {
   final double price;
   final String vegetaleOrFruitName;
-  final double resource;
+  final String amount;
   final String imageUrl;
 
   const VegetaleAndFruit({
     Key key,
     this.price,
     this.vegetaleOrFruitName,
-    this.resource,
-    this.imageUrl,
+    this.imageUrl, this.amount,
   }) : super(key: key);
 
   @override
@@ -47,7 +46,7 @@ class _VegetaleAndFruitState extends State<VegetaleAndFruit> {
                         color: kPrimaryColor,
                         borderRadius: BorderRadius.circular(5)),
                     child: Text(
-                      "\$${widget.price}",
+                      "\$${widget.amount}",
                       style: TextStyle(
                         fontSize: 12,
                         color: Colors.white,
@@ -96,7 +95,7 @@ class _VegetaleAndFruitState extends State<VegetaleAndFruit> {
               child: Row(
                 children: <Widget>[
                   Text(
-                    "Rs. ${widget.resource}",
+                    "Rs. ${widget.price}",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.black,

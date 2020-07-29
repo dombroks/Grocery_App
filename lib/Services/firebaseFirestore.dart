@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:grocery_app/Model/Product.dart';
+import 'package:grocery_app/Model/FruitOrVegetable.dart';
 import 'package:grocery_app/components/vegetaleAndFruit.dart';
 
 class firebaseFirestore {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_app/Model/Product.dart';
+import 'package:grocery_app/Model/FruitOrVegetable.dart';
 import 'package:grocery_app/components/category.dart';
 import 'package:grocery_app/components/vegetaleAndFruit.dart';
 import 'package:provider/provider.dart';
@@ -122,7 +122,7 @@ class _homeScreenState extends State<homeScreen> {
                     return VegetaleAndFruit(
                       vegetaleOrFruitName: fruit.Name,
                       price: fruit.Price,
-                      resource: fruit.Ressource,
+                      amount: fruit.Amount,
                       imageUrl: fruit.Image,
                     );
                   }),
