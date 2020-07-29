@@ -1,6 +1,6 @@
 class FruitOrVegetable {
   final String Name;
-  final double Price;
+  final String Price;
   final String Image;
   final String Amount;
  

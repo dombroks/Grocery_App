@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:grocery_app/constants.dart';
 
 class VegetaleAndFruit extends StatefulWidget {
-  final double price;
+  final String price;
   final String vegetaleOrFruitName;
   final String amount;
   final String imageUrl;
