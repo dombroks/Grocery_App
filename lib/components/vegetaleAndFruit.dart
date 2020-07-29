@@ -11,7 +11,8 @@ class VegetaleAndFruit extends StatefulWidget {
     Key key,
     this.price,
     this.vegetaleOrFruitName,
-    this.imageUrl, this.amount,
+    this.imageUrl,
+    this.amount,
   }) : super(key: key);
 
   @override
@@ -46,7 +47,7 @@ class _VegetaleAndFruitState extends State<VegetaleAndFruit> {
                         color: kPrimaryColor,
                         borderRadius: BorderRadius.circular(5)),
                     child: Text(
-                      "\$${widget.amount}",
+                      "${widget.amount}",
                       style: TextStyle(
                         fontSize: 12,
                         color: Colors.white,
@@ -73,7 +74,7 @@ class _VegetaleAndFruitState extends State<VegetaleAndFruit> {
               height: 60,
               width: 100,
               child: Image.network(
-                "https://firebasestorage.googleapis.com/v0/b/grocery-app-2c74b.appspot.com/o/Fruits%26Vegetables%2FFruits%26Vegetables%2Fstrawberry.png?alt=media&token=23cdd7d9-c629-4233-85aa-664b384211f2",
+                widget.imageUrl,
               ),
             ),
             Padding(
