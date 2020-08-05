@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_app/Model/Fruit.dart';
+import 'package:grocery_app/Services/firebaseFirestore.dart';
 import 'package:grocery_app/constants.dart';
 
 class VegetaleAndFruit extends StatefulWidget {
@@ -6,6 +8,7 @@ class VegetaleAndFruit extends StatefulWidget {
   final String vegetaleOrFruitName;
   final String amount;
   final String imageUrl;
+  final Function uploadToCart;
 
   const VegetaleAndFruit({
     Key key,
@@ -13,6 +16,7 @@ class VegetaleAndFruit extends StatefulWidget {
     this.vegetaleOrFruitName,
     this.imageUrl,
     this.amount,
+    this.uploadToCart,
   }) : super(key: key);
 
   @override
@@ -20,6 +24,7 @@ class VegetaleAndFruit extends StatefulWidget {
 }
 
 class _VegetaleAndFruitState extends State<VegetaleAndFruit> {
+  final firebaseFirestore _firestore = firebaseFirestore();
   Color _iconColor = Colors.grey;
   @override
   Widget build(BuildContext context) {

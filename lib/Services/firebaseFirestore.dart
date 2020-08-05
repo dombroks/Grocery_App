@@ -6,17 +6,25 @@ class firebaseFirestore {
   final _firestore = Firestore.instance;
 
   Stream<List<Fruit>> getFruits() {
-    return  _firestore.collection("Fruit").snapshots().map((snapshot) => snapshot
+    return _firestore.collection("Fruit").snapshots().map((snapshot) => snapshot
         .documents
         .map((document) => Fruit.fromJson(document.data))
         .toList());
   }
 
-
   Stream<List<Vegetable>> getVegetables() {
-    return  _firestore.collection("Vegetable").snapshots().map((snapshot) => snapshot
-        .documents
-        .map((document) => Vegetable.fromJson(document.data))
-        .toList());
+    return _firestore.collection("Vegetable").snapshots().map((snapshot) =>
+        snapshot.documents
+            .map((document) => Vegetable.fromJson(document.data))
+            .toList());
+  }
+
+  void addElementToCart(Fruit fruit)  {
+     _firestore.collection("Cart").add({
+      'name': fruit.name,
+      'image': fruit.image,
+      'amount': fruit.amount,
+      'price': fruit.price
+    });
   }
 }

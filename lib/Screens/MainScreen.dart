@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_app/Model/Fruit.dart';
 import 'package:grocery_app/Model/Vegetable.dart';
+import 'package:grocery_app/Services/firebaseFirestore.dart';
 import 'package:grocery_app/components/category.dart';
 import 'package:grocery_app/components/vegetaleAndFruit.dart';
 import 'package:provider/provider.dart';
@@ -17,6 +18,7 @@ class homeScreen extends StatefulWidget {
 }
 
 class _homeScreenState extends State<homeScreen> {
+  firebaseFirestore _firestore = firebaseFirestore();
   @override
   Widget build(BuildContext context) {
     var fruits = Provider.of<List<Fruit>>(context);
@@ -107,7 +109,7 @@ class _homeScreenState extends State<homeScreen> {
                       color: Colors.black,
                       fontSize: 17),
                 ),
-                Text("View all >")
+                //  Text("View all >")
               ],
             ),
           ),
@@ -123,10 +125,13 @@ class _homeScreenState extends State<homeScreen> {
                     Fruit fruit = fruits[index];
 
                     return VegetaleAndFruit(
-                      vegetaleOrFruitName: fruit.Name,
-                      price: fruit.Price,
-                      amount: fruit.Amount,
-                      imageUrl: fruit.Image,
+                      vegetaleOrFruitName: fruit.name,
+                      price: fruit.price,
+                      amount: fruit.amount,
+                      imageUrl: fruit.image,
+                      uploadToCart: () {
+                        _firestore.addElementToCart(fruit);
+                      },
                     );
                   }),
             ),
@@ -143,7 +148,7 @@ class _homeScreenState extends State<homeScreen> {
                       color: Colors.black,
                       fontSize: 17),
                 ),
-                Text("View all >")
+                //  Text("View all >")
               ],
             ),
           ),
@@ -159,10 +164,10 @@ class _homeScreenState extends State<homeScreen> {
                     Vegetable vegetable = vegetables[index];
 
                     return VegetaleAndFruit(
-                      vegetaleOrFruitName: vegetable.Name,
-                      price: vegetable.Price,
-                      amount: vegetable.Amount,
-                      imageUrl: vegetable.Image,
+                     vegetaleOrFruitName: vegetable.name,
+                      price: vegetable.price,
+                      amount: vegetable.amount,
+                      imageUrl: vegetable.image,
                     );
                   }),
             ),

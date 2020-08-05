@@ -3,8 +3,6 @@ import 'package:grocery_app/Screens/MainScreen.dart';
 import 'package:grocery_app/Services/firebaseFirestore.dart';
 import 'package:grocery_app/constants.dart';
 import 'package:provider/provider.dart';
-
-import 'Model/Vegetable.dart';
 import 'Screens/CartScreen.dart';
 
 void main() {
