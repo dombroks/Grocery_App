@@ -1,14 +1,17 @@
-class FruitOrVegetable {
+class Fruit {
   final String Name;
   final String Price;
   final String Image;
   final String Amount;
- 
 
-  FruitOrVegetable(
-      this.Name, this.Price, this.Image, this.Amount,);
+  Fruit(
+    this.Name,
+    this.Price,
+    this.Image,
+    this.Amount,
+  );
 
-  FruitOrVegetable.fromJson(Map<String, dynamic> parsedJson)
+  Fruit.fromJson(Map<String, dynamic> parsedJson)
       : Name = parsedJson['name'],
         Image = parsedJson['image'],
         Amount = parsedJson['amount'],

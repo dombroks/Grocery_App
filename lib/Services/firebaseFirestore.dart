@@ -1,22 +1,22 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:grocery_app/Model/FruitOrVegetable.dart';
-import 'package:grocery_app/components/vegetaleAndFruit.dart';
+import 'package:grocery_app/Model/Fruit.dart';
+import 'package:grocery_app/Model/Vegetable.dart';
 
 class firebaseFirestore {
   final _firestore = Firestore.instance;
 
-  Stream<List<FruitOrVegetable>> getFruits() {
+  Stream<List<Fruit>> getFruits() {
     return  _firestore.collection("Fruit").snapshots().map((snapshot) => snapshot
         .documents
-        .map((document) => FruitOrVegetable.fromJson(document.data))
+        .map((document) => Fruit.fromJson(document.data))
         .toList());
   }
 
 
-  Stream<List<FruitOrVegetable>> getVegetables() {
+  Stream<List<Vegetable>> getVegetables() {
     return  _firestore.collection("Vegetable").snapshots().map((snapshot) => snapshot
         .documents
-        .map((document) => FruitOrVegetable.fromJson(document.data))
+        .map((document) => Vegetable.fromJson(document.data))
         .toList());
   }
 }

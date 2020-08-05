@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_app/Model/FruitOrVegetable.dart';
+import 'package:grocery_app/Model/Fruit.dart';
+import 'package:grocery_app/Model/Vegetable.dart';
 import 'package:grocery_app/components/category.dart';
 import 'package:grocery_app/components/vegetaleAndFruit.dart';
 import 'package:provider/provider.dart';
@@ -18,8 +19,8 @@ class homeScreen extends StatefulWidget {
 class _homeScreenState extends State<homeScreen> {
   @override
   Widget build(BuildContext context) {
-    var fruits = Provider.of<List<FruitOrVegetable>>(context);
-    var vegetables = Provider.of<List<FruitOrVegetable>>(context);
+    var fruits = Provider.of<List<Fruit>>(context);
+    var vegetables = Provider.of<List<Vegetable>>(context);
 
     return Container(
       color: Colors.grey[200],
@@ -119,7 +120,7 @@ class _homeScreenState extends State<homeScreen> {
                   itemCount: fruits.length,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
-                    FruitOrVegetable fruit = fruits[index];
+                    Fruit fruit = fruits[index];
 
                     return VegetaleAndFruit(
                       vegetaleOrFruitName: fruit.Name,
@@ -155,7 +156,7 @@ class _homeScreenState extends State<homeScreen> {
                   itemCount: vegetables.length,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
-                    FruitOrVegetable vegetable = vegetables[index];
+                    Vegetable vegetable = vegetables[index];
 
                     return VegetaleAndFruit(
                       vegetaleOrFruitName: vegetable.Name,
