@@ -1,28 +1,30 @@
-class Vegetable {
+import 'dart:collection';
+
+class Cart {
   final String name;
   final String price;
   final String image;
   final String amount;
 
-  Vegetable(
+  Cart(
     this.name,
     this.price,
     this.image,
     this.amount,
   );
 
-  Vegetable.fromJson(Map<String, dynamic> parsedJson)
+  Cart.fromJson(Map<String, dynamic> parsedJson)
       : name = parsedJson['name'],
         image = parsedJson['image'],
         amount = parsedJson['amount'],
         price = parsedJson['price'];
 
-  Map<String, dynamic> toMap(Vegetable vegetable) {
+  Map<String, dynamic> toMap(Cart cart) {
     return {
-      'name': vegetable.name,
-      'image': vegetable.image,
-      'amount': vegetable.amount,
-      'price': vegetable.price
+      'name': cart.name,
+      'image': cart.image,
+      'amount': cart.amount,
+      'price': cart.price
     };
   }
 }

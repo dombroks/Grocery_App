@@ -130,10 +130,10 @@ class _homeScreenState extends State<homeScreen> {
                       amount: fruit.amount,
                       imageUrl: fruit.image,
                       addToCart: () {
-                        _firestore.addElementToCart(fruit);
+                        _firestore.addFruitToCart(fruit);
                       },
                       removeFromCart: () {
-                        _firestore.romeveElementFromCart(fruit);
+                        _firestore.romeveFruitFromCart(fruit);
                       },
                     );
                   }),
@@ -171,6 +171,12 @@ class _homeScreenState extends State<homeScreen> {
                       price: vegetable.price,
                       amount: vegetable.amount,
                       imageUrl: vegetable.image,
+                       addToCart: () {
+                        _firestore.addVegetableToCart(vegetable);
+                      },
+                      removeFromCart: () {
+                        _firestore.romeveVegetableFromCart(vegetable);
+                      },
                     );
                   }),
             ),

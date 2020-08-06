@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_app/Model/Cart.dart';
+import 'package:grocery_app/Model/Fruit.dart';
 import 'package:grocery_app/components/CartElement.dart';
-
+import 'package:provider/provider.dart';
 
 class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var cartElements = Provider.of<List<Cart>>(context);
     Size size = MediaQuery.of(context).size;
     return Container(
       width: size.width,
@@ -67,44 +70,24 @@ class CartScreen extends StatelessWidget {
               ],
             ),
           ),
-         
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
                 width: double.infinity,
-                child: ListView(
-                  scrollDirection: Axis.vertical,
-                  children: <Widget>[
-                    cartElement(
-                      total: 940.00,
-                      elementName: "Broccli",
-                      amountPerElement: 1,
-                      price: 200.0,
-                      amount: 4,
-                    ),
-                    cartElement(
-                      total: 940.00,
-                      elementName: "Broccli",
-                      amountPerElement: 1,
-                      price: 200.0,
-                      amount: 4,
-                    ),
-                    cartElement(
-                      total: 940.00,
-                      elementName: "Broccli",
-                      amountPerElement: 1,
-                      price: 200.0,
-                      amount: 4,
-                    ),
-                    cartElement(
-                      total: 940.00,
-                      elementName: "Broccli",
-                      amountPerElement: 1,
-                      price: 200.0,
-                      amount: 4,
-                    ),
-                  ],
+                child: ListView.builder(
+                  itemCount: cartElements.length,
+                  itemBuilder: (context, index) {
+                    Cart cart = cartElements[index];
+                    return cartElement(
+                      imageUrl: cart.image,
+                      total: '940.00',
+                      elementName: cart.name,
+                      amountPerElement: cart.amount,
+                      price: cart.price,
+                      amount: '4',
+                    );
+                  },
                 ),
               ),
             ),

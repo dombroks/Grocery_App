@@ -9,14 +9,15 @@ class cartElement extends StatefulWidget {
     this.price,
     this.elementName,
     this.amountPerElement,
-    this.amount,
+    this.amount, this.imageUrl,
   }) : super(key: key);
 
-  final double total;
-  final double price;
+  final String total;
+  final String price;
   final String elementName;
-  final int amountPerElement;
-  final int amount;
+  final String amountPerElement;
+  final String amount;
+  final String imageUrl ;
   @override
   _cartElementState createState() => _cartElementState();
 }
@@ -28,7 +29,7 @@ class _cartElementState extends State<cartElement> {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
-        height: 140,
+        height: 120,
         width: size.width,
         decoration: BoxDecoration(
           color: Colors.white,
@@ -44,10 +45,10 @@ class _cartElementState extends State<cartElement> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Center(
-                      child: Image.asset(
-                        "assets/images/carrot.png",
-                        height: 80,
-                        width: 80,
+                      child: Image.network(
+                      widget.imageUrl,
+                        height: 60,
+                        width: 60,
                       ),
                     ),
                     SizedBox(
@@ -64,7 +65,7 @@ class _cartElementState extends State<cartElement> {
                               color: kPrimaryColor,
                               borderRadius: BorderRadius.circular(5)),
                           child: Text(
-                            "${widget.amountPerElement}kg",
+                            "${widget.amountPerElement}",
                             style: TextStyle(
                               fontSize: 12,
                               color: Colors.white,
@@ -72,7 +73,7 @@ class _cartElementState extends State<cartElement> {
                           ),
                         ),
                         Text(
-                          "Rs.${widget.price}",
+                          "\$ ${widget.price}",
                           style: TextStyle(fontWeight: FontWeight.bold),
                         )
                       ],
@@ -117,32 +118,29 @@ class _cartElementState extends State<cartElement> {
                           ),
                         ],
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(6.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: <Widget>[
-                            IconButton(
-                              iconSize: 30,
-                              icon: Icon(Icons.remove_circle_outline),
-                              color: Colors.grey,
-                              onPressed: () {},
-                            ),
-                            Text(
-                              "${widget.amount}Kg",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15,
-                                  color: Colors.grey),
-                            ),
-                            IconButton(
-                              iconSize: 30,
-                              icon: Icon(Icons.add_circle_outline),
-                              color: Colors.grey,
-                              onPressed: () {},
-                            ),
-                          ],
-                        ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: <Widget>[
+                          IconButton(
+                            iconSize: 30,
+                            icon: Icon(Icons.remove_circle_outline),
+                            color: Colors.grey,
+                            onPressed: () {},
+                          ),
+                          Text(
+                            "${widget.amount}Kg",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15,
+                                color: Colors.grey),
+                          ),
+                          IconButton(
+                            iconSize: 30,
+                            icon: Icon(Icons.add_circle_outline),
+                            color: Colors.grey,
+                            onPressed: () {},
+                          ),
+                        ],
                       )
                     ],
                   ),

@@ -18,8 +18,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        StreamProvider.value(value: _firestore.getVegetables()),
-        StreamProvider.value(value: _firestore.getFruits()),
+        StreamProvider.value(value: _firestore.getVegetables("Vegetable")),
+        StreamProvider.value(value: _firestore.getFruits("Fruit")),
+        StreamProvider.value(value: _firestore.getCartElements()),
       ],
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
