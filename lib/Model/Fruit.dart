@@ -19,14 +19,17 @@ class Fruit {
         amount = parsedJson['amount'],
         price = parsedJson['price'];
 
+
+
+  //For uploading as cart element
   Map<String, dynamic> toMap(Fruit fruit) {
     return {
       'name': fruit.name,
       'image': fruit.image,
-      'amount': fruit.amount,
+      'amount': fruit.amount.replaceAll("Kg", ""),
       'price': fruit.price,
       'totalPrice' : fruit.price,
-      'amountForBuying'  : fruit.amount 
+      'amountForBuying'  : fruit.amount.replaceAll("Kg", "")
     };
   }
 }

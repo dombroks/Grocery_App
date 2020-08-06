@@ -68,7 +68,7 @@ class _cartElementState extends State<cartElement> {
                               color: kPrimaryColor,
                               borderRadius: BorderRadius.circular(5)),
                           child: Text(
-                            "${widget.amountPerElement}",
+                            "${widget.amountPerElement}Kg",
                             style: TextStyle(
                               fontSize: 12,
                               color: Colors.white,

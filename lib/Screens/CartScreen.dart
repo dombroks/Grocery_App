@@ -40,7 +40,7 @@ class CartScreen extends StatelessWidget {
                             fontSize: 17, fontWeight: FontWeight.bold),
                       ),
                       Text(
-                        "Rs. 1820.00",
+                        "\$ 1820.00",
                         style: TextStyle(
                             fontSize: 17, fontWeight: FontWeight.bold),
                       ),
@@ -60,7 +60,7 @@ class CartScreen extends StatelessWidget {
                             color: Colors.grey),
                       ),
                       Text(
-                        "Rs. -220.00",
+                        "- \$ 220.00",
                         style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.bold,
