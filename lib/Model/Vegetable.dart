@@ -22,7 +22,9 @@ class Vegetable {
       'name': vegetable.name,
       'image': vegetable.image,
       'amount': vegetable.amount,
-      'price': vegetable.price
+      'price': vegetable.price,
+      'totalPrice': vegetable.price,
+      'amountForBuying': vegetable.amount
     };
   }
 }

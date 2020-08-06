@@ -24,7 +24,9 @@ class Fruit {
       'name': fruit.name,
       'image': fruit.image,
       'amount': fruit.amount,
-      'price': fruit.price
+      'price': fruit.price,
+      'totalPrice' : fruit.price,
+      'amountForBuying'  : fruit.amount 
     };
   }
 }

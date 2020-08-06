@@ -9,7 +9,9 @@ class cartElement extends StatefulWidget {
     this.price,
     this.elementName,
     this.amountPerElement,
-    this.amount, this.imageUrl,
+    this.amount,
+    this.imageUrl,
+    this.increaseOrDecreaseAmount,
   }) : super(key: key);
 
   final String total;
@@ -17,7 +19,8 @@ class cartElement extends StatefulWidget {
   final String elementName;
   final String amountPerElement;
   final String amount;
-  final String imageUrl ;
+  final String imageUrl;
+  final Function increaseOrDecreaseAmount;
   @override
   _cartElementState createState() => _cartElementState();
 }
@@ -46,7 +49,7 @@ class _cartElementState extends State<cartElement> {
                   children: <Widget>[
                     Center(
                       child: Image.network(
-                      widget.imageUrl,
+                        widget.imageUrl,
                         height: 60,
                         width: 60,
                       ),
@@ -138,7 +141,9 @@ class _cartElementState extends State<cartElement> {
                             iconSize: 30,
                             icon: Icon(Icons.add_circle_outline),
                             color: Colors.grey,
-                            onPressed: () {},
+                            onPressed: () {
+                              widget.increaseOrDecreaseAmount();
+                            },
                           ),
                         ],
                       )

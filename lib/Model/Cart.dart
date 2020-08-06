@@ -24,7 +24,9 @@ class Cart {
       'name': cart.name,
       'image': cart.image,
       'amount': cart.amount,
-      'price': cart.price
+      'price': cart.price,
+      'totalPrice': cart.price,
+      'amountForBuying': cart.amount
     };
   }
 }
