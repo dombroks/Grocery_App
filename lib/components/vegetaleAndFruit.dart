@@ -67,6 +67,7 @@ class _VegetaleAndFruitState extends State<VegetaleAndFruit> {
                         if (_iconColor == kPrimaryColor) {
                           _iconColor = Colors.grey;
                         } else {
+                          widget.uploadToCart();
                           _iconColor = kPrimaryColor;
                         }
                       });
