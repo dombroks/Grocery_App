@@ -19,12 +19,14 @@ class firebaseFirestore {
             .toList());
   }
 
-  void addElementToCart(Fruit fruit)  {
-     _firestore.collection("Cart").add({
-      'name': fruit.name,
-      'image': fruit.image,
-      'amount': fruit.amount,
-      'price': fruit.price
-    });
+  void addElementToCart(Fruit fruit) {
+    _firestore
+        .collection("Cart")
+        .document(fruit.name)
+        .setData(fruit.toMap(fruit));
+  }
+
+  void romeveElementFromCart(Fruit fruit) {
+    _firestore.collection("Cart").document(fruit.name).delete();
   }
 }

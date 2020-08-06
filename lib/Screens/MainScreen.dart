@@ -129,8 +129,11 @@ class _homeScreenState extends State<homeScreen> {
                       price: fruit.price,
                       amount: fruit.amount,
                       imageUrl: fruit.image,
-                      uploadToCart: () {
+                      addToCart: () {
                         _firestore.addElementToCart(fruit);
+                      },
+                      removeFromCart: () {
+                        _firestore.romeveElementFromCart(fruit);
                       },
                     );
                   }),
@@ -164,7 +167,7 @@ class _homeScreenState extends State<homeScreen> {
                     Vegetable vegetable = vegetables[index];
 
                     return VegetaleAndFruit(
-                     vegetaleOrFruitName: vegetable.name,
+                      vegetaleOrFruitName: vegetable.name,
                       price: vegetable.price,
                       amount: vegetable.amount,
                       imageUrl: vegetable.image,
