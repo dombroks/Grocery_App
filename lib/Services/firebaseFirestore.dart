@@ -1,22 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:grocery_app/Model/Cart.dart';
-import 'package:grocery_app/Model/Fruit.dart';
-import 'package:grocery_app/Model/Vegetable.dart';
+import 'package:grocery_app/Model/element.dart';
 
 class firebaseFirestore {
   final _firestore = Firestore.instance;
 
-  Stream<List<Fruit>> getFruits(String collection) {
+  Stream<List<element>> getElements(String collection) {
     return _firestore.collection(collection).snapshots().map((snapshot) =>
         snapshot.documents
-            .map((document) => Fruit.fromJson(document.data))
-            .toList());
-  }
-
-  Stream<List<Vegetable>> getVegetables(String collection) {
-    return _firestore.collection(collection).snapshots().map((snapshot) =>
-        snapshot.documents
-            .map((document) => Vegetable.fromJson(document.data))
+            .map((document) => element.fromJson(document.data))
             .toList());
   }
 
@@ -27,31 +19,20 @@ class firebaseFirestore {
         .toList());
   }
 
-  void addFruitToCart(Fruit fruit) {
-    _firestore
+  Future addElementToCart(element element) async {
+    await _firestore
         .collection("Cart")
-        .document(fruit.name)
-        .setData(fruit.toMap(fruit));
+        .document(element.name)
+        .setData(element.toMap(element));
   }
 
-  void romeveFruitFromCart(Fruit fruit) {
-    _firestore.collection("Cart").document(fruit.name).delete();
+  Future romeveElementFromCart(element element) async {
+    await _firestore.collection("Cart").document(element.name).delete();
   }
 
-  void addVegetableToCart(Vegetable vegetable) {
-    _firestore
-        .collection("Cart")
-        .document(vegetable.name)
-        .setData(vegetable.toMap(vegetable));
-  }
-
-  void romeveVegetableFromCart(Vegetable vegetable) {
-    _firestore.collection("Cart").document(vegetable.name).delete();
-  }
-
-  void increaseOrDecreaseAmount(String operation, Cart cart) {
+  Future increaseOrDecreaseAmount(String operation, Cart cart) async {
     if (operation == "increase") {
-      _firestore.collection("Cart").document(cart.name).updateData({
+      await _firestore.collection("Cart").document(cart.name).updateData({
         'name': cart.name,
         'image': cart.image,
         'amount': cart.amount,
@@ -60,7 +41,7 @@ class firebaseFirestore {
         'amountForBuying': double.parse(cart.amount) + 1
       });
     } else {
-      _firestore.collection("Cart").document(cart.name).updateData({
+      await _firestore.collection("Cart").document(cart.name).updateData({
         'name': cart.name,
         'image': cart.image,
         'amount': cart.amount,
@@ -69,5 +50,9 @@ class firebaseFirestore {
         'amountForBuying': "${double.parse(cart.amount) - 1}"
       });
     }
+  }
+
+  Stream<QuerySnapshot> getData(String collection) {
+    return _firestore.collection(collection).snapshots();
   }
 }

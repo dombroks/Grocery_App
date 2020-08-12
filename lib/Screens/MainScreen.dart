@@ -1,6 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:grocery_app/Model/Fruit.dart';
-import 'package:grocery_app/Model/Vegetable.dart';
+import 'package:grocery_app/Model/element.dart';
 import 'package:grocery_app/Services/firebaseFirestore.dart';
 import 'package:grocery_app/components/category.dart';
 import 'package:grocery_app/components/vegetaleAndFruit.dart';
@@ -21,8 +21,8 @@ class _homeScreenState extends State<homeScreen> {
   firebaseFirestore _firestore = firebaseFirestore();
   @override
   Widget build(BuildContext context) {
-    var fruits = Provider.of<List<Fruit>>(context);
-    var vegetables = Provider.of<List<Vegetable>>(context);
+    final fruits = Provider.of<QuerySnapshot>(context);
+    final vegetables = Provider.of<QuerySnapshot>(context);
 
     return Container(
       color: Colors.grey[200],
@@ -119,21 +119,24 @@ class _homeScreenState extends State<homeScreen> {
               height: 180,
               width: double.infinity,
               child: ListView.builder(
-                  itemCount: fruits.length,
+                  itemCount: fruits.documents.length,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
-                    Fruit fruit = fruits[index];
+                    List<element> list = fruits.documents
+                        .map((document) => element.fromJson(document.data))
+                        .toList();
+                    element e = list[index];
 
                     return VegetaleAndFruit(
-                      vegetaleOrFruitName: fruit.name,
-                      price: fruit.price,
-                      amount: fruit.amount,
-                      imageUrl: fruit.image,
+                      vegetaleOrFruitName: e.name,
+                      price: e.price,
+                      amount: e.amount,
+                      imageUrl: e.image,
                       addToCart: () {
-                        _firestore.addFruitToCart(fruit);
+                        _firestore.addElementToCart(e);
                       },
                       removeFromCart: () {
-                        _firestore.romeveFruitFromCart(fruit);
+                        _firestore.romeveElementFromCart(e);
                       },
                     );
                   }),
@@ -161,21 +164,24 @@ class _homeScreenState extends State<homeScreen> {
               height: 180,
               width: double.infinity,
               child: ListView.builder(
-                  itemCount: vegetables.length,
+                  itemCount: vegetables.documents.length,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
-                    Vegetable vegetable = vegetables[index];
+                    List<element> list = fruits.documents
+                        .map((document) => element.fromJson(document.data))
+                        .toList();
+                    element e = list[index];
 
                     return VegetaleAndFruit(
-                      vegetaleOrFruitName: vegetable.name,
-                      price: vegetable.price,
-                      amount: vegetable.amount,
-                      imageUrl: vegetable.image,
-                       addToCart: () {
-                        _firestore.addVegetableToCart(vegetable);
+                      vegetaleOrFruitName: e.name,
+                      price: e.price,
+                      amount: e.amount,
+                      imageUrl: e.image,
+                      addToCart: () {
+                        _firestore.addElementToCart(e);
                       },
                       removeFromCart: () {
-                        _firestore.romeveVegetableFromCart(vegetable);
+                        _firestore.romeveElementFromCart(e);
                       },
                     );
                   }),

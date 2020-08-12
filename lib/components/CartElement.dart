@@ -141,9 +141,11 @@ class _cartElementState extends State<cartElement> {
                             iconSize: 30,
                             icon: Icon(Icons.add_circle_outline),
                             color: Colors.grey,
+                            
                             onPressed: () {
                               widget.increaseOrDecreaseAmount();
                             },
+                            
                           ),
                         ],
                       )

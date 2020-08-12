@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:grocery_app/Screens/MainScreen.dart';
 import 'package:grocery_app/Services/firebaseFirestore.dart';
@@ -18,9 +19,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        StreamProvider.value(value: _firestore.getVegetables("Vegetable")),
-        StreamProvider.value(value: _firestore.getFruits("Fruit")),
-        StreamProvider.value(value: _firestore.getCartElements()),
+        StreamProvider<QuerySnapshot>.value(value: _firestore.getData("Fruit")),
+        StreamProvider<QuerySnapshot>.value(value: _firestore.getData("Vegetable")),
+        
       ],
       child: MaterialApp(
           debugShowCheckedModeBanner: false,

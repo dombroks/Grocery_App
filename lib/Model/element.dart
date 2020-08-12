@@ -1,35 +1,33 @@
 import 'dart:collection';
 
-class Fruit {
+class element {
   final String name;
   final String price;
   final String image;
   final String amount;
 
-  Fruit(
+  element(
     this.name,
     this.price,
     this.image,
     this.amount,
   );
 
-  Fruit.fromJson(Map<String, dynamic> parsedJson)
+  element.fromJson(Map<String, dynamic> parsedJson)
       : name = parsedJson['name'],
         image = parsedJson['image'],
         amount = parsedJson['amount'],
         price = parsedJson['price'];
 
-
-
   //For uploading as cart element
-  Map<String, dynamic> toMap(Fruit fruit) {
+  Map<String, dynamic> toMap(element element) {
     return {
-      'name': fruit.name,
-      'image': fruit.image,
-      'amount': fruit.amount.replaceAll("Kg", ""),
-      'price': fruit.price,
-      'totalPrice' : fruit.price,
-      'amountForBuying'  : fruit.amount.replaceAll("Kg", "")
+      'name': element.name,
+      'image': element.image,
+      'amount': element.amount.replaceAll("Kg", ""),
+      'price': element.price,
+      'totalPrice': element.price,
+      'amountForBuying': element.amount.replaceAll("Kg", "")
     };
   }
 }
