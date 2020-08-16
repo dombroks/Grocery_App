@@ -22,18 +22,16 @@ class _homeScreenState extends State<homeScreen> {
   firebaseFirestore _firestore = firebaseFirestore();
   @override
   void initState() {
-    Future.delayed(Duration.zero).then((_) async {
-      Provider.of<Mediator>(context, listen: false).fetchFruits();
-    });
-
-    // TODO: implement initState
     super.initState();
+    Future.delayed(Duration.zero).then((_) async {
+      Provider.of<Mediator>(context, listen: false).fetchData();
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    final fruits = Provider.of<Mediator>(context).fruits;
-    final vegetables = Provider.of<Mediator>(context).vegetables;
+    final fruits = Provider.of<Mediator>(context, listen: false).fruits;
+    final vegetables = Provider.of<Mediator>(context, listen: false).vegetables;
 
     return Container(
       color: Colors.grey[200],
@@ -129,25 +127,26 @@ class _homeScreenState extends State<homeScreen> {
             child: Container(
               height: 180,
               width: double.infinity,
-              child: ListView.builder(
-                  itemCount: fruits.length,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    element e = fruits[index];
+              child: //(fruits.length == 0 ) ? Center(child: CircularProgressIndicator(),) :
+                  ListView.builder(
+                      itemCount: fruits.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        element e = fruits[index];
 
-                    return VegetaleAndFruit(
-                      vegetaleOrFruitName: e.name,
-                      price: e.price,
-                      amount: e.amount,
-                      imageUrl: e.image,
-                      addToCart: () {
-                        _firestore.addElementToCart(e);
-                      },
-                      removeFromCart: () {
-                        _firestore.romeveElementFromCart(e);
-                      },
-                    );
-                  }),
+                        return VegetaleAndFruit(
+                          vegetaleOrFruitName: e.name,
+                          price: e.price,
+                          amount: e.amount,
+                          imageUrl: e.image,
+                          addToCart: () {
+                            _firestore.addElementToCart(e);
+                          },
+                          removeFromCart: () {
+                            _firestore.romeveElementFromCart(e);
+                          },
+                        );
+                      }),
             ),
           ),
           Padding(

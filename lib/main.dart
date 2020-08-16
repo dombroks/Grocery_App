@@ -1,8 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:grocery_app/Provider/Mediator.dart';
 import 'package:grocery_app/Screens/MainScreen.dart';
-import 'package:grocery_app/Services/firebaseFirestore.dart';
 import 'package:grocery_app/constants.dart';
 import 'package:provider/provider.dart';
 import 'Screens/CartScreen.dart';
@@ -15,15 +13,12 @@ void main() {
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
-  final firebaseFirestore _firestore = firebaseFirestore();
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
         // StreamProvider<QuerySnapshot>.value(value: _firestore.getData("fruit")),
-        ChangeNotifierProvider(create: (context) =>
-          Mediator()
-        )
+        ChangeNotifierProvider(create: (context) => Mediator())
       ],
       child: MaterialApp(
           debugShowCheckedModeBanner: false,

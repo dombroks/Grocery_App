@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_app/Model/Cart.dart';
+import 'package:grocery_app/Provider/Mediator.dart';
 import 'package:grocery_app/Services/firebaseFirestore.dart';
 import 'package:grocery_app/components/CartElement.dart';
 import 'package:provider/provider.dart';
@@ -9,7 +10,7 @@ class CartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     firebaseFirestore _firestore = firebaseFirestore();
 
-    var cartElements = Provider.of<List<Cart>>(context);
+    var cartData = Provider.of<Mediator>(context).cartElements;
     Size size = MediaQuery.of(context).size;
     return Container(
       width: size.width,
@@ -35,7 +36,7 @@ class CartScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Text(
-                        "Subtotal (${cartElements.length} items)",
+                        "Subtotal (${cartData.length} items)",
                         style: TextStyle(
                             fontSize: 17, fontWeight: FontWeight.bold),
                       ),
@@ -78,9 +79,9 @@ class CartScreen extends StatelessWidget {
               child: Container(
                 width: double.infinity,
                 child: ListView.builder(
-                  itemCount: cartElements.length,
+                  itemCount: cartData.length,
                   itemBuilder: (context, index) {
-                    Cart cart = cartElements[index];
+                    Cart cart = cartData[index];
                     return cartElement(
                       imageUrl: cart.image,
                       total: '940.00',
