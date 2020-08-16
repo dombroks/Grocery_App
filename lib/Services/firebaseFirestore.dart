@@ -52,7 +52,7 @@ class firebaseFirestore {
     }
   }
 
-  Stream<QuerySnapshot> getData(String collection) {
-    return _firestore.collection(collection).snapshots();
+  Stream<QuerySnapshot> getData(String type) {
+    return _firestore.collection("Vegetable").snapshots();
   }
 }

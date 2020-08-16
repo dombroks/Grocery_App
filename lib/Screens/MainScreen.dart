@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:grocery_app/Model/element.dart';
+import 'package:grocery_app/Provider/Mediator.dart';
 import 'package:grocery_app/Services/firebaseFirestore.dart';
 import 'package:grocery_app/components/category.dart';
 import 'package:grocery_app/components/vegetaleAndFruit.dart';
@@ -20,9 +21,19 @@ class homeScreen extends StatefulWidget {
 class _homeScreenState extends State<homeScreen> {
   firebaseFirestore _firestore = firebaseFirestore();
   @override
+  void initState() {
+    Future.delayed(Duration.zero).then((_) async {
+      Provider.of<Mediator>(context, listen: false).fetchFruits();
+    });
+
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final fruits = Provider.of<QuerySnapshot>(context);
-    final vegetables = Provider.of<QuerySnapshot>(context);
+    final fruits = Provider.of<Mediator>(context).fruits;
+    final vegetables = Provider.of<Mediator>(context).vegetables;
 
     return Container(
       color: Colors.grey[200],
@@ -119,13 +130,10 @@ class _homeScreenState extends State<homeScreen> {
               height: 180,
               width: double.infinity,
               child: ListView.builder(
-                  itemCount: fruits.documents.length,
+                  itemCount: fruits.length,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
-                    List<element> list = fruits.documents
-                        .map((document) => element.fromJson(document.data))
-                        .toList();
-                    element e = list[index];
+                    element e = fruits[index];
 
                     return VegetaleAndFruit(
                       vegetaleOrFruitName: e.name,
@@ -164,13 +172,15 @@ class _homeScreenState extends State<homeScreen> {
               height: 180,
               width: double.infinity,
               child: ListView.builder(
-                  itemCount: vegetables.documents.length,
+                  itemCount: vegetables.length,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
+                    /*
                     List<element> list = fruits.documents
                         .map((document) => element.fromJson(document.data))
                         .toList();
-                    element e = list[index];
+                        */
+                    element e = vegetables[index];
 
                     return VegetaleAndFruit(
                       vegetaleOrFruitName: e.name,
