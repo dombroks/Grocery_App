@@ -1,6 +1,7 @@
+import 'dart:ffi';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:grocery_app/Model/Cart.dart';
 import 'package:grocery_app/Model/element.dart';
 
 class Mediator extends ChangeNotifier {
@@ -8,7 +9,7 @@ class Mediator extends ChangeNotifier {
 
   List<element> vegetables = [];
   List<element> fruits = [];
-  List<Cart> cartElements = [];
+  List<element> cartElements = [];
 
   bool isLoaded = false;
 
@@ -31,7 +32,7 @@ class Mediator extends ChangeNotifier {
     });
     this.cartElements = [];
     cart.documents.forEach((document) async {
-      this.cartElements.add(Cart.fromJson(document.data));
+      this.cartElements.add(element.fromJson(document.data));
     });
 
     this.fruits = [];
@@ -40,5 +41,25 @@ class Mediator extends ChangeNotifier {
     });
 
     isLoaded = true;
+  }
+
+  Future<void> increaseOrDecreaseAmount(element cart, String operation) async {
+    if (operation == "increase") {
+      await _db.collection("Cart").document(cart.name).updateData({
+        'amount': cart.amount,
+        'amountForBuying': int.parse(cart.amountForBuying) + 1
+      });
+      print("increased");
+    } else {
+      await _db.collection("Cart").document(cart.name).updateData({
+        'name': cart.name,
+        'image': cart.image,
+        'amount': cart.amount,
+        'price': cart.price,
+        'totalPrice': cart.price,
+        'amountForBuying': "${double.parse(cart.amountForBuying) - 1}"
+      });
+      print("decreased");
+    }
   }
 }

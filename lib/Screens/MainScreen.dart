@@ -23,9 +23,6 @@ class _homeScreenState extends State<homeScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration.zero).then((_) async {
-      Provider.of<Mediator>(context, listen: false).fetchData();
-    });
   }
 
   @override

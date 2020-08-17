@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:grocery_app/Model/Cart.dart';
 import 'package:grocery_app/Model/element.dart';
 
 class firebaseFirestore {
@@ -12,10 +11,10 @@ class firebaseFirestore {
             .toList());
   }
 
-  Stream<List<Cart>> getCartElements() {
+  Stream<List<element>> getCartElements() {
     return _firestore.collection("Cart").snapshots().map((snapshot) => snapshot
         .documents
-        .map((document) => Cart.fromJson(document.data))
+        .map((document) => element.fromJson(document.data))
         .toList());
   }
 
@@ -30,7 +29,7 @@ class firebaseFirestore {
     await _firestore.collection("Cart").document(element.name).delete();
   }
 
-  Future increaseOrDecreaseAmount(String operation, Cart cart) async {
+  Future increaseOrDecreaseAmount(String operation, element cart) async {
     if (operation == "increase") {
       await _firestore.collection("Cart").document(cart.name).updateData({
         'name': cart.name,

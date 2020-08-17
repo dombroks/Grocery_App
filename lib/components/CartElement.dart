@@ -143,7 +143,7 @@ class _cartElementState extends State<cartElement> {
                             color: Colors.grey,
                             
                             onPressed: () {
-                              widget.increaseOrDecreaseAmount();
+                             widget.increaseOrDecreaseAmount();
                             },
                             
                           ),
