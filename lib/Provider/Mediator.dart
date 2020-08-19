@@ -10,7 +10,6 @@ class Mediator extends ChangeNotifier {
   List<element> fruits = [];
   List<element> cartElements = [];
   double totalPrice = 0.0;
-
   bool isLoaded = false;
 
   Future<void> fetchData() async {
