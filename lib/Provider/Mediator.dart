@@ -1,8 +1,7 @@
-
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:grocery_app/Model/element.dart';
+import 'package:grocery_app/components/CartElement.dart';
 
 class Mediator extends ChangeNotifier {
   final Firestore _db = Firestore.instance;
@@ -10,6 +9,7 @@ class Mediator extends ChangeNotifier {
   List<element> vegetables = [];
   List<element> fruits = [];
   List<element> cartElements = [];
+  double totalPrice = 0.0;
 
   bool isLoaded = false;
 
@@ -41,6 +41,7 @@ class Mediator extends ChangeNotifier {
     });
 
     isLoaded = true;
+    getCartElementsTotalPrice();
   }
 
   Future<void> increaseOrDecreaseAmount(element cart, String operation) async {
@@ -55,5 +56,12 @@ class Mediator extends ChangeNotifier {
           {'amountForBuying': "${double.parse(cart.amountForBuying) - 1}"});
       print("decreased");
     }
+  }
+
+  getCartElementsTotalPrice() {
+    cartElements.forEach((element) {
+      totalPrice += double.parse(element.price);
+    });
+    print(totalPrice);
   }
 }

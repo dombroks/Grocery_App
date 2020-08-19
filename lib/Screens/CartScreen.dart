@@ -10,6 +10,7 @@ class CartScreen extends StatelessWidget {
     var provider = Provider.of<Mediator>(context);
 
     var cartData = provider.cartElements;
+
     Size size = MediaQuery.of(context).size;
     return Container(
       width: size.width,
@@ -40,7 +41,7 @@ class CartScreen extends StatelessWidget {
                             fontSize: 17, fontWeight: FontWeight.bold),
                       ),
                       Text(
-                        "\$ 1820.00",
+                        "\$ ${provider.totalPrice}",
                         style: TextStyle(
                             fontSize: 17, fontWeight: FontWeight.bold),
                       ),

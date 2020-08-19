@@ -20,6 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     Future.delayed(Duration.zero).then((_) async {
       Provider.of<Mediator>(context, listen: false).fetchData();
+      
     });
     Timer(
         Duration(seconds: 4),
