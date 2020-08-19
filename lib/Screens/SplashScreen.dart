@@ -18,14 +18,14 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    super.initState();
     Future.delayed(Duration.zero).then((_) async {
       Provider.of<Mediator>(context, listen: false).fetchData();
     });
     Timer(
-        Duration(seconds: 3),
+        Duration(seconds: 4),
         () => Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => home())));
+    super.initState();
   }
 
   @override

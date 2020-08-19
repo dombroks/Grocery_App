@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:grocery_app/Model/element.dart';
 import 'package:grocery_app/Provider/Mediator.dart';
@@ -124,8 +123,11 @@ class _homeScreenState extends State<homeScreen> {
             child: Container(
               height: 180,
               width: double.infinity,
-              child: //(fruits.length == 0 ) ? Center(child: CircularProgressIndicator(),) :
-                  ListView.builder(
+              child: (fruits.length == 0)
+                  ? Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  : ListView.builder(
                       itemCount: fruits.length,
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
@@ -178,18 +180,22 @@ class _homeScreenState extends State<homeScreen> {
                         */
                     element e = vegetables[index];
 
-                    return VegetaleAndFruit(
-                      vegetaleOrFruitName: e.name,
-                      price: e.price,
-                      amount: e.amount,
-                      imageUrl: e.image,
-                      addToCart: () {
-                        _firestore.addElementToCart(e);
-                      },
-                      removeFromCart: () {
-                        _firestore.romeveElementFromCart(e);
-                      },
-                    );
+                    return (vegetables.length == 0)
+                        ? Center(
+                            child: CircularProgressIndicator(),
+                          )
+                        : VegetaleAndFruit(
+                            vegetaleOrFruitName: e.name,
+                            price: e.price,
+                            amount: e.amount,
+                            imageUrl: e.image,
+                            addToCart: () {
+                              _firestore.addElementToCart(e);
+                            },
+                            removeFromCart: () {
+                              _firestore.romeveElementFromCart(e);
+                            },
+                          );
                   }),
             ),
           ),

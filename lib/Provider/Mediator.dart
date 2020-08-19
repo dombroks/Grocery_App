@@ -1,4 +1,4 @@
-import 'dart:ffi';
+
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
@@ -45,20 +45,14 @@ class Mediator extends ChangeNotifier {
 
   Future<void> increaseOrDecreaseAmount(element cart, String operation) async {
     if (operation == "increase") {
-      await _db.collection("Cart").document(cart.name).updateData({
-        'amount': cart.amount,
-        'amountForBuying': int.parse(cart.amountForBuying) + 1
-      });
+      await _db
+          .collection("Cart")
+          .document(cart.name)
+          .updateData({'amountForBuying': int.parse(cart.amountForBuying) + 1});
       print("increased");
     } else {
-      await _db.collection("Cart").document(cart.name).updateData({
-        'name': cart.name,
-        'image': cart.image,
-        'amount': cart.amount,
-        'price': cart.price,
-        'totalPrice': cart.price,
-        'amountForBuying': "${double.parse(cart.amountForBuying) - 1}"
-      });
+      await _db.collection("Cart").document(cart.name).updateData(
+          {'amountForBuying': "${double.parse(cart.amountForBuying) - 1}"});
       print("decreased");
     }
   }
