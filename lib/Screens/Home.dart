@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_app/Screens/Profile.dart';
 
 import '../constants.dart';
 import 'CartScreen.dart';
@@ -43,7 +44,7 @@ class _homeState extends State<home> {
         body: TabBarView(children: [
           homeScreen(),
           CartScreen(),
-          homeScreen(),
+          Profile(),
         ]),
       ),
     );
