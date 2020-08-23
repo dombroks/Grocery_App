@@ -77,18 +77,23 @@ class _ProfileState extends State<Profile> {
                   children: [
                     ProfileCardItem(
                       itemName: "Recipient details",
+                      colordata: Colors.purple,
                     ),
                     ProfileCardItem(
                       itemName: "Delivery address",
+                      colordata: Colors.yellow,
                     ),
                     ProfileCardItem(
                       itemName: "Payment Method",
+                      colordata: Colors.orange,
                     ),
                     ProfileCardItem(
                       itemName: "Change password",
+                      colordata: Colors.pink[300],
                     ),
                     ProfileCardItem(
                       itemName: "Logout",
+                      colordata: Colors.red[700],
                     ),
                   ],
                 ),

@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 class ProfileCardItem extends StatelessWidget {
   final String itemName;
   final Function toAnotherScreen;
+  final Color colordata;
 
   const ProfileCardItem({
     Key key,
     this.itemName,
-    this.toAnotherScreen,
+    this.toAnotherScreen, this.colordata,
   }) : super(key: key);
 
   @override
@@ -25,7 +26,7 @@ class ProfileCardItem extends StatelessWidget {
                 width: 50,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Colors.yellow,
+                  color: colordata,
                 ),
               ),
               SizedBox(
