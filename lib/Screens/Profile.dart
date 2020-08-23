@@ -12,7 +12,7 @@ class _ProfileState extends State<Profile> {
     Size size = MediaQuery.of(context).size;
 
     return Container(
-      color: Colors.grey[300],
+      color: Colors.grey[200],
       child: Column(
         children: <Widget>[
           Container(
@@ -73,6 +73,8 @@ class _ProfileState extends State<Profile> {
           Padding(
               padding: const EdgeInsets.all(20.0),
               child: Container(
+                decoration:
+                    BoxDecoration(borderRadius: BorderRadius.circular(10)),
                 child: Column(
                   children: [
                     ProfileCardItem(
