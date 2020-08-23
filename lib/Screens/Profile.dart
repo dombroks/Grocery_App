@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_app/components/ProfileCardItem.dart';
 
 class Profile extends StatefulWidget {
   @override
@@ -70,43 +71,28 @@ class _ProfileState extends State<Profile> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Container(
-                padding: EdgeInsets.all(8),
-                color: Colors.white,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              padding: const EdgeInsets.all(20.0),
+              child: Container(
+                child: Column(
                   children: [
-                    Row(
-                      children: [
-                        Container(
-                          height: 60,
-                          width: 60,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.yellow,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 15,
-                        ),
-                        Text(
-                          "Recipient details",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16),
-                        ),
-                      ],
+                    ProfileCardItem(
+                      itemName: "Recipient details",
                     ),
-                    Icon(
-                      Icons.arrow_forward_ios,
-                      size: 13,
-                      color: Colors.grey,
+                    ProfileCardItem(
+                      itemName: "Delivery address",
+                    ),
+                    ProfileCardItem(
+                      itemName: "Payment Method",
+                    ),
+                    ProfileCardItem(
+                      itemName: "Change password",
+                    ),
+                    ProfileCardItem(
+                      itemName: "Logout",
                     ),
                   ],
-                )),
-          )
+                ),
+              ))
         ],
       ),
     );
