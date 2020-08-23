@@ -78,22 +78,27 @@ class _ProfileState extends State<Profile> {
                     ProfileCardItem(
                       itemName: "Recipient details",
                       colordata: Colors.purple,
+                      icon: Icons.account_circle,
                     ),
                     ProfileCardItem(
                       itemName: "Delivery address",
                       colordata: Colors.yellow,
+                      icon: Icons.local_shipping,
                     ),
                     ProfileCardItem(
                       itemName: "Payment Method",
                       colordata: Colors.orange,
+                      icon: Icons.monetization_on,
                     ),
                     ProfileCardItem(
                       itemName: "Change password",
                       colordata: Colors.pink[300],
+                      icon: Icons.lock,
                     ),
                     ProfileCardItem(
                       itemName: "Logout",
                       colordata: Colors.red[700],
+                      icon: Icons.exit_to_app,
                     ),
                   ],
                 ),

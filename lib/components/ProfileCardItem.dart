@@ -4,11 +4,14 @@ class ProfileCardItem extends StatelessWidget {
   final String itemName;
   final Function toAnotherScreen;
   final Color colordata;
+  final IconData icon;
 
   const ProfileCardItem({
     Key key,
     this.itemName,
-    this.toAnotherScreen, this.colordata,
+    this.toAnotherScreen,
+    this.colordata,
+    this.icon,
   }) : super(key: key);
 
   @override
@@ -22,6 +25,10 @@ class ProfileCardItem extends StatelessWidget {
           Row(
             children: [
               Container(
+                child: Icon(
+                  icon,
+                  color: Colors.white,
+                ),
                 height: 50,
                 width: 50,
                 decoration: BoxDecoration(
