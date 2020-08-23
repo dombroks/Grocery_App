@@ -82,20 +82,32 @@ class _ProfileState extends State<Profile> {
                       colordata: Colors.purple,
                       icon: Icons.account_circle,
                     ),
+                    SizedBox(
+                      height: 0.5,
+                    ),
                     ProfileCardItem(
                       itemName: "Delivery address",
-                      colordata: Colors.yellow,
+                      colordata: Colors.blue,
                       icon: Icons.local_shipping,
+                    ),
+                    SizedBox(
+                      height: 0.5,
                     ),
                     ProfileCardItem(
                       itemName: "Payment Method",
-                      colordata: Colors.orange,
+                      colordata: Colors.green,
                       icon: Icons.monetization_on,
+                    ),
+                    SizedBox(
+                      height: 0.5,
                     ),
                     ProfileCardItem(
                       itemName: "Change password",
                       colordata: Colors.pink[300],
                       icon: Icons.lock,
+                    ),
+                    SizedBox(
+                      height: 0.5,
                     ),
                     ProfileCardItem(
                       itemName: "Logout",
