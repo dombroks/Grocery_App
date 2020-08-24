@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_app/Screens/MainScreen.dart';
+import 'package:grocery_app/Screens/PaymentMethod.dart';
 import 'package:grocery_app/components/ProfileCardItem.dart';
 
 class Profile extends StatefulWidget {
@@ -81,6 +83,12 @@ class _ProfileState extends State<Profile> {
                       itemName: "Recipient details",
                       colordata: Colors.purple,
                       icon: Icons.account_circle,
+                      toAnotherScreen: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => PaymentMethod()));
+                      },
                     ),
                     SizedBox(
                       height: 0.5,

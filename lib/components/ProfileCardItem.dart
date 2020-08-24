@@ -48,10 +48,15 @@ class ProfileCardItem extends StatelessWidget {
               ),
             ],
           ),
-          Icon(
-            Icons.arrow_forward_ios,
-            size: 13,
-            color: Colors.grey,
+          GestureDetector(
+            child: Icon(
+              Icons.arrow_forward_ios,
+              size: 13,
+              color: Colors.grey,
+            ),
+            onTap: () {
+              toAnotherScreen();
+            },
           ),
         ],
       ),
