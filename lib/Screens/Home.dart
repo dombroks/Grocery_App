@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
+
 import 'package:grocery_app/Screens/Profile.dart';
 
 import '../constants.dart';
 import 'CartScreen.dart';
 import 'MainScreen.dart';
 
-class home extends StatefulWidget {
-  @override
-  _homeState createState() => _homeState();
-}
+// ignore: must_be_immutable
+class Home extends StatelessWidget {
+  int selectedPage;
+  Home(this.selectedPage);
 
-class _homeState extends State<home> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
+      initialIndex: selectedPage,
       length: 3,
       child: Scaffold(
         appBar: AppBar(

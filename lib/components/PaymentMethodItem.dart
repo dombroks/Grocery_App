@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class PaymentMethodItem extends StatelessWidget {
+  final String paymentCardHolder;
+  final String cardSerialNumber;
+  final String paymentCardLogo;
   const PaymentMethodItem({
-    Key key,
+    Key key, this.paymentCardHolder, this.cardSerialNumber, this.paymentCardLogo,
   }) : super(key: key);
 
   @override
@@ -16,7 +19,7 @@ class PaymentMethodItem extends StatelessWidget {
               padding: EdgeInsets.all(8),
               width: 60,
               height: 60,
-              child: Center(child: SvgPicture.asset("assets/icons/visa.svg")),
+              child: Center(child: SvgPicture.asset(paymentCardLogo)),
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: Colors.amberAccent,
@@ -29,7 +32,7 @@ class PaymentMethodItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Jessica alison",
+                  paymentCardHolder,
                   style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
