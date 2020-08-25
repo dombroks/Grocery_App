@@ -26,12 +26,27 @@ class PaymentMethod extends StatelessWidget {
         ),
       ),
       body: Container(
-        padding: EdgeInsets.all(30.0),
-        color: Colors.white,
-        child: PaymentMethodItem(
-            paymentCardHolder: "Jessica Alison",
-            paymentCardLogo: "assets/icons/visa.svg"),
-      ),
+          padding: EdgeInsets.all(30.0),
+          color: Colors.white,
+          child: Column(
+            children: [
+              PaymentMethodItem(
+                  paymentCardHolder: "Jessica Alison",
+                  paymentCardLogo: "assets/icons/visa.svg"),
+              SizedBox(
+                height: 10,
+              ),
+              PaymentMethodItem(
+                  paymentCardHolder: "Jessica Alison",
+                  paymentCardLogo: "assets/icons/mastercard.svg"),
+              SizedBox(
+                height: 10,
+              ),
+              PaymentMethodItem(
+                  paymentCardHolder: "Add Payment method",
+                  paymentCardLogo: "assets/icons/credit-card.svg"),
+            ],
+          )),
     );
   }
 }

@@ -6,7 +6,10 @@ class PaymentMethodItem extends StatelessWidget {
   final String cardSerialNumber;
   final String paymentCardLogo;
   const PaymentMethodItem({
-    Key key, this.paymentCardHolder, this.cardSerialNumber, this.paymentCardLogo,
+    Key key,
+    this.paymentCardHolder,
+    this.cardSerialNumber,
+    this.paymentCardLogo,
   }) : super(key: key);
 
   @override
@@ -36,7 +39,7 @@ class PaymentMethodItem extends StatelessWidget {
                   style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
-                      color: Colors.grey[750]),
+                      color: Colors.grey[700]),
                 ),
                 Text(
                   "....  ....  ....  4528",
