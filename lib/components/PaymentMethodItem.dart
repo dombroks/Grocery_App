@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class PaymentMethodItem extends StatelessWidget {
   const PaymentMethodItem({
@@ -12,8 +13,10 @@ class PaymentMethodItem extends StatelessWidget {
         Row(
           children: [
             Container(
+              padding: EdgeInsets.all(8),
               width: 60,
               height: 60,
+              child: Center(child: SvgPicture.asset("assets/icons/visa.svg")),
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: Colors.amberAccent,

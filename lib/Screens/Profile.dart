@@ -83,12 +83,6 @@ class _ProfileState extends State<Profile> {
                       itemName: "Recipient details",
                       colordata: Colors.purple,
                       icon: Icons.account_circle,
-                      toAnotherScreen: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => PaymentMethod()));
-                      },
                     ),
                     SizedBox(
                       height: 0.5,
@@ -105,6 +99,12 @@ class _ProfileState extends State<Profile> {
                       itemName: "Payment Method",
                       colordata: Colors.green,
                       icon: Icons.monetization_on,
+                      toAnotherScreen: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => PaymentMethod()));
+                      },
                     ),
                     SizedBox(
                       height: 0.5,
