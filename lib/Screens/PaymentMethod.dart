@@ -36,7 +36,6 @@ class PaymentMethod extends StatelessWidget {
               SizedBox(
                 height: 10,
               ),
-              
               PaymentMethodItem(
                   paymentCardHolder: "Jessica Alison",
                   paymentCardLogo: "assets/icons/mastercard.svg"),
