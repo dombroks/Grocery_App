@@ -11,7 +11,8 @@ class element {
     this.name,
     this.price,
     this.image,
-    this.amount, this.amountForBuying,
+    this.amount, 
+    this.amountForBuying,
   );
 
   element.fromJson(Map<String, dynamic> parsedJson)

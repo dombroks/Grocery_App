@@ -4,10 +4,26 @@ import 'package:grocery_app/Provider/Mediator.dart';
 import 'package:grocery_app/components/CartElement.dart';
 import 'package:provider/provider.dart';
 
-class CartScreen extends StatelessWidget {
+class CartScreen extends StatefulWidget {
+  @override
+  _CartScreenState createState() => _CartScreenState();
+}
+
+class _CartScreenState extends State<CartScreen> {
+  @override
+  void initState() {
+    var provider = Provider.of<Mediator>(context, listen: false);
+
+    provider.fetchCartElements();
+    if (!provider.totalPriceIsLoaded) {
+      provider.getCartElementsTotalPrice();
+    }
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    var provider = Provider.of<Mediator>(context);
+    var provider = Provider.of<Mediator>(context, listen: true);
 
     var cartData = provider.cartElements;
 

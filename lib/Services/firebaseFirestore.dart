@@ -18,12 +18,7 @@ class firebaseFirestore {
         .toList());
   }
 
-  Future addElementToCart(element element) async {
-    await _firestore
-        .collection("Cart")
-        .document(element.name)
-        .setData(element.toMap(element));
-  }
+ 
 
   Future romeveElementFromCart(element element) async {
     await _firestore.collection("Cart").document(element.name).delete();

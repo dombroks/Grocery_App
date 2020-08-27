@@ -27,8 +27,9 @@ class _homeScreenState extends State<homeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final fruits = Provider.of<Mediator>(context, listen: false).fruits;
-    final vegetables = Provider.of<Mediator>(context, listen: false).vegetables;
+    var provider = Provider.of<Mediator>(context, listen: false);
+    final fruits = provider.fruits;
+    final vegetables = provider.vegetables;
 
     return Container(
       color: Colors.grey[200],
@@ -140,7 +141,7 @@ class _homeScreenState extends State<homeScreen> {
                           amount: e.amount,
                           imageUrl: e.image,
                           addToCart: () {
-                            _firestore.addElementToCart(e);
+                            provider.addElementToCart(e);
                           },
                           removeFromCart: () {
                             _firestore.romeveElementFromCart(e);
@@ -174,11 +175,7 @@ class _homeScreenState extends State<homeScreen> {
                   itemCount: vegetables.length,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
-                    /*
-                    List<element> list = fruits.documents
-                        .map((document) => element.fromJson(document.data))
-                        .toList();
-                        */
+                    
                     element e = vegetables[index];
 
                     return (vegetables.length == 0)
@@ -191,7 +188,7 @@ class _homeScreenState extends State<homeScreen> {
                             amount: e.amount,
                             imageUrl: e.image,
                             addToCart: () {
-                              _firestore.addElementToCart(e);
+                              provider.addElementToCart(e);
                             },
                             removeFromCart: () {
                               _firestore.romeveElementFromCart(e);

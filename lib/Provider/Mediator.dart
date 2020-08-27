@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:grocery_app/Model/element.dart';
-import 'package:grocery_app/components/CartElement.dart';
 
 class Mediator extends ChangeNotifier {
   final Firestore _db = Firestore.instance;
@@ -10,8 +9,8 @@ class Mediator extends ChangeNotifier {
   List<element> fruits = [];
   List<element> cartElements = [];
   double totalPrice = 0.0;
-  
-  bool isLoaded = false;
+
+  bool totalPriceIsLoaded = false;
 
   Future<void> fetchData() async {
     final vegetable = await _db
@@ -24,24 +23,15 @@ class Mediator extends ChangeNotifier {
         .where("type", isEqualTo: "fruit")
         .getDocuments();
 
-    final cart = await _db.collection("Cart").getDocuments();
-
     this.vegetables = [];
     vegetable.documents.forEach((document) async {
       this.vegetables.add(element.fromJson(document.data));
-    });
-    this.cartElements = [];
-    cart.documents.forEach((document) async {
-      this.cartElements.add(element.fromJson(document.data));
     });
 
     this.fruits = [];
     fruit.documents.forEach((document) async {
       this.fruits.add(element.fromJson(document.data));
     });
-
-    isLoaded = true;
-    getCartElementsTotalPrice();
   }
 
   Future<void> increaseOrDecreaseAmount(element cart, String operation) async {
@@ -62,6 +52,28 @@ class Mediator extends ChangeNotifier {
     cartElements.forEach((element) {
       totalPrice += double.parse(element.price);
     });
+    totalPriceIsLoaded = true;
     print(totalPrice);
+  }
+
+  fetchCartElements() async {
+    final cart = await _db.collection("Cart").getDocuments();
+    this.cartElements = [];
+    cart.documents.forEach((document) async {
+      if (!cartElements.contains(document.data))
+        this.cartElements.add(element.fromJson(document.data));
+    });
+  }
+
+  Future addElementToCart(element element) async {
+    if (!cartElements.contains(element)) {
+      cartElements.add(element);
+      totalPrice += double.parse(element.price);
+    }
+
+    await _db
+        .collection("Cart")
+        .document(element.name)
+        .setData(element.toMap(element));
   }
 }

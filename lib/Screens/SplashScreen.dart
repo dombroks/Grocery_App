@@ -20,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     Future.delayed(Duration.zero).then((_) async {
       Provider.of<Mediator>(context, listen: false).fetchData();
-      
+      Provider.of<Mediator>(context, listen: false).fetchCartElements();
     });
     Timer(
         Duration(seconds: 4),
