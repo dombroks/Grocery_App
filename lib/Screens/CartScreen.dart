@@ -105,9 +105,11 @@ class _CartScreenState extends State<CartScreen> {
                       amountPerElement: cart.amount,
                       price: cart.price,
                       amount: '1',
-                      increaseOrDecreaseAmount: () async {
-                        await provider.increaseOrDecreaseAmount(
-                            cart, "increase");
+                      increaseAmount: () async {
+                        await provider.increaseAmount(cart);
+                      },
+                      decreaseAmount: () async {
+                        await provider.decreaseAmount(cart);
                       },
                     );
                   },

@@ -3,16 +3,17 @@ import 'package:flutter/material.dart';
 import '../constants.dart';
 
 class cartElement extends StatefulWidget {
-  const cartElement({
-    Key key,
-    this.total,
-    this.price,
-    this.elementName,
-    this.amountPerElement,
-    this.amount,
-    this.imageUrl,
-    this.increaseOrDecreaseAmount,
-  }) : super(key: key);
+  const cartElement(
+      {Key key,
+      this.total,
+      this.price,
+      this.elementName,
+      this.amountPerElement,
+      this.amount,
+      this.imageUrl,
+      this.increaseAmount,
+      this.decreaseAmount})
+      : super(key: key);
 
   final String total;
   final String price;
@@ -20,7 +21,8 @@ class cartElement extends StatefulWidget {
   final String amountPerElement;
   final String amount;
   final String imageUrl;
-  final Function increaseOrDecreaseAmount;
+  final Function increaseAmount;
+  final Function decreaseAmount;
   @override
   _cartElementState createState() => _cartElementState();
 }
@@ -128,7 +130,9 @@ class _cartElementState extends State<cartElement> {
                             iconSize: 30,
                             icon: Icon(Icons.remove_circle_outline),
                             color: Colors.grey,
-                            onPressed: () {},
+                            onPressed: () {
+                              widget.decreaseAmount();
+                            },
                           ),
                           Text(
                             "${widget.amount}Kg",
@@ -142,7 +146,7 @@ class _cartElementState extends State<cartElement> {
                             icon: Icon(Icons.add_circle_outline),
                             color: Colors.grey,
                             onPressed: () {
-                              widget.increaseOrDecreaseAmount();
+                              widget.increaseAmount();
                             },
                           ),
                         ],
