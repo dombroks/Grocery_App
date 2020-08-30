@@ -13,10 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-        providers: [
-          // StreamProvider<QuerySnapshot>.value(value: _firestore.getData("fruit")),
-          ChangeNotifierProvider(create: (context) => Mediator())
-        ],
+        providers: [ChangeNotifierProvider(create: (context) => Mediator())],
         child: MaterialApp(
             debugShowCheckedModeBanner: false,
             title: 'My Grocery',
