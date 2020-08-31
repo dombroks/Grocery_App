@@ -1,4 +1,3 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:grocery_app/Model/element.dart';
@@ -36,23 +35,17 @@ class Mediator extends ChangeNotifier {
   }
 
   Future<void> increaseAmount(element cart) async {
-    await _db
-        .collection("Cart")
-        .document(cart.name)
-        .updateData({'amountForBuying': cart.amountForBuying + 1});
-    print("increased");
-    return;
+    var ref = _db.collection("Cart").document(cart.name);
+    await ref.updateData({'amountForBuying': cart.amountForBuying + 1});
   }
 
   Future decreaseAmount(element cart) async {
-    
-      await _db
-          .collection("Cart")
-          .document(cart.name)
-          .updateData({'amountForBuying': (cart.amountForBuying) - 1});
-  
-     // await print("decreased${cart.amountForBuying}");
-    
+    print(cart.amountForBuying);
+    await _db
+        .collection("Cart")
+        .document(cart.name)
+        .updateData({'amountForBuying': (cart.amountForBuying) - 1});
+    print(cart.amountForBuying);
   }
 
   getCartElementsTotalPrice() {
@@ -77,10 +70,20 @@ class Mediator extends ChangeNotifier {
       cartElements.add(element);
       totalPrice += double.parse(element.price);
     }
-
     await _db
         .collection("Cart")
         .document(element.name)
         .setData(element.toMap(element));
   }
+
+  Future<void> deleteElementFromCart(element element) async {
+    print(cartElements.length);
+    double elementPrice = double.parse(element.price);
+    totalPrice -= elementPrice;
+    cartElements.remove(element);
+
+    await _db.collection("Cart").document(element.name).delete();
+    notifyListeners();
+  }
+  
 }

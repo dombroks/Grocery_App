@@ -26,6 +26,7 @@ class _CartScreenState extends State<CartScreen> {
     var provider = Provider.of<Mediator>(context, listen: true);
 
     var cartData = provider.cartElements;
+    var totalPrice = provider.totalPrice;
 
     Size size = MediaQuery.of(context).size;
     return Container(
@@ -57,7 +58,7 @@ class _CartScreenState extends State<CartScreen> {
                             fontSize: 17, fontWeight: FontWeight.bold),
                       ),
                       Text(
-                        "\$ ${provider.totalPrice}",
+                        "\$ $totalPrice",
                         style: TextStyle(
                             fontSize: 17, fontWeight: FontWeight.bold),
                       ),
@@ -110,6 +111,9 @@ class _CartScreenState extends State<CartScreen> {
                       },
                       decreaseAmount: () async {
                         await provider.decreaseAmount(cart);
+                      },
+                      deleteElement: () async {
+                        await provider.deleteElementFromCart(cart);
                       },
                     );
                   },

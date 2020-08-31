@@ -12,7 +12,8 @@ class cartElement extends StatefulWidget {
       this.amount,
       this.imageUrl,
       this.increaseAmount,
-      this.decreaseAmount})
+      this.decreaseAmount,
+      this.deleteElement})
       : super(key: key);
 
   final String total;
@@ -23,6 +24,7 @@ class cartElement extends StatefulWidget {
   final String imageUrl;
   final Function increaseAmount;
   final Function decreaseAmount;
+  final Function deleteElement;
   @override
   _cartElementState createState() => _cartElementState();
 }
@@ -107,7 +109,9 @@ class _cartElementState extends State<cartElement> {
                             iconSize: 30,
                             icon: Icon(Icons.delete_outline),
                             color: Colors.grey,
-                            onPressed: () {},
+                            onPressed: () {
+                              widget.deleteElement();
+                            },
                           ),
                         ],
                       ),
@@ -145,8 +149,8 @@ class _cartElementState extends State<cartElement> {
                             iconSize: 30,
                             icon: Icon(Icons.add_circle_outline),
                             color: Colors.grey,
-                            onPressed: () {
-                              widget.increaseAmount();
+                            onPressed: () async {
+                              await widget.increaseAmount();
                             },
                           ),
                         ],
