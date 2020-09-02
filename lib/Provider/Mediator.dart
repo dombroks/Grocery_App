@@ -81,7 +81,6 @@ class Mediator extends ChangeNotifier {
     double elementPrice = double.parse(element.price);
     totalPrice -= elementPrice;
     cartElements.remove(element);
-
     await _db.collection("Cart").document(element.name).delete();
     notifyListeners();
   }
