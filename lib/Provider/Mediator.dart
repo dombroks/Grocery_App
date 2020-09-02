@@ -84,5 +84,8 @@ class Mediator extends ChangeNotifier {
     await _db.collection("Cart").document(element.name).delete();
     notifyListeners();
   }
+   Future romeveElementFromCart(element element) async {
+    await _db.collection("Cart").document(element.name).delete();
+  }
   
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_app/Model/element.dart';
 import 'package:grocery_app/Provider/Mediator.dart';
-import 'package:grocery_app/Services/firebaseFirestore.dart';
 import 'package:grocery_app/components/category.dart';
 import 'package:grocery_app/components/vegetaleAndFruit.dart';
 import 'package:provider/provider.dart';
@@ -18,7 +17,6 @@ class homeScreen extends StatefulWidget {
 }
 
 class _homeScreenState extends State<homeScreen> {
-  firebaseFirestore _firestore = firebaseFirestore();
   @override
   void initState() {
    
@@ -144,7 +142,7 @@ class _homeScreenState extends State<homeScreen> {
                             provider.addElementToCart(e);
                           },
                           removeFromCart: () {
-                            _firestore.romeveElementFromCart(e);
+                            provider.romeveElementFromCart(e);
                           },
                         );
                       }),
@@ -191,7 +189,7 @@ class _homeScreenState extends State<homeScreen> {
                               provider.addElementToCart(e);
                             },
                             removeFromCart: () {
-                              _firestore.romeveElementFromCart(e);
+                              provider.romeveElementFromCart(e);
                             },
                           );
                   }),
