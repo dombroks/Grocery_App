@@ -76,17 +76,18 @@ class Mediator extends ChangeNotifier {
         .setData(element.toMap(element));
   }
 
-  Future deleteElementFromCart(element element) async {
-    print(cartElements.length);
+  Future<void> deleteElementFromCart(element element) async {
     double elementPrice = double.parse(element.price);
     totalPrice -= elementPrice;
     cartElements.remove(element);
     await _db.collection("Cart").document(element.name).delete();
+    print(cartElements.length);
     notifyListeners();
   }
-  
-   Future romeveElementFromCart(element element) async {
+
+  Future<void> romeveElementFromCart(element element) async {
+    cartElements.remove(element);
     await _db.collection("Cart").document(element.name).delete();
+    notifyListeners();
   }
-  
 }
