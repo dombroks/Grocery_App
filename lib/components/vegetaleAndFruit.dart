@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_app/Services/firebaseFirestore.dart';
 import 'package:grocery_app/constants.dart';
 
 class VegetaleAndFruit extends StatefulWidget {
@@ -52,7 +51,7 @@ class _VegetaleAndFruitState extends State<VegetaleAndFruit> {
                         color: kPrimaryColor,
                         borderRadius: BorderRadius.circular(5)),
                     child: Text(
-                      "${widget.amount}",
+                      "${widget.amount}Kg",
                       style: TextStyle(
                         fontSize: 12,
                         color: Colors.white,

@@ -26,7 +26,7 @@ class element {
     return {
       'name': element.name,
       'image': element.image,
-      'amount': element.amount.replaceAll("Kg", ""),
+      'amount': element.amount,
       'price': element.price,
       'totalPrice': element.price,
       'amountForBuying': 1
