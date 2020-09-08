@@ -69,17 +69,18 @@ class Mediator extends ChangeNotifier {
     if (!cartElements.contains(element)) {
       cartElements.add(element);
       totalPrice += double.parse(element.price);
+      await _db
+          .collection("Cart")
+          .document(element.name)
+          .setData(element.toMap(element));
     }
-    await _db
-        .collection("Cart")
-        .document(element.name)
-        .setData(element.toMap(element));
   }
 
   Future<void> deleteElementFromCart(element element) async {
+    bool isRemoved = cartElements.remove(element);
+    print(isRemoved);
     double elementPrice = double.parse(element.price);
     totalPrice -= elementPrice;
-    cartElements.remove(element);
     await _db.collection("Cart").document(element.name).delete();
     print(cartElements.length);
     notifyListeners();
