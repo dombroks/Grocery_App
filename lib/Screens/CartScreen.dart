@@ -113,9 +113,7 @@ class _CartScreenState extends State<CartScreen> {
                         await provider.decreaseAmount(cart);
                       },
                       deleteElement: () async {
-                       
                         await provider.deleteElementFromCart(cart);
-                        
                       },
                     );
                   },

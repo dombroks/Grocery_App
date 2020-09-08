@@ -79,11 +79,15 @@ class Mediator extends ChangeNotifier {
   Future<void> deleteElementFromCart(element element) async {
     bool isRemoved = cartElements.remove(element);
     print(isRemoved);
-    double elementPrice = double.parse(element.price);
-    totalPrice -= elementPrice;
-    await _db.collection("Cart").document(element.name).delete();
-    print(cartElements.length);
+    
+    if (isRemoved == true) {
+      double elementPrice = double.parse(element.price);
+      totalPrice -= elementPrice;
+      await _db.collection("Cart").document(element.name).delete();
+      print(cartElements.length);
+    }
     notifyListeners();
+    
   }
 
   Future<void> romeveElementFromCart(element element) async {
@@ -91,4 +95,5 @@ class Mediator extends ChangeNotifier {
     await _db.collection("Cart").document(element.name).delete();
     notifyListeners();
   }
+
 }
