@@ -8,7 +8,7 @@ class Mediator extends ChangeNotifier {
   List<element> vegetables = [];
   List<element> fruits = [];
   List<element> cartElements = [];
-  double totalPrice = 0.0;
+  double totalPrice = 0.00;
 
   bool totalPriceIsLoaded = false;
 
@@ -74,20 +74,23 @@ class Mediator extends ChangeNotifier {
           .document(element.name)
           .setData(element.toMap(element));
     }
+    totalPrice = double.parse(totalPrice.toStringAsFixed(2));
+    notifyListeners();
   }
 
   Future<void> deleteElementFromCart(element element) async {
+    double elementPrice = double.parse(element.price);
     bool isRemoved = cartElements.remove(element);
     print(isRemoved);
-    
+
     if (isRemoved == true) {
-      double elementPrice = double.parse(element.price);
-      totalPrice -= elementPrice;
+      totalPrice = totalPrice - elementPrice;
       await _db.collection("Cart").document(element.name).delete();
       print(cartElements.length);
+      print(totalPrice);
     }
+    totalPrice = double.parse(totalPrice.toStringAsFixed(2));
     notifyListeners();
-    
   }
 
   Future<void> romeveElementFromCart(element element) async {
@@ -95,5 +98,4 @@ class Mediator extends ChangeNotifier {
     await _db.collection("Cart").document(element.name).delete();
     notifyListeners();
   }
-
 }
