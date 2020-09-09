@@ -105,12 +105,13 @@ class _CartScreenState extends State<CartScreen> {
                       elementName: cart.name,
                       amountPerElement: cart.amount,
                       price: cart.price,
-                      amount: '1',
+                      amount: cart.amountForBuying.toString(),
                       increaseAmount: () async {
                         await provider.increaseAmount(cart);
                       },
                       decreaseAmount: () async {
                         await provider.decreaseAmount(cart);
+                        
                       },
                       deleteElement: () async {
                         await provider.deleteElementFromCart(cart);

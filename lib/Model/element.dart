@@ -1,24 +1,23 @@
-
 class element {
-  final String name;
-  final String price;
-  final String image;
-  final String amount;
-  final int amountForBuying ;
+  String name;
+  String price;
+  String image;
+  String amount;
+  int amountForBuying;
 
   element(
     this.name,
     this.price,
     this.image,
-    this.amount, 
-    this.amountForBuying ,
+    this.amount,
+    this.amountForBuying,
   );
 
   element.fromJson(Map<String, dynamic> parsedJson)
       : name = parsedJson['name'],
         image = parsedJson['image'],
         amount = parsedJson['amount'],
-        price = parsedJson['price'] ,
+        price = parsedJson['price'],
         amountForBuying = parsedJson['amountForBuying'];
 
   //For uploading as cart element
@@ -31,5 +30,13 @@ class element {
       'totalPrice': element.price,
       'amountForBuying': 1
     };
+  }
+
+  void incrementAmountForBuying() {
+    this.amountForBuying += 1;
+  }
+
+  void decrementAmountForBuying() {
+    if (amountForBuying > 1) this.amountForBuying -= 1;
   }
 }

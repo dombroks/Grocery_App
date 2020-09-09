@@ -37,15 +37,25 @@ class Mediator extends ChangeNotifier {
   Future<void> increaseAmount(element cart) async {
     var ref = _db.collection("Cart").document(cart.name);
     await ref.updateData({'amountForBuying': cart.amountForBuying + 1});
+    cartElements.forEach((e) {
+      if (e.name == cart.name) {
+        e.incrementAmountForBuying();
+      }
+    });
+    notifyListeners();
   }
 
-  Future decreaseAmount(element cart) async {
-    print(cart.amountForBuying);
+  Future<void> decreaseAmount(element cart) async {
     await _db
         .collection("Cart")
         .document(cart.name)
-        .updateData({'amountForBuying': (cart.amountForBuying) - 1});
-    print(cart.amountForBuying);
+        .updateData({'amountForBuying': (cart.amountForBuying).toInt() - 1});
+    cartElements.forEach((e) {
+      if (e.name == cart.name) {
+        e.decrementAmountForBuying();
+      }
+    });
+    notifyListeners();
   }
 
   getCartElementsTotalPrice() {
