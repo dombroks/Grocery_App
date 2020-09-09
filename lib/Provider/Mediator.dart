@@ -40,12 +40,14 @@ class Mediator extends ChangeNotifier {
     cartElements.forEach((e) {
       if (e.name == cart.name) {
         e.incrementAmountForBuying();
+        totalPrice += double.parse(cart.price);
       }
     });
     notifyListeners();
   }
 
   Future<void> decreaseAmount(element cart) async {
+    if (cart.amountForBuying == 1) return;
     await _db
         .collection("Cart")
         .document(cart.name)
@@ -53,6 +55,7 @@ class Mediator extends ChangeNotifier {
     cartElements.forEach((e) {
       if (e.name == cart.name) {
         e.decrementAmountForBuying();
+        if (e.amountForBuying > 0) totalPrice -= double.parse(cart.price);
       }
     });
     notifyListeners();

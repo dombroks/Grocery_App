@@ -25,7 +25,7 @@ class element {
     return {
       'name': element.name,
       'image': element.image,
-      'amount': element.amount,
+      'amount':'1',
       'price': element.price,
       'totalPrice': element.price,
       'amountForBuying': 1
@@ -34,6 +34,7 @@ class element {
 
   void incrementAmountForBuying() {
     this.amountForBuying += 1;
+    
   }
 
   void decrementAmountForBuying() {
