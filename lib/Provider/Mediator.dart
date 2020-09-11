@@ -43,6 +43,7 @@ class Mediator extends ChangeNotifier {
         totalPrice += double.parse(cart.price);
       }
     });
+    totalPrice = double.parse(totalPrice.toStringAsFixed(2));
     notifyListeners();
   }
 
@@ -55,9 +56,10 @@ class Mediator extends ChangeNotifier {
     cartElements.forEach((e) {
       if (e.name == cart.name) {
         e.decrementAmountForBuying();
-        if (e.amountForBuying > 0) totalPrice -= double.parse(cart.price);
+        if (e.amountForBuying > 1) totalPrice -= double.parse(cart.price);
       }
     });
+    totalPrice = double.parse(totalPrice.toStringAsFixed(2));
     notifyListeners();
   }
 
