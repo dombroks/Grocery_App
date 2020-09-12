@@ -95,6 +95,7 @@ class Mediator extends ChangeNotifier {
           .document(element.name)
           .setData(element.toMap(element));
     }
+    
     totalPrice = double.parse(totalPrice.toStringAsFixed(2));
     notifyListeners();
   }

@@ -18,6 +18,7 @@ class _CartScreenState extends State<CartScreen> {
     if (!provider.totalPriceIsLoaded) {
       provider.getCartElementsTotalPrice();
     }
+   
     super.initState();
   }
 
@@ -111,7 +112,6 @@ class _CartScreenState extends State<CartScreen> {
                       },
                       decreaseAmount: () async {
                         await provider.decreaseAmount(cart);
-                        
                       },
                       deleteElement: () async {
                         await provider.deleteElementFromCart(cart);
