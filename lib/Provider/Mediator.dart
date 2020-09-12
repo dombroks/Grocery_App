@@ -105,10 +105,8 @@ class Mediator extends ChangeNotifier {
     print(isRemoved);
 
     if (isRemoved == true) {
-      totalPrice = totalPrice - elementPrice;
+      totalPrice = totalPrice - elementPrice * element.amountForBuying;
       await _db.collection("Cart").document(element.name).delete();
-      print(cartElements.length);
-      print(totalPrice);
     }
     totalPrice = double.parse(totalPrice.toStringAsFixed(2));
     notifyListeners();
