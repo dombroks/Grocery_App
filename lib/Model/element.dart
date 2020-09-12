@@ -38,6 +38,6 @@ class element {
   }
 
   void decrementAmountForBuying() {
-    if (amountForBuying > 1) this.amountForBuying -= 1;
+     this.amountForBuying -= 1;
   }
 }

@@ -55,8 +55,14 @@ class Mediator extends ChangeNotifier {
         .updateData({'amountForBuying': (cart.amountForBuying).toInt() - 1});
     cartElements.forEach((e) {
       if (e.name == cart.name) {
-        e.decrementAmountForBuying();
-        if (e.amountForBuying > 1) totalPrice -= double.parse(cart.price);
+        if (e.amountForBuying > 1) {
+          e.decrementAmountForBuying();
+          if (totalPrice > double.parse(cart.price)) {
+            totalPrice -= double.parse(cart.price);
+            print(e.amountForBuying);
+            print("decreased");
+          }
+        }
       }
     });
     totalPrice = double.parse(totalPrice.toStringAsFixed(2));
