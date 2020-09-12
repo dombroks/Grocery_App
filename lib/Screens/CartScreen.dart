@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:grocery_app/Model/element.dart';
 import 'package:grocery_app/Provider/Mediator.dart';
 import 'package:grocery_app/components/CartElement.dart';
@@ -96,29 +97,49 @@ class _CartScreenState extends State<CartScreen> {
               padding: const EdgeInsets.all(8.0),
               child: Container(
                 width: double.infinity,
-                child: ListView.builder(
-                  itemCount: cartData.length,
-                  itemBuilder: (context, index) {
-                    element cart = cartData[index];
-                    return cartElement(
-                      imageUrl: cart.image,
-                      total: '940.00',
-                      elementName: cart.name,
-                      amountPerElement: cart.amount,
-                      price: cart.price,
-                      amount: cart.amountForBuying.toString(),
-                      increaseAmount: () async {
-                        await provider.increaseAmount(cart);
-                      },
-                      decreaseAmount: () async {
-                        await provider.decreaseAmount(cart);
-                      },
-                      deleteElement: () async {
-                        _showMaterialDialog(cart);
-                      },
-                    );
-                  },
-                ),
+                child: (cartData.isEmpty)
+                    ? Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SvgPicture.asset(
+                              "assets/images/empty_cart.svg",
+                              width: 200.0,
+                              height: 200.0,
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              "Your shopping cart is empty",
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            )
+                          ],
+                        ),
+                      )
+                    : ListView.builder(
+                        itemCount: cartData.length,
+                        itemBuilder: (context, index) {
+                          element cart = cartData[index];
+                          return cartElement(
+                            imageUrl: cart.image,
+                            total: '940.00',
+                            elementName: cart.name,
+                            amountPerElement: cart.amount,
+                            price: cart.price,
+                            amount: cart.amountForBuying.toString(),
+                            increaseAmount: () async {
+                              await provider.increaseAmount(cart);
+                            },
+                            decreaseAmount: () async {
+                              await provider.decreaseAmount(cart);
+                            },
+                            deleteElement: () async {
+                              _showMaterialDialog(cart);
+                            },
+                          );
+                        },
+                      ),
               ),
             ),
           )
