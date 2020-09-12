@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:grocery_app/Model/element.dart';
+import 'package:grocery_app/components/CartElement.dart';
 
 class Mediator extends ChangeNotifier {
   final Firestore _db = Firestore.instance;
@@ -87,7 +88,7 @@ class Mediator extends ChangeNotifier {
   }
 
   Future addElementToCart(element element) async {
-    if (!cartElements.contains(element)) {
+    if (isExicted(cartElements, element) == false) {
       cartElements.add(element);
       totalPrice += double.parse(element.price);
       await _db
@@ -116,5 +117,15 @@ class Mediator extends ChangeNotifier {
     cartElements.remove(element);
     await _db.collection("Cart").document(element.name).delete();
     notifyListeners();
+  }
+
+  bool isExicted(List<element> data, element e) {
+    bool isExicted = false;
+    data.forEach((a) {
+      if (a.name == e.name) {
+        isExicted = true;
+      }
+    });
+    return isExicted;
   }
 }
