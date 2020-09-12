@@ -74,7 +74,6 @@ class Mediator extends ChangeNotifier {
       totalPrice += double.parse(element.price);
     });
     totalPriceIsLoaded = true;
-    print(totalPrice);
   }
 
   fetchCartElements() async {
@@ -84,6 +83,7 @@ class Mediator extends ChangeNotifier {
       if (!cartElements.contains(document.data))
         this.cartElements.add(element.fromJson(document.data));
     });
+    notifyListeners();
   }
 
   Future addElementToCart(element element) async {
@@ -95,7 +95,7 @@ class Mediator extends ChangeNotifier {
           .document(element.name)
           .setData(element.toMap(element));
     }
-    
+
     totalPrice = double.parse(totalPrice.toStringAsFixed(2));
     notifyListeners();
   }
@@ -103,7 +103,6 @@ class Mediator extends ChangeNotifier {
   Future<void> deleteElementFromCart(element element) async {
     double elementPrice = double.parse(element.price);
     bool isRemoved = cartElements.remove(element);
-    print(isRemoved);
 
     if (isRemoved == true) {
       totalPrice = totalPrice - elementPrice * element.amountForBuying;
