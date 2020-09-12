@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:grocery_app/Model/element.dart';
 import 'package:grocery_app/Provider/Mediator.dart';
 import 'package:grocery_app/components/CartElement.dart';
+import 'package:grocery_app/constants.dart';
 import 'package:provider/provider.dart';
 
 class CartScreen extends StatefulWidget {
@@ -25,10 +26,14 @@ class _CartScreenState extends State<CartScreen> {
 
   @override
   Widget build(BuildContext context) {
+    bool checkoutButtonVisibility = false;
     var provider = Provider.of<Mediator>(context, listen: true);
 
     var cartData = provider.cartElements;
     var totalPrice = provider.totalPrice;
+
+    // ignore: prefer_is_not_empty
+    if (!(cartData.isEmpty)) checkoutButtonVisibility = true;
 
     Size size = MediaQuery.of(context).size;
     return Container(
@@ -39,7 +44,7 @@ class _CartScreenState extends State<CartScreen> {
         children: <Widget>[
           Container(
             width: size.width,
-            height: size.height * 0.12,
+            height: size.height * 0.18,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(
@@ -48,6 +53,7 @@ class _CartScreenState extends State<CartScreen> {
               ),
             ),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.all(15.0),
@@ -88,7 +94,21 @@ class _CartScreenState extends State<CartScreen> {
                       ),
                     ],
                   ),
-                )
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 15),
+                  child: Visibility(
+                    visible: checkoutButtonVisibility,
+                    child: RaisedButton(
+                      color: kPrimaryColor,
+                      onPressed: () {},
+                      child: Text(
+                        "Checkout",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
@@ -151,6 +171,7 @@ class _CartScreenState extends State<CartScreen> {
   _showMaterialDialog(element e) {
     String elementName = e.name.toUpperCase();
     var provider = Provider.of<Mediator>(context, listen: false);
+
     showDialog(
         context: context,
         builder: (_) => new AlertDialog(
