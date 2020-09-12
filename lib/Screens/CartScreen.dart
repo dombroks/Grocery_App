@@ -18,7 +18,7 @@ class _CartScreenState extends State<CartScreen> {
     if (!provider.totalPriceIsLoaded) {
       provider.getCartElementsTotalPrice();
     }
-   
+
     super.initState();
   }
 
@@ -114,7 +114,7 @@ class _CartScreenState extends State<CartScreen> {
                         await provider.decreaseAmount(cart);
                       },
                       deleteElement: () async {
-                        await provider.deleteElementFromCart(cart);
+                        _showMaterialDialog(cart);
                       },
                     );
                   },
@@ -125,5 +125,56 @@ class _CartScreenState extends State<CartScreen> {
         ],
       ),
     );
+  }
+
+  _showMaterialDialog(element e) {
+    String elementName = e.name.toUpperCase();
+    var provider = Provider.of<Mediator>(context, listen: false);
+    showDialog(
+        context: context,
+        builder: (_) => new AlertDialog(
+              title: Row(
+                children: [
+                  Container(
+                    child: Icon(
+                      Icons.delete_outline,
+                      color: Colors.white,
+                      size: 30,
+                    ),
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.red,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Text("Remove an item")
+                ],
+              ),
+              content: new Text(
+                  "Are you sure you want to remove $elementName from your shopping cart ?"),
+              actions: <Widget>[
+                FlatButton(
+                  child: Text(
+                    'No',
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+                FlatButton(
+                  color: Colors.red,
+                  child: Text('Remove'),
+                  onPressed: () async {
+                    await provider.deleteElementFromCart(e);
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            ));
   }
 }

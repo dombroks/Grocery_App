@@ -83,6 +83,9 @@ class _ProfileState extends State<Profile> {
                       itemName: "Recipient details",
                       colordata: Colors.purple,
                       icon: Icons.account_circle,
+                      toAnotherScreen: () {
+                      
+                      },
                     ),
                     SizedBox(
                       height: 0.5,
@@ -129,4 +132,5 @@ class _ProfileState extends State<Profile> {
       ),
     );
   }
-}
+
+  }
