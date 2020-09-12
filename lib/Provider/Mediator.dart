@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:grocery_app/Model/element.dart';
-import 'package:grocery_app/components/CartElement.dart';
 
 class Mediator extends ChangeNotifier {
   final Firestore _db = Firestore.instance;
