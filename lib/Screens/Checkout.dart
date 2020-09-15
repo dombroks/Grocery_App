@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:grocery_app/Screens/Home.dart';
+import 'package:grocery_app/components/ProfileCardItem.dart';
+import 'package:grocery_app/constants.dart';
+
+import 'PaymentMethod.dart';
 
 class checkoutScreen extends StatefulWidget {
   @override
@@ -31,9 +35,11 @@ class _checkoutScreenState extends State<checkoutScreen> {
         ),
       ),
       body: Container(
+        color: kGreyColor,
         width: size.width,
-        height: size.width,
+        height: double.infinity,
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
               color: Colors.white,
@@ -47,7 +53,60 @@ class _checkoutScreenState extends State<checkoutScreen> {
                   ),
                 ),
               ),
-            )
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 22, top: 20),
+              child: Text(
+                "Checkout details",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: kGreyColor,
+                  borderRadius: BorderRadius.circular(50),
+                ),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(1.0),
+                      child: ProfileCardItem(
+                        itemName: "Recipient details",
+                        colordata: Colors.purple,
+                        icon: Icons.account_circle,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(1.0),
+                      child: ProfileCardItem(
+                        itemName: "Delivery or Pick up info",
+                        colordata: Colors.blue,
+                        icon: Icons.local_shipping,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(1.0),
+                      child: ProfileCardItem(
+                        itemName: "Payment Method",
+                        colordata: Colors.green,
+                        icon: Icons.monetization_on,
+                        toAnotherScreen: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => PaymentMethod()));
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       ),
