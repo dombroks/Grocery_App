@@ -70,12 +70,12 @@ class _checkoutScreenState extends State<checkoutScreen> {
                     ),
                     ProfileCardItem(
                       itemName: "Delivery or Pick up info",
-                      colordata: Colors.blue,
+                      colordata: Colors.grey,
                       icon: Icons.local_shipping,
                     ),
                     ProfileCardItem(
                       itemName: "Payment Method",
-                      colordata: Colors.green,
+                      colordata: Colors.grey,
                       icon: Icons.monetization_on,
                     ),
                   ],
