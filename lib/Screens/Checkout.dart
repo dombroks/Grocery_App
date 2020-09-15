@@ -149,6 +149,34 @@ class _checkoutScreenState extends State<checkoutScreen> {
                         icon: Icons.shopping_basket,
                         colorData: Colors.orange[900],
                       ),
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (_) => Dialog(
+                            child: Container(
+                              child: Column(
+                                children: [
+                                  Row(
+                                    children: [
+                                      Icon(Icons.arrow_back),
+                                      SizedBox(
+                                        width: 15,
+                                      ),
+                                      Text(
+                                        "Pick up",
+                                        style: TextStyle(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      )
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        );
+                      },
                     ),
                   ],
                 ),
