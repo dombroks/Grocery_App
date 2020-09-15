@@ -74,59 +74,7 @@ class _checkoutScreenState extends State<checkoutScreen> {
                       colordata: Colors.grey,
                       icon: Icons.local_shipping,
                       toAnotherScreen: () {
-                        showDialog(
-                            context: context,
-                            builder: (_) => Dialog(
-                                  child: Container(
-                                    height: 280,
-                                    child: Column(
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.all(15.0),
-                                          child: Row(
-                                            children: [
-                                              Icon(
-                                                Icons.cancel,
-                                                size: 30,
-                                                color: Colors.grey,
-                                              ),
-                                              SizedBox(
-                                                width: 30,
-                                              ),
-                                              Text(
-                                                "Select Delivery Type",
-                                                style: TextStyle(
-                                                    fontSize: 20,
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 20,
-                                        ),
-                                        GestureDetector(
-                                          child: DeliveryType(
-                                            mainTitle: "Home Delivery",
-                                            secondTitle: "Within delivery grid",
-                                            icon: Icons.home,
-                                            colorData: Colors.orange[300],
-                                          ),
-                                        ),
-                                        GestureDetector(
-                                          child: DeliveryType(
-                                            mainTitle: "Pick Up",
-                                            secondTitle:
-                                                "Only from our outlets",
-                                            icon: Icons.shopping_basket,
-                                            colorData: Colors.orange[900],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ));
+                        _showMaterialDialog();
                       },
                     ),
                     ProfileCardItem(
@@ -151,5 +99,58 @@ class _checkoutScreenState extends State<checkoutScreen> {
         ),
       ),
     );
+  }
+
+  _showMaterialDialog() {
+    showDialog(
+        context: context,
+        builder: (_) => Dialog(
+              child: Container(
+                height: 280,
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.cancel,
+                            size: 30,
+                            color: Colors.grey,
+                          ),
+                          SizedBox(
+                            width: 30,
+                          ),
+                          Text(
+                            "Select Delivery Type",
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    GestureDetector(
+                      child: DeliveryType(
+                        mainTitle: "Home Delivery",
+                        secondTitle: "Within delivery grid",
+                        icon: Icons.home,
+                        colorData: Colors.orange[300],
+                      ),
+                    ),
+                    GestureDetector(
+                      child: DeliveryType(
+                        mainTitle: "Pick Up",
+                        secondTitle: "Only from our outlets",
+                        icon: Icons.shopping_basket,
+                        colorData: Colors.orange[900],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ));
   }
 }
