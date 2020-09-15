@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:grocery_app/Model/element.dart';
 import 'package:grocery_app/Provider/Mediator.dart';
+import 'package:grocery_app/Screens/Checkout.dart';
 import 'package:grocery_app/components/CartElement.dart';
 import 'package:grocery_app/constants.dart';
 import 'package:provider/provider.dart';
@@ -101,9 +102,14 @@ class _CartScreenState extends State<CartScreen> {
                     visible: checkoutButtonVisibility,
                     child: RaisedButton(
                       color: kPrimaryColor,
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => checkoutScreen()));
+                      },
                       child: Text(
-                        "Checkout",
+                        "  CHECK OUT  ",
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
