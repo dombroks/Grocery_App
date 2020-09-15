@@ -1,12 +1,9 @@
-import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:grocery_app/Screens/Home.dart';
 import 'package:grocery_app/components/DeliveryType.dart';
 import 'package:grocery_app/components/ProfileCardItem.dart';
 import 'package:grocery_app/constants.dart';
-
-import 'PaymentMethod.dart';
 
 class checkoutScreen extends StatefulWidget {
   @override
@@ -113,10 +110,15 @@ class _checkoutScreenState extends State<checkoutScreen> {
                       padding: const EdgeInsets.all(15.0),
                       child: Row(
                         children: [
-                          Icon(
-                            Icons.cancel,
-                            size: 30,
-                            color: Colors.grey,
+                          GestureDetector(
+                            child: Icon(
+                              Icons.cancel,
+                              size: 30,
+                              color: Colors.grey,
+                            ),
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
                           ),
                           SizedBox(
                             width: 30,
