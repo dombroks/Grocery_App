@@ -2,6 +2,7 @@ import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:grocery_app/Screens/Home.dart';
+import 'package:grocery_app/components/DeliveryType.dart';
 import 'package:grocery_app/components/ProfileCardItem.dart';
 import 'package:grocery_app/constants.dart';
 
@@ -72,6 +73,61 @@ class _checkoutScreenState extends State<checkoutScreen> {
                       itemName: "Delivery or Pick up info",
                       colordata: Colors.grey,
                       icon: Icons.local_shipping,
+                      toAnotherScreen: () {
+                        showDialog(
+                            context: context,
+                            builder: (_) => Dialog(
+                                  child: Container(
+                                    height: 280,
+                                    child: Column(
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.all(15.0),
+                                          child: Row(
+                                            children: [
+                                              Icon(
+                                                Icons.cancel,
+                                                size: 30,
+                                                color: Colors.grey,
+                                              ),
+                                              SizedBox(
+                                                width: 30,
+                                              ),
+                                              Text(
+                                                "Select Delivery Type",
+                                                style: TextStyle(
+                                                    fontSize: 20,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 20,
+                                        ),
+                                        GestureDetector(
+                                          child: DeliveryType(
+                                            mainTitle: "Home Delivery",
+                                            secondTitle: "Within delivery grid",
+                                            icon: Icons.home,
+                                            colorData: Colors.orange[300],
+                                          ),
+                                        ),
+                                        GestureDetector(
+                                          child: DeliveryType(
+                                            mainTitle: "Pick Up",
+                                            secondTitle:
+                                                "Only from our outlets",
+                                            icon: Icons.shopping_basket,
+                                            colorData: Colors.orange[900],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ));
+                      },
                     ),
                     ProfileCardItem(
                       itemName: "Payment Method",
