@@ -177,7 +177,7 @@ class _checkoutScreenState extends State<checkoutScreen> {
                                         Text(
                                           "Pick up",
                                           style: TextStyle(
-                                            fontSize: 15,
+                                            fontSize: 18,
                                             fontWeight: FontWeight.bold,
                                           ),
                                         )
