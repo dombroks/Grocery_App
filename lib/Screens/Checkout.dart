@@ -162,10 +162,15 @@ class _checkoutScreenState extends State<checkoutScreen> {
                               child: Column(
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsets.all(10.0),
+                                    padding: const EdgeInsets.all(20.0),
                                     child: Row(
                                       children: [
-                                        Icon(Icons.arrow_back),
+                                        GestureDetector(
+                                          child: Icon(Icons.arrow_back),
+                                          onTap: () {
+                                            Navigator.pop(context);
+                                          },
+                                        ),
                                         SizedBox(
                                           width: 15,
                                         ),
