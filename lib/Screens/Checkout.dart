@@ -66,11 +66,16 @@ class _checkoutScreenState extends State<checkoutScreen> {
                       colordata: Colors.purple,
                       icon: Icons.account_circle,
                     ),
-                    ProfileCardItem(
-                      itemName: "Delivery or Pick up info",
-                      colordata: Colors.grey,
-                      icon: Icons.local_shipping,
-                      toAnotherScreen: () {
+                    GestureDetector(
+                      child: ProfileCardItem(
+                        itemName: "Delivery or Pick up info",
+                        colordata: Colors.grey,
+                        icon: Icons.local_shipping,
+                        toAnotherScreen: () {
+                          _showMaterialDialog();
+                        },
+                      ),
+                      onTap: () {
                         _showMaterialDialog();
                       },
                     ),
@@ -156,20 +161,68 @@ class _checkoutScreenState extends State<checkoutScreen> {
                             child: Container(
                               child: Column(
                                 children: [
-                                  Row(
-                                    children: [
-                                      Icon(Icons.arrow_back),
-                                      SizedBox(
-                                        width: 15,
-                                      ),
-                                      Text(
-                                        "Pick up",
-                                        style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.bold,
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Row(
+                                      children: [
+                                        Icon(Icons.arrow_back),
+                                        SizedBox(
+                                          width: 15,
                                         ),
-                                      )
-                                    ],
+                                        Text(
+                                          "Pick up",
+                                          style: TextStyle(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(12.0),
+                                    child: Row(
+                                      children: [
+                                        Container(
+                                          child: Icon(
+                                            Icons.directions_walk,
+                                            color: Colors.white,
+                                          ),
+                                          height: 60,
+                                          width: 60,
+                                          decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            color: Colors.deepOrange,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 15,
+                                        ),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              "Pick up from outlet",
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 20,
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 10,
+                                            ),
+                                            Text(
+                                              "Only from our outlets",
+                                              style: TextStyle(
+                                                color: Colors.grey,
+                                                fontSize: 13,
+                                              ),
+                                            )
+                                          ],
+                                        )
+                                      ],
+                                    ),
                                   )
                                 ],
                               ),
