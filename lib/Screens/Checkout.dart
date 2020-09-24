@@ -159,6 +159,7 @@ class _checkoutScreenState extends State<checkoutScreen> {
                           context: context,
                           builder: (_) => Dialog(
                             child: Container(
+                              height: 500,
                               child: Column(
                                 children: [
                                   Padding(
