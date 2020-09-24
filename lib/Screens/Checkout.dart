@@ -226,9 +226,21 @@ class _checkoutScreenState extends State<checkoutScreen> {
                                               ),
                                             ),
                                           ],
-                                        )
+                                        ),
                                       ],
                                     ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(20.0),
+                                    child: Form(
+                                        child: Column(
+                                      children: [
+                                        TextFormField(
+                                          decoration: InputDecoration(
+                                              labelText: "first text field"),
+                                        )
+                                      ],
+                                    )),
                                   )
                                 ],
                               ),
