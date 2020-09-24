@@ -224,7 +224,7 @@ class _checkoutScreenState extends State<checkoutScreen> {
                                                 color: Colors.grey,
                                                 fontSize: 13,
                                               ),
-                                            )
+                                            ),
                                           ],
                                         )
                                       ],
