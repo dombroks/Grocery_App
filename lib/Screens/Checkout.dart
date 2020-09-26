@@ -276,10 +276,15 @@ class _checkoutScreenState extends State<checkoutScreen> {
                           labelText:
                               "12 April 2020", // to be modified in the future
 
-                          suffixIcon: Icon(
-                            Icons.calendar_today,
-                            size: 15,
-                            color: Colors.deepOrange,
+                          suffixIcon: GestureDetector(
+                            child: Icon(
+                              Icons.calendar_today,
+                              size: 15,
+                              color: Colors.deepOrange,
+                            ),
+                            onTap: () {
+                              print("Calender icon has been clicked");
+                            },
                           ),
                         ),
                       ),
