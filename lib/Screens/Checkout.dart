@@ -274,8 +274,8 @@ class _checkoutScreenState extends State<checkoutScreen> {
                         readOnly: true,
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.symmetric(vertical: 0.0),
-                          labelText: "Date", 
-
+                          alignLabelWithHint: true,
+                          labelText: "date",
                           suffixIcon: GestureDetector(
                             child: Icon(
                               Icons.calendar_today,
