@@ -271,10 +271,10 @@ class _checkoutScreenState extends State<checkoutScreen> {
                         ),
                       ),
                       TextFormField(
+                        readOnly: true,
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.symmetric(vertical: 0.0),
-                          labelText:
-                              "12 April 2020", // to be modified in the future
+                          labelText: "Date", 
 
                           suffixIcon: GestureDetector(
                             child: Icon(
