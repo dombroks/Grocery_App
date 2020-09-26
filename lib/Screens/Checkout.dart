@@ -244,43 +244,49 @@ class _checkoutScreenState extends State<checkoutScreen> {
               Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Form(
-                    child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 0, right: 0),
-                      child: DropdownButton(
-                        isExpanded: true,
-                        icon: Icon(
-                          Icons.arrow_drop_down,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 0, right: 0),
+                        child: DropdownButton(
+                          isExpanded: true,
+                          icon: Icon(
+                            Icons.arrow_drop_down,
+                            color: Colors.deepOrange,
+                          ),
+                          value: val,
+                          onChanged: (value) {
+                            setState(() {
+                              val = value;
+                              print("state is updated");
+                            });
+                          },
+                          items: _items.map((value) {
+                            return DropdownMenuItem(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
                         ),
-                        value: val,
-                        onChanged: (value) {
-                          setState(() {
-                            val = value;
-                            print("state is updated");
-                          });
-                        },
-                        items: _items.map((value) {
-                          return DropdownMenuItem(
-                            value: value,
-                            child: Text(value),
-                          );
-                        }).toList(),
                       ),
-                    ),
-                    TextFormField(
-                      decoration: InputDecoration(
+                      TextFormField(
+                        decoration: InputDecoration(
                           contentPadding: EdgeInsets.symmetric(vertical: 0.0),
-                          labelText: "first text field",
+                          labelText:
+                              "12 April 2020", // to be modified in the future
+
                           suffixIcon: Icon(
                             Icons.calendar_today,
-                            size: 20,
-                          )),
-                    ),
-                  ],
-                )),
-              )
+                            size: 15,
+                            color: Colors.deepOrange,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ),
