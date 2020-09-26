@@ -11,8 +11,8 @@ class checkoutScreen extends StatefulWidget {
 }
 
 class _checkoutScreenState extends State<checkoutScreen> {
-  String val = "Khelil";
   List<String> _items = ["Khelil", "Ras El Ain", "Cheffa"];
+  String val = "Khelil";
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -258,6 +258,7 @@ class _checkoutScreenState extends State<checkoutScreen> {
                         onChanged: (value) {
                           setState(() {
                             val = value;
+                            print("state is updated");
                           });
                         },
                         items: _items.map((value) {
@@ -269,9 +270,14 @@ class _checkoutScreenState extends State<checkoutScreen> {
                       ),
                     ),
                     TextFormField(
-                      decoration:
-                          InputDecoration(labelText: "first text field"),
-                    )
+                      decoration: InputDecoration(
+                          contentPadding: EdgeInsets.symmetric(vertical: 0.0),
+                          labelText: "first text field",
+                          suffixIcon: Icon(
+                            Icons.calendar_today,
+                            size: 20,
+                          )),
+                    ),
                   ],
                 )),
               )
