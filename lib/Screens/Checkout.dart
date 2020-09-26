@@ -11,6 +11,8 @@ class checkoutScreen extends StatefulWidget {
 }
 
 class _checkoutScreenState extends State<checkoutScreen> {
+  String val = "Khelil";
+  List<String> _items = ["Khelil", "Ras El Ain", "Cheffa"];
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -155,103 +157,128 @@ class _checkoutScreenState extends State<checkoutScreen> {
                         colorData: Colors.orange[900],
                       ),
                       onTap: () {
-                        showDialog(
-                          context: context,
-                          builder: (_) => Dialog(
-                            child: Container(
-                              height: 500,
-                              child: Column(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.all(20.0),
-                                    child: Row(
-                                      children: [
-                                        GestureDetector(
-                                          child: Icon(Icons.arrow_back),
-                                          onTap: () {
-                                            Navigator.pop(context);
-                                          },
-                                        ),
-                                        SizedBox(
-                                          width: 15,
-                                        ),
-                                        Text(
-                                          "Pick up",
-                                          style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(12.0),
-                                    child: Row(
-                                      children: [
-                                        Container(
-                                          child: Icon(
-                                            Icons.directions_walk,
-                                            color: Colors.white,
-                                          ),
-                                          height: 60,
-                                          width: 60,
-                                          decoration: BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            color: Colors.deepOrange,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: 15,
-                                        ),
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              "Pick up from outlet",
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 20,
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              height: 10,
-                                            ),
-                                            Text(
-                                              "Only from our outlets",
-                                              style: TextStyle(
-                                                color: Colors.grey,
-                                                fontSize: 13,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(20.0),
-                                    child: Form(
-                                        child: Column(
-                                      children: [
-                                        TextFormField(
-                                          decoration: InputDecoration(
-                                              labelText: "first text field"),
-                                        )
-                                      ],
-                                    )),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                        );
+                        showPickUpDialog();
                       },
                     ),
                   ],
                 ),
               ),
             ));
+  }
+
+  Future showPickUpDialog() {
+    return showDialog(
+      context: context,
+      builder: (_) => Dialog(
+        child: Container(
+          height: 500,
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Row(
+                  children: [
+                    GestureDetector(
+                      child: Icon(Icons.arrow_back),
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    Text(
+                      "Pick up",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Row(
+                  children: [
+                    Container(
+                      child: Icon(
+                        Icons.directions_walk,
+                        color: Colors.white,
+                      ),
+                      height: 60,
+                      width: 60,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.deepOrange,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Pick up from outlet",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "Only from our outlets",
+                          style: TextStyle(
+                            color: Colors.grey,
+                            fontSize: 13,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Form(
+                    child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 0, right: 0),
+                      child: DropdownButton(
+                        isExpanded: true,
+                        icon: Icon(
+                          Icons.arrow_drop_down,
+                        ),
+                        value: val,
+                        onChanged: (value) {
+                          setState(() {
+                            val = value;
+                          });
+                        },
+                        items: _items.map((value) {
+                          return DropdownMenuItem(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                      ),
+                    ),
+                    TextFormField(
+                      decoration:
+                          InputDecoration(labelText: "first text field"),
+                    )
+                  ],
+                )),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
