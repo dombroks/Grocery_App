@@ -4,6 +4,7 @@ import 'package:grocery_app/Screens/Home.dart';
 import 'package:grocery_app/components/DeliveryType.dart';
 import 'package:grocery_app/components/ProfileCardItem.dart';
 import 'package:grocery_app/constants.dart';
+import 'package:intl/intl.dart';
 
 class checkoutScreen extends StatefulWidget {
   @override
@@ -11,8 +12,26 @@ class checkoutScreen extends StatefulWidget {
 }
 
 class _checkoutScreenState extends State<checkoutScreen> {
+  DateTime selectedDate;
+  String _formattedDate;
+  TextEditingController _controller;
   List<String> _items = ["Khelil", "Ras El Ain", "Cheffa"];
   String val = "Khelil";
+  @override
+  void initState() {
+    selectedDate = DateTime.now();
+    _formattedDate = DateFormat('yyyy-MM-dd').format(selectedDate);
+    _controller = TextEditingController();
+    _controller.text = _formattedDate;
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -103,6 +122,22 @@ class _checkoutScreenState extends State<checkoutScreen> {
         ),
       ),
     );
+  }
+
+  Future<Null> _selectDate(BuildContext context) async {
+    final DateTime picked = await showDatePicker(
+      context: context,
+      initialDate: selectedDate, // Refer step 1
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2025),
+    );
+    if (picked != null && picked != selectedDate) {
+      setState(() {
+        selectedDate = picked;
+        _formattedDate = DateFormat('yyyy-MM-dd').format(selectedDate);
+        _controller.text = _formattedDate;
+      });
+    }
   }
 
   _showMaterialDialog() {
@@ -271,11 +306,11 @@ class _checkoutScreenState extends State<checkoutScreen> {
                         ),
                       ),
                       TextFormField(
+                        controller: _controller,
                         readOnly: true,
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.symmetric(vertical: 0.0),
                           alignLabelWithHint: true,
-                          labelText: "date",
                           suffixIcon: GestureDetector(
                             child: Icon(
                               Icons.calendar_today,
@@ -284,6 +319,7 @@ class _checkoutScreenState extends State<checkoutScreen> {
                             ),
                             onTap: () {
                               print("Calender icon has been clicked");
+                              _selectDate(context);
                             },
                           ),
                         ),
