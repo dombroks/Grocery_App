@@ -133,7 +133,7 @@ class _MyDialogState extends State<MyDialog> {
                       width: 15,
                     ),
                     Text(
-                      "Home Delivery",
+                      "Home delivery",
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
