@@ -308,19 +308,16 @@ class _checkoutScreenState extends State<checkoutScreen> {
                       TextFormField(
                         controller: _controller,
                         readOnly: true,
+                        onTap: () {
+                          _selectDate(context);
+                        },
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.symmetric(vertical: 0.0),
                           alignLabelWithHint: true,
-                          suffixIcon: GestureDetector(
-                            child: Icon(
-                              Icons.calendar_today,
-                              size: 15,
-                              color: Colors.deepOrange,
-                            ),
-                            onTap: () {
-                              print("Calender icon has been clicked");
-                              _selectDate(context);
-                            },
+                          suffixIcon: Icon(
+                            Icons.calendar_today,
+                            size: 15,
+                            color: Colors.deepOrange,
                           ),
                         ),
                       ),
