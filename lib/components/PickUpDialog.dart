@@ -15,6 +15,7 @@ class _MyDialogState extends State<MyDialog> {
   TextEditingController _controller;
   List<String> _items = ["Khelil", "Ras El Ain", "Cheffa"];
   String val;
+
   @override
   void initState() {
     val = "Khelil";
@@ -88,6 +89,9 @@ class _MyDialogState extends State<MyDialog> {
                 icon: Icons.home,
                 colorData: Colors.orange[300],
               ),
+              onTap: () {
+                showHomeDeliveryDialog();
+              },
             ),
             GestureDetector(
               child: DeliveryType(
@@ -105,6 +109,164 @@ class _MyDialogState extends State<MyDialog> {
       ),
     );
   }
+
+  //---------------------------------------------
+  Future showHomeDeliveryDialog() {
+    return showDialog(
+      context: context,
+      builder: (_) => Dialog(
+        child: Container(
+          height: 370,
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Row(
+                  children: [
+                    GestureDetector(
+                      child: Icon(Icons.arrow_back),
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    Text(
+                      "Home Delivery",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Row(
+                  children: [
+                    Container(
+                      child: Icon(
+                        Icons.directions_walk,
+                        color: Colors.white,
+                      ),
+                      height: 60,
+                      width: 60,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.deepOrange,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Select delivery area",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "Delivery charges apply",
+                          style: TextStyle(
+                            color: Colors.grey,
+                            fontSize: 13,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Form(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 8, right: 8),
+                        child: DropdownButton(
+                          isExpanded: true,
+                          icon: Icon(
+                            Icons.arrow_drop_down,
+                            color: Colors.deepOrange,
+                          ),
+                          value: val,
+                          items: _items.map((value) {
+                            return DropdownMenuItem(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
+                          onChanged: (newValue) {
+                            setState(() {
+                              val = newValue;
+                              print("state is updated");
+                            });
+                          },
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: TextField(
+                          controller: _controller,
+                          readOnly: true,
+                          onTap: () {
+                            _selectDate(context);
+                          },
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(0.0),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            FlatButton(
+                              onPressed: () {},
+                              child: Text(
+                                "SAVE",
+                                style: TextStyle(
+                                  color: kPrimaryColor,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            RaisedButton(
+                              color: kPrimaryColor,
+                              onPressed: () {},
+                              child: Text(
+                                "NEXT",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            )
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+  //---------------------------------
 
   Future showPickUpDialog() {
     return showDialog(
@@ -196,18 +358,18 @@ class _MyDialogState extends State<MyDialog> {
                             color: Colors.deepOrange,
                           ),
                           value: val,
-                          onChanged: (newValue) {
-                            setState(() {
-                              val = newValue;
-                              print("state is updated");
-                            });
-                          },
                           items: _items.map((value) {
                             return DropdownMenuItem(
                               value: value,
                               child: Text(value),
                             );
                           }).toList(),
+                          onChanged: (newValue) {
+                            setState(() {
+                              val = newValue;
+                              print("state is updated");
+                            });
+                          },
                         ),
                       ),
                       Padding(

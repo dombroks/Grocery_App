@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:grocery_app/Screens/Home.dart';
-import 'package:grocery_app/components/DeliveryType.dart';
-import 'package:grocery_app/components/MyDialog.dart';
+import 'package:grocery_app/components/PickUpDialog.dart';
 import 'package:grocery_app/components/ProfileCardItem.dart';
 import 'package:grocery_app/constants.dart';
-import 'package:intl/intl.dart';
 
 class checkoutScreen extends StatefulWidget {
   @override
@@ -79,11 +77,11 @@ class _checkoutScreenState extends State<checkoutScreen> {
                         colordata: Colors.grey,
                         icon: Icons.local_shipping,
                         toAnotherScreen: () {
-                          _showMaterialDialog();
+                          _showDialog();
                         },
                       ),
                       onTap: () {
-                        _showMaterialDialog();
+                        _showDialog();
                       },
                     ),
                     ProfileCardItem(
@@ -110,7 +108,7 @@ class _checkoutScreenState extends State<checkoutScreen> {
     );
   }
 
-  _showMaterialDialog() {
+  _showDialog() {
     showDialog(
       context: context,
       builder: (context) {
