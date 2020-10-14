@@ -206,7 +206,7 @@ class _checkoutScreenState extends State<checkoutScreen> {
       context: context,
       builder: (_) => Dialog(
         child: Container(
-          height: 500,
+          height: 370,
           child: Column(
             children: [
               Padding(
@@ -283,7 +283,7 @@ class _checkoutScreenState extends State<checkoutScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(left: 0, right: 0),
+                        padding: const EdgeInsets.only(left: 8, right: 8),
                         child: DropdownButton(
                           isExpanded: true,
                           icon: Icon(
@@ -305,16 +305,47 @@ class _checkoutScreenState extends State<checkoutScreen> {
                           }).toList(),
                         ),
                       ),
-                      TextField(
-                        controller: _controller,
-                        readOnly: true,
-                        onTap: () {
-                          _selectDate(context);
-                        },
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(0.0),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: TextField(
+                          controller: _controller,
+                          readOnly: true,
+                          onTap: () {
+                            _selectDate(context);
+                          },
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(0.0),
+                          ),
                         ),
                       ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            FlatButton(
+                              onPressed: () {},
+                              child: Text(
+                                "SAVE",
+                                style: TextStyle(
+                                  color: kPrimaryColor,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            RaisedButton(
+                              color: kPrimaryColor,
+                              onPressed: () {},
+                              child: Text(
+                                "NEXT",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            )
+                          ],
+                        ),
+                      )
                     ],
                   ),
                 ),
