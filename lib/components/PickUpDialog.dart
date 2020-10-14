@@ -148,14 +148,14 @@ class _MyDialogState extends State<MyDialog> {
                   children: [
                     Container(
                       child: Icon(
-                        Icons.directions_walk,
+                        Icons.home,
                         color: Colors.white,
                       ),
                       height: 60,
                       width: 60,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: Colors.deepOrange,
+                        color: Colors.orange[300],
                       ),
                     ),
                     SizedBox(
