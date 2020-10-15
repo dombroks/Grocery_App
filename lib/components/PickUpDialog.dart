@@ -10,17 +10,22 @@ class MyDialog extends StatefulWidget {
 }
 
 class _MyDialogState extends State<MyDialog> {
-  DateTime selectedDate;
+  DateTime _selectedDate;
   String _formattedDate;
   TextEditingController _controller;
-  List<String> _items = ["Khelil", "Ras El Ain", "Cheffa"];
-  String val;
+  List<String> _pickUpPoints;
+  List<String> _homeDeliveryCities;
+  String _firstValuePickUp;
+  String _firstValueHomeDelivery;
 
   @override
   void initState() {
-    val = "Khelil";
-    selectedDate = DateTime.now();
-    _formattedDate = DateFormat('yyyy-MM-dd').format(selectedDate);
+    _firstValuePickUp = "Khelil";
+    _firstValueHomeDelivery = "Bordj Bou Arreridj";
+    _pickUpPoints = ["Khelil", "Ras El Ain", "Cheffa"];
+    _homeDeliveryCities = ["Bordj Bou Arreridj", "Batna", "Setif", "Guelma"];
+    _selectedDate = DateTime.now();
+    _formattedDate = DateFormat('yyyy-MM-dd').format(_selectedDate);
     _controller = TextEditingController();
     _controller.text = _formattedDate;
     super.initState();
@@ -29,14 +34,14 @@ class _MyDialogState extends State<MyDialog> {
   Future<Null> _selectDate(BuildContext context) async {
     final DateTime picked = await showDatePicker(
       context: context,
-      initialDate: selectedDate, // Refer step 1
+      initialDate: _selectedDate, // Refer step 1
       firstDate: DateTime(2000),
       lastDate: DateTime(2025),
     );
-    if (picked != null && picked != selectedDate) {
+    if (picked != null && picked != _selectedDate) {
       setState(() {
-        selectedDate = picked;
-        _formattedDate = DateFormat('yyyy-MM-dd').format(selectedDate);
+        _selectedDate = picked;
+        _formattedDate = DateFormat('yyyy-MM-dd').format(_selectedDate);
         _controller.text = _formattedDate;
       });
     }
@@ -200,8 +205,8 @@ class _MyDialogState extends State<MyDialog> {
                             Icons.arrow_drop_down,
                             color: Colors.deepOrange,
                           ),
-                          value: val,
-                          items: _items.map((value) {
+                          value: _firstValueHomeDelivery,
+                          items: _homeDeliveryCities.map((value) {
                             return DropdownMenuItem(
                               value: value,
                               child: Text(value),
@@ -209,7 +214,7 @@ class _MyDialogState extends State<MyDialog> {
                           }).toList(),
                           onChanged: (newValue) {
                             setState(() {
-                              val = newValue;
+                              _firstValueHomeDelivery = newValue;
                               print("state is updated");
                             });
                           },
@@ -357,8 +362,8 @@ class _MyDialogState extends State<MyDialog> {
                             Icons.arrow_drop_down,
                             color: Colors.deepOrange,
                           ),
-                          value: val,
-                          items: _items.map((value) {
+                          value: _firstValuePickUp,
+                          items: _pickUpPoints.map((value) {
                             return DropdownMenuItem(
                               value: value,
                               child: Text(value),
@@ -366,7 +371,7 @@ class _MyDialogState extends State<MyDialog> {
                           }).toList(),
                           onChanged: (newValue) {
                             setState(() {
-                              val = newValue;
+                              _firstValuePickUp = newValue;
                               print("state is updated");
                             });
                           },
