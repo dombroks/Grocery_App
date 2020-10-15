@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_app/Screens/PaymentMethod.dart';
 import 'package:intl/intl.dart';
 
 import '../constants.dart';
@@ -219,7 +220,6 @@ class _MyDialogState extends State<MyDialog> {
                           onChanged: (newValue) {
                             setState(() {
                               _firstValueHomeDelivery = newValue;
-                              print("state is updated");
                             });
                           },
                         ),
@@ -242,12 +242,10 @@ class _MyDialogState extends State<MyDialog> {
                           onChanged: (newValue) {
                             setState(() {
                               _firstValueHomeDeliveryForSubCities = newValue;
-                              print("state is updated");
                             });
                           },
                         ),
                       ),
-                      
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Row(
@@ -265,7 +263,12 @@ class _MyDialogState extends State<MyDialog> {
                             ),
                             RaisedButton(
                               color: kPrimaryColor,
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => PaymentMethod()));
+                              },
                               child: Text(
                                 "NEXT",
                                 style: TextStyle(
@@ -387,7 +390,6 @@ class _MyDialogState extends State<MyDialog> {
                           onChanged: (newValue) {
                             setState(() {
                               _firstValuePickUp = newValue;
-                              print("state is updated");
                             });
                           },
                         ),
@@ -422,7 +424,12 @@ class _MyDialogState extends State<MyDialog> {
                             ),
                             RaisedButton(
                               color: kPrimaryColor,
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => PaymentMethod()));
+                              },
                               child: Text(
                                 "NEXT",
                                 style: TextStyle(
