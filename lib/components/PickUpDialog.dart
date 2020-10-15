@@ -15,15 +15,19 @@ class _MyDialogState extends State<MyDialog> {
   TextEditingController _controller;
   List<String> _pickUpPoints;
   List<String> _homeDeliveryCities;
+  List<String> _homeDeliverySubCities;
   String _firstValuePickUp;
   String _firstValueHomeDelivery;
+  String _firstValueHomeDeliveryForSubCities;
 
   @override
   void initState() {
     _firstValuePickUp = "Khelil";
     _firstValueHomeDelivery = "Bordj Bou Arreridj";
+    _firstValueHomeDeliveryForSubCities = "Sidi Embarek";
     _pickUpPoints = ["Khelil", "Ras El Ain", "Cheffa"];
     _homeDeliveryCities = ["Bordj Bou Arreridj", "Batna", "Setif", "Guelma"];
+    _homeDeliverySubCities = ["Khelil", "Sidi Embarek", "Barika"];
     _selectedDate = DateTime.now();
     _formattedDate = DateFormat('yyyy-MM-dd').format(_selectedDate);
     _controller = TextEditingController();
@@ -121,7 +125,7 @@ class _MyDialogState extends State<MyDialog> {
       context: context,
       builder: (_) => Dialog(
         child: Container(
-          height: 370,
+          height: 420,
           child: Column(
             children: [
               Padding(
@@ -221,18 +225,29 @@ class _MyDialogState extends State<MyDialog> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: TextField(
-                          controller: _controller,
-                          readOnly: true,
-                          onTap: () {
-                            _selectDate(context);
-                          },
-                          decoration: InputDecoration(
-                            contentPadding: EdgeInsets.all(0.0),
+                        padding: const EdgeInsets.only(left: 8, right: 8),
+                        child: DropdownButton(
+                          isExpanded: true,
+                          icon: Icon(
+                            Icons.arrow_drop_down,
+                            color: Colors.deepOrange,
                           ),
+                          value: _firstValueHomeDeliveryForSubCities,
+                          items: _homeDeliverySubCities.map((value) {
+                            return DropdownMenuItem(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
+                          onChanged: (newValue) {
+                            setState(() {
+                              _firstValueHomeDeliveryForSubCities = newValue;
+                              print("state is updated");
+                            });
+                          },
                         ),
                       ),
+                      
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Row(
