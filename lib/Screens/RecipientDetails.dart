@@ -13,6 +13,8 @@ class RecipientDatails extends StatefulWidget {
 class _RecipientDatailsState extends State<RecipientDatails> {
   File _image;
   final picker = ImagePicker();
+  String _firstCountryPrefix = "+213";
+  List<String> _countriesPrefixs = ["+213", "+01", "+43"];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,6 +84,28 @@ class _RecipientDatailsState extends State<RecipientDatails> {
                   height: 25,
                 ),
                 TextField(),
+                SizedBox(
+                  height: 25,
+                ),
+                DropdownButton(
+                  isExpanded: true,
+                  icon: Icon(
+                    Icons.arrow_drop_down,
+                    color: kPrimaryColor,
+                  ),
+                  value: _firstCountryPrefix,
+                  items: _countriesPrefixs.map((value) {
+                    return DropdownMenuItem(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                  onChanged: (newValue) {
+                    setState(() {
+                      _firstCountryPrefix = newValue;
+                    });
+                  },
+                ),
               ],
             ),
           ),
