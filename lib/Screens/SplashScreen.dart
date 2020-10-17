@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import "package:flutter/material.dart";
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:grocery_app/Provider/Mediator.dart';
 import 'package:grocery_app/Screens/Home.dart';
 import 'package:grocery_app/constants.dart';
@@ -34,6 +35,13 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       body: Container(
         color: kPrimaryColor,
+        child: Center(
+          child: SvgPicture.asset(
+            "assets/icons/vegetable.svg",
+            width: 100,
+            height: 100,
+          ),
+        ),
       ),
     );
   }
