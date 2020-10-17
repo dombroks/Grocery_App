@@ -38,6 +38,8 @@ dependencies:
   rxdart: ^0.24.1
   expandable: ^4.1.4
   intl: ^0.16.1
+  image_picker: ^0.6.7+12
+
 
   
 

@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:grocery_app/Screens/MainScreen.dart';
 import 'package:grocery_app/Screens/PaymentMethod.dart';
 import 'package:grocery_app/components/ProfileCardItem.dart';
+import 'package:image_picker/image_picker.dart';
 
 class Profile extends StatefulWidget {
   @override
@@ -9,6 +12,8 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+  final picker = ImagePicker();
+  File _image;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -25,13 +30,21 @@ class _ProfileState extends State<Profile> {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                Container(
-                  width: 100,
-                  height: 100,
-                  child: CircleAvatar(
-                    backgroundImage: NetworkImage(
-                        "https://th.bing.com/th/id/OIP.ju1vmgfjRSJnPU4fcOCyJwHaE8?pid=Api&w=1200&h=800&rs=1"),
+                GestureDetector(
+                  child: Container(
+                    decoration: BoxDecoration(shape: BoxShape.circle),
+                    width: 100,
+                    height: 100,
+                    child: _image == null
+                        ? Icon(Icons.add)
+                        : Image.file(
+                            _image,
+                            fit: BoxFit.cover,
+                          ),
                   ),
+                  onTap: () {
+                    getImage();
+                  },
                 ),
                 SizedBox(
                   width: 20,
@@ -83,9 +96,7 @@ class _ProfileState extends State<Profile> {
                       itemName: "Recipient details",
                       colordata: Colors.purple,
                       icon: Icons.account_circle,
-                      toAnotherScreen: () {
-                      
-                      },
+                      toAnotherScreen: () {},
                     ),
                     SizedBox(
                       height: 0.5,
@@ -133,4 +144,14 @@ class _ProfileState extends State<Profile> {
     );
   }
 
+  Future getImage() async {
+    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+    setState(() {
+      if (pickedFile != null) {
+        _image = File(pickedFile.path);
+      } else {
+        print("NO selected image !!");
+      }
+    });
   }
+}

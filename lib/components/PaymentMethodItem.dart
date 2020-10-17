@@ -49,7 +49,7 @@ class PaymentMethodItem extends StatelessWidget {
                       color: Colors.grey),
                 ),
               ],
-            )
+            ),
           ],
         ),
       ],
