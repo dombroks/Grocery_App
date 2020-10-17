@@ -42,9 +42,12 @@ class _ProfileState extends State<Profile> {
                             color: kPrimaryColor,
                             size: 40,
                           )
-                        : Image.file(
-                            _image,
-                            fit: BoxFit.cover,
+                        : ClipRRect(
+                            borderRadius: BorderRadius.circular(8.0),
+                            child: Image.file(
+                              _image,
+                              fit: BoxFit.cover,
+                            ),
                           ),
                   ),
                   onTap: () {
