@@ -1,8 +1,8 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:grocery_app/Screens/MainScreen.dart';
 import 'package:grocery_app/Screens/PaymentMethod.dart';
+import 'package:grocery_app/Screens/RecipientDetails.dart';
 import 'package:grocery_app/components/ProfileCardItem.dart';
 import 'package:grocery_app/constants.dart';
 import 'package:image_picker/image_picker.dart';
@@ -100,11 +100,19 @@ class _ProfileState extends State<Profile> {
                     BoxDecoration(borderRadius: BorderRadius.circular(10)),
                 child: Column(
                   children: [
-                    ProfileCardItem(
-                      itemName: "Recipient details",
-                      colordata: Colors.purple,
-                      icon: Icons.account_circle,
-                      toAnotherScreen: () {},
+                    GestureDetector(
+                      child: ProfileCardItem(
+                        itemName: "Recipient details",
+                        colordata: Colors.purple,
+                        icon: Icons.account_circle,
+                        toAnotherScreen: () {},
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => RecipientDatails()));
+                      },
                     ),
                     SizedBox(
                       height: 0.5,
