@@ -29,9 +29,14 @@ class _RecipientDatailsState extends State<RecipientDatails> {
               children: [
                 Row(
                   children: [
-                    Icon(
-                      Icons.close,
-                      color: Colors.grey,
+                    GestureDetector(
+                      child: Icon(
+                        Icons.close,
+                        color: Colors.grey,
+                      ),
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
                     ),
                     SizedBox(
                       width: 35,
