@@ -45,7 +45,7 @@ class _RecipientDatailsState extends State<RecipientDatails> {
                   children: [
                     GestureDetector(
                       child: Padding(
-                        padding: const EdgeInsets.all(15.0),
+                        padding: const EdgeInsets.only(top: 25.0),
                         child: Container(
                           decoration: BoxDecoration(shape: BoxShape.circle),
                           width: 90,
@@ -69,8 +69,13 @@ class _RecipientDatailsState extends State<RecipientDatails> {
                         getImage();
                       },
                     ),
-                    Text("Change image ...")
+                    SizedBox(
+                      width: 20,
+                    ),
                   ],
+                ),
+                SizedBox(
+                  height: 10,
                 ),
                 TextField(),
                 SizedBox(
