@@ -38,7 +38,7 @@ class _ProfileState extends State<Profile> {
                     height: 100,
                     child: _image == null
                         ? Icon(
-                            Icons.add,
+                            Icons.camera,
                             color: kPrimaryColor,
                             size: 40,
                           )
