@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:grocery_app/Screens/MainScreen.dart';
 import 'package:grocery_app/Screens/PaymentMethod.dart';
 import 'package:grocery_app/components/ProfileCardItem.dart';
+import 'package:grocery_app/constants.dart';
 import 'package:image_picker/image_picker.dart';
 
 class Profile extends StatefulWidget {
@@ -36,7 +37,11 @@ class _ProfileState extends State<Profile> {
                     width: 100,
                     height: 100,
                     child: _image == null
-                        ? Icon(Icons.add)
+                        ? Icon(
+                            Icons.add,
+                            color: kPrimaryColor,
+                            size: 40,
+                          )
                         : Image.file(
                             _image,
                             fit: BoxFit.cover,
