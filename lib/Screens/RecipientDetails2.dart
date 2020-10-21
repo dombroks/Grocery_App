@@ -80,6 +80,9 @@ class _RecipientDetails2State extends State<RecipientDetails2> {
                           style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.bold),
                         ),
+                        SizedBox(
+                          height: 15,
+                        ),
                         Text("One who recieves shopping items")
                       ],
                     )
