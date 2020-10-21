@@ -160,10 +160,15 @@ class _ProfileState extends State<Profile> {
                     SizedBox(
                       height: 0.5,
                     ),
-                    ProfileCardItem(
-                      itemName: "Logout",
-                      colordata: Colors.red[700],
-                      icon: Icons.exit_to_app,
+                    GestureDetector(
+                      child: ProfileCardItem(
+                        itemName: "Logout",
+                        colordata: Colors.red[700],
+                        icon: Icons.exit_to_app,
+                      ),
+                      onTap: () {
+                        _showAlertDialg();
+                      },
                     ),
                   ],
                 ),
@@ -183,10 +188,13 @@ class _ProfileState extends State<Profile> {
       }
     });
   }
-  _showAlertDialg(){
-    showDialog( context: context,
+
+  _showAlertDialg() {
+    showDialog(
+      context: context,
       builder: (context) {
         return AlertDialog();
       },
     );
+  }
 }
