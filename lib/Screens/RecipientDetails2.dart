@@ -94,11 +94,9 @@ class _RecipientDetails2State extends State<RecipientDetails2> {
                 SizedBox(
                   height: 10,
                 ),
-                TextField(),
-                SizedBox(
-                  height: 25,
+                TextField(
+                  decoration: InputDecoration(hintText: "Enter your name"),
                 ),
-                TextField(),
                 SizedBox(
                   height: 25,
                 ),
