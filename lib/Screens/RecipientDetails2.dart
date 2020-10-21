@@ -95,7 +95,10 @@ class _RecipientDetails2State extends State<RecipientDetails2> {
                   height: 10,
                 ),
                 TextField(
-                  decoration: InputDecoration(hintText: "Enter your name"),
+                  decoration: InputDecoration(
+                    hintText: "Enter your name",
+                    contentPadding: EdgeInsets.all(0),
+                  ),
                 ),
                 SizedBox(
                   height: 25,
@@ -124,7 +127,12 @@ class _RecipientDetails2State extends State<RecipientDetails2> {
                     SizedBox(
                       width: 20,
                     ),
-                    Flexible(child: TextField()),
+                    Flexible(
+                        child: TextField(
+                      keyboardType: TextInputType.phone,
+                      decoration:
+                          InputDecoration(hintText: "Your mobile number"),
+                    )),
                   ],
                 ),
                 SizedBox(
