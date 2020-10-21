@@ -183,4 +183,10 @@ class _ProfileState extends State<Profile> {
       }
     });
   }
+  _showAlertDialg(){
+    showDialog( context: context,
+      builder: (context) {
+        return AlertDialog();
+      },
+    );
 }

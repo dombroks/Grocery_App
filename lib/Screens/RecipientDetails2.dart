@@ -156,7 +156,6 @@ class _RecipientDetails2State extends State<RecipientDetails2> {
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
-                    
                   ],
                 )
               ],
