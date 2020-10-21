@@ -56,26 +56,15 @@ class _RecipientDetails2State extends State<RecipientDetails2> {
                         padding: const EdgeInsets.only(top: 25.0),
                         child: Container(
                           decoration: BoxDecoration(
-                            border: Border.all(
-                              color: kPrimaryColor,
-                            ),
+                            color: Colors.deepOrangeAccent,
                             shape: BoxShape.circle,
                           ),
-                          width: 90,
-                          height: 90,
-                          child: _image == null
-                              ? Icon(
-                                  Icons.camera_alt,
-                                  color: kPrimaryColor,
-                                  size: 40,
-                                )
-                              : ClipRRect(
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  child: Image.file(
-                                    _image,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
+                          width: 65,
+                          height: 65,
+                          child: Icon(
+                            Icons.account_circle,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                       onTap: () {},
