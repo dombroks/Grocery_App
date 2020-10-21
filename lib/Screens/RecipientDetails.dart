@@ -54,7 +54,12 @@ class _RecipientDatailsState extends State<RecipientDatails> {
                       child: Padding(
                         padding: const EdgeInsets.only(top: 25.0),
                         child: Container(
-                          decoration: BoxDecoration(shape: BoxShape.circle),
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: kPrimaryColor,
+                            ),
+                            shape: BoxShape.circle,
+                          ),
                           width: 90,
                           height: 90,
                           child: _image == null
