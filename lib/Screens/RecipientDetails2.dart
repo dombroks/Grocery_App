@@ -132,11 +132,18 @@ class _RecipientDetails2State extends State<RecipientDetails2> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
+                    FlatButton(
+                      onPressed: () {},
+                      child: Text(
+                        "SAVE",
+                        style: TextStyle(color: kPrimaryColor),
+                      ),
+                    ),
                     RaisedButton(
                       onPressed: () {},
                       color: kPrimaryColor,
                       child: Text(
-                        "SAVE",
+                        "NEXT",
                         style: TextStyle(color: Colors.white),
                       ),
                     )
