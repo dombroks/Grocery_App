@@ -79,6 +79,10 @@ class _RecipientDatailsState extends State<RecipientDatails> {
                     SizedBox(
                       width: 20,
                     ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 25.0),
+                      child: Text("Change profile picture"),
+                    )
                   ],
                 ),
                 SizedBox(
