@@ -120,6 +120,22 @@ class _RecipientDatailsState extends State<RecipientDatails> {
                     Flexible(child: TextField()),
                   ],
                 ),
+                SizedBox(
+                  height: 25,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    RaisedButton(
+                      onPressed: () {},
+                      color: kPrimaryColor,
+                      child: Text(
+                        "SAVE",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    )
+                  ],
+                )
               ],
             ),
           ),
