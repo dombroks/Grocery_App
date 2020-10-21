@@ -72,19 +72,22 @@ class _RecipientDetails2State extends State<RecipientDetails2> {
                     SizedBox(
                       width: 20,
                     ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Enter recipient",
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        ),
-                        SizedBox(
-                          height: 15,
-                        ),
-                        Text("One who recieves shopping items")
-                      ],
+                    Padding(
+                      padding: const EdgeInsets.only(top: 25.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Enter recipient",
+                            style: TextStyle(
+                                fontSize: 21, fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text("One who recieves shopping items")
+                        ],
+                      ),
                     )
                   ],
                 ),
