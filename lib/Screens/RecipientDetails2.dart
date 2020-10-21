@@ -155,7 +155,8 @@ class _RecipientDetails2State extends State<RecipientDetails2> {
                         "NEXT",
                         style: TextStyle(color: Colors.white),
                       ),
-                    )
+                    ),
+                    
                   ],
                 )
               ],
