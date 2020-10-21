@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:grocery_app/Screens/Home.dart';
+import 'package:grocery_app/Screens/Profile.dart';
 import 'package:grocery_app/components/PickUpDialog.dart';
 import 'package:grocery_app/components/ProfileCardItem.dart';
 import 'package:grocery_app/constants.dart';
+
+import 'RecipientDetails.dart';
 
 class checkoutScreen extends StatefulWidget {
   @override
@@ -66,10 +69,15 @@ class _checkoutScreenState extends State<checkoutScreen> {
                 ),
                 child: Column(
                   children: [
-                    ProfileCardItem(
-                      itemName: "Recipient details",
-                      colordata: Colors.purple,
-                      icon: Icons.account_circle,
+                    GestureDetector(
+                      child: ProfileCardItem(
+                        itemName: "Recipient details",
+                        colordata: Colors.purple,
+                        icon: Icons.account_circle,
+                      ),
+                      onTap: () {
+                        
+                      },
                     ),
                     GestureDetector(
                       child: ProfileCardItem(

@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:grocery_app/Screens/PaymentMethod.dart';
 import 'package:grocery_app/Screens/RecipientDetails.dart';
+import 'package:grocery_app/components/DeliveryType.dart';
 import 'package:grocery_app/components/ProfileCardItem.dart';
 import 'package:grocery_app/constants.dart';
 import 'package:image_picker/image_picker.dart';
@@ -121,10 +122,18 @@ class _ProfileState extends State<Profile> {
                     SizedBox(
                       height: 0.5,
                     ),
-                    ProfileCardItem(
-                      itemName: "Delivery address",
-                      colordata: Colors.blue,
-                      icon: Icons.local_shipping,
+                    GestureDetector(
+                      child: ProfileCardItem(
+                        itemName: "Delivery address",
+                        colordata: Colors.blue,
+                        icon: Icons.local_shipping,
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => DeliveryType()));
+                      },
                     ),
                     SizedBox(
                       height: 0.5,
