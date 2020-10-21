@@ -75,7 +75,11 @@ class _RecipientDetails2State extends State<RecipientDetails2> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Enter recipient"),
+                        Text(
+                          "Enter recipient",
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                        ),
                         Text("One who recieves shopping items")
                       ],
                     )
