@@ -224,15 +224,32 @@ class _ProfileState extends State<Profile> {
                   SizedBox(
                     height: 10,
                   ),
-                  Text(
-                    "Are you sure you want to logout?",
-                    style:
-                        TextStyle(fontWeight: FontWeight.normal, fontSize: 15),
-                  )
                 ],
               )
             ],
           ),
+          content: Text(
+            "  Are you sure you want to logout?",
+            style: TextStyle(fontWeight: FontWeight.normal, fontSize: 15),
+          ),
+          actions: <Widget>[
+            FlatButton(
+              child: Text(
+                'No',
+                style: TextStyle(color: Colors.grey),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            FlatButton(
+              color: Colors.red,
+              child: Text('LOGOUT'),
+              onPressed: () async {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
         );
       },
     );
