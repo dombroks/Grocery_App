@@ -72,9 +72,12 @@ class _RecipientDetails2State extends State<RecipientDetails2> {
                     SizedBox(
                       width: 20,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 25.0),
-                      child: Text("Change profile picture"),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Enter recipient"),
+                        Text("One who recieves shopping items")
+                      ],
                     )
                   ],
                 ),
