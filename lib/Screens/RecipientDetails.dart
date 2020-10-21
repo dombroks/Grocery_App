@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:dropdownfield/dropdownfield.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -26,6 +27,7 @@ class _RecipientDatailsState extends State<RecipientDatails> {
           child: Padding(
             padding: const EdgeInsets.all(25.0),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   children: [
@@ -92,24 +94,31 @@ class _RecipientDatailsState extends State<RecipientDatails> {
                 SizedBox(
                   height: 25,
                 ),
-                DropdownButton(
-                  isExpanded: true,
-                  icon: Icon(
-                    Icons.arrow_drop_down,
-                    color: kPrimaryColor,
-                  ),
-                  value: _firstCountryPrefix,
-                  items: _countriesPrefixs.map((value) {
-                    return DropdownMenuItem(
-                      value: value,
-                      child: Text(value),
-                    );
-                  }).toList(),
-                  onChanged: (newValue) {
-                    setState(() {
-                      _firstCountryPrefix = newValue;
-                    });
-                  },
+                Row(
+                  children: [
+                    DropdownButton(
+                      icon: Icon(
+                        Icons.arrow_drop_down,
+                        color: kPrimaryColor,
+                      ),
+                      value: _firstCountryPrefix,
+                      items: _countriesPrefixs.map((value) {
+                        return DropdownMenuItem(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
+                      onChanged: (newValue) {
+                        setState(() {
+                          _firstCountryPrefix = newValue;
+                        });
+                      },
+                    ),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Flexible(child: TextField()),
+                  ],
                 ),
               ],
             ),
