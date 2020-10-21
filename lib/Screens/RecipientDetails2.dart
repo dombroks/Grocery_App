@@ -101,6 +101,7 @@ class _RecipientDetails2State extends State<RecipientDetails2> {
                   height: 25,
                 ),
                 Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     DropdownButton(
                       icon: Icon(
