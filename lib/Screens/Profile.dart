@@ -193,7 +193,47 @@ class _ProfileState extends State<Profile> {
     showDialog(
       context: context,
       builder: (context) {
-        return AlertDialog();
+        return AlertDialog(
+          title: Row(
+            children: [
+              Container(
+                width: 50,
+                height: 50,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.red,
+                ),
+                child: Icon(
+                  Icons.exit_to_app,
+                  color: Colors.white,
+                ),
+              ),
+              SizedBox(
+                width: 20,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Logout",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    "Are you sure you want to logout?",
+                    style:
+                        TextStyle(fontWeight: FontWeight.normal, fontSize: 15),
+                  )
+                ],
+              )
+            ],
+          ),
+        );
       },
     );
   }
