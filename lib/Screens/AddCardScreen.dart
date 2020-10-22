@@ -13,8 +13,28 @@ class AddCardScreen extends StatelessWidget {
         ),
         title: Text(
           "Add a card",
+          style: TextStyle(
+            color: Colors.black,
+          ),
         ),
-        centerTitle: true,
+      ),
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        color: Colors.white,
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            children: [
+              TextField(
+                decoration: InputDecoration(hintText: "Card holder name"),
+              ),
+              TextField(
+                decoration: InputDecoration(hintText: "Card number"),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
