@@ -5,14 +5,12 @@ class DeliveryType extends StatelessWidget {
   final String mainTitle;
   final String secondTitle;
   final IconData icon;
-  final Function job;
   const DeliveryType({
     Key key,
     this.colorData,
     this.mainTitle,
     this.secondTitle,
     this.icon,
-    this.job,
   }) : super(key: key);
 
   @override
@@ -67,15 +65,10 @@ class DeliveryType extends StatelessWidget {
               ),
             ],
           ),
-          GestureDetector(
-            child: Icon(
-              Icons.arrow_forward_ios,
-              size: 13,
-              color: Colors.grey,
-            ),
-            onTap: () {
-              job();
-            },
+          Icon(
+            Icons.arrow_forward_ios,
+            size: 13,
+            color: Colors.grey,
           ),
         ],
       ),

@@ -111,7 +111,6 @@ class _ProfileState extends State<Profile> {
                         itemName: "Recipient details",
                         colordata: Colors.purple,
                         icon: Icons.account_circle,
-                        toAnotherScreen: () {},
                       ),
                       onTap: () {
                         Navigator.push(
@@ -133,7 +132,7 @@ class _ProfileState extends State<Profile> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => DeliveryType()));
+                                builder: (context) => RecipientDatails()));
                       },
                     ),
                     SizedBox(
@@ -145,7 +144,7 @@ class _ProfileState extends State<Profile> {
                         colordata: Colors.green,
                         icon: Icons.monetization_on,
                       ),
-                      onTap: (){
+                      onTap: () {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
