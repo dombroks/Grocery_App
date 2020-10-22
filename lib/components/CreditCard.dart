@@ -70,7 +70,7 @@ class CreditCard extends StatelessWidget {
                         style: TextStyle(fontWeight: FontWeight.w600),
                       ),
                       SvgPicture.asset(
-                        "assets/icons/visa.svg",
+                        "assets/icons/card1.svg",
                         width: 50,
                         height: 50,
                       ),

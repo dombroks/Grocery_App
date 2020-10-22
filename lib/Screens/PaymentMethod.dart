@@ -32,13 +32,13 @@ class PaymentMethod extends StatelessWidget {
             children: [
               PaymentMethodItem(
                   paymentCardHolder: "Jessica Alison",
-                  paymentCardLogo: "assets/icons/visa.svg"),
+                  paymentCardLogo: "assets/icons/card1.svg"),
               SizedBox(
                 height: 10,
               ),
               PaymentMethodItem(
                   paymentCardHolder: "Jessica Alison",
-                  paymentCardLogo: "assets/icons/mastercard.svg"),
+                  paymentCardLogo: "assets/icons/card0.svg"),
               SizedBox(
                 height: 10,
               ),
