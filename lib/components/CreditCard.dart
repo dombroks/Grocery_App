@@ -5,66 +5,70 @@ class CreditCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: Container(
-        height: 184,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Dom Broks",
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
+      child: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: Container(
+          height: 190,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Dom Broks",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-                Icon(
-                  Icons.delete_outline,
-                  color: Colors.grey,
-                )
-              ],
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            Text(
-              "· · · ·  · · · ·  · · · ·  5467",
-              style: TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.bold,
+                  Icon(
+                    Icons.delete_outline,
+                    color: Colors.grey,
+                    size: 30,
+                  )
+                ],
               ),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            Text(
-              "Month / Year",
-              style: TextStyle(
-                color: Colors.grey,
-                fontWeight: FontWeight.bold,
+              SizedBox(
+                height: 15,
               ),
-            ),
-            Text(
-              "06 / 2022",
-              style: TextStyle(fontWeight: FontWeight.w600),
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
               Text(
-                "Commercial Bank",
+                "· · · ·  · · · ·  · · · ·  5467",
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              Text(
+                "Month / Year",
+                style: TextStyle(
+                  color: Colors.grey,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text(
+                "06 / 2022",
                 style: TextStyle(fontWeight: FontWeight.w600),
               ),
-              SvgPicture.asset(
-                "assets/icons/visa.svg",
-                width: 50,
-                height: 50,
+              SizedBox(
+                height: 30,
               ),
-            ]),
-          ],
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                Text(
+                  "Commercial Bank",
+                  style: TextStyle(fontWeight: FontWeight.w600),
+                ),
+                SvgPicture.asset(
+                  "assets/icons/visa.svg",
+                  width: 50,
+                  height: 50,
+                ),
+              ]),
+            ],
+          ),
         ),
       ),
     );
