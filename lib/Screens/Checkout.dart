@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:grocery_app/Screens/Home.dart';
+import 'package:grocery_app/Screens/PaymentMethod.dart';
 import 'package:grocery_app/Screens/RecipientDetails2.dart';
 import 'package:grocery_app/components/PickUpDialog.dart';
 import 'package:grocery_app/components/ProfileCardItem.dart';
 import 'package:grocery_app/constants.dart';
-
 
 class checkoutScreen extends StatefulWidget {
   @override
@@ -94,10 +94,18 @@ class _checkoutScreenState extends State<checkoutScreen> {
                         _showDialog();
                       },
                     ),
-                    ProfileCardItem(
-                      itemName: "Payment Method",
-                      colordata: Colors.grey,
-                      icon: Icons.monetization_on,
+                    GestureDetector(
+                      child: ProfileCardItem(
+                        itemName: "Payment Method",
+                        colordata: Colors.grey,
+                        icon: Icons.monetization_on,
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => PaymentMethod()));
+                      },
                     ),
                   ],
                 ),

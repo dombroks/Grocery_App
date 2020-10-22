@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:grocery_app/Screens/AddPaymentMethod.dart';
 import 'package:grocery_app/Screens/PaymentMethod.dart';
 import 'package:grocery_app/Screens/RecipientDetails.dart';
 import 'package:grocery_app/components/DeliveryType.dart';
@@ -138,15 +139,17 @@ class _ProfileState extends State<Profile> {
                     SizedBox(
                       height: 0.5,
                     ),
-                    ProfileCardItem(
-                      itemName: "Payment Method",
-                      colordata: Colors.green,
-                      icon: Icons.monetization_on,
-                      toAnotherScreen: () {
+                    GestureDetector(
+                      child: ProfileCardItem(
+                        itemName: "Payment Method",
+                        colordata: Colors.green,
+                        icon: Icons.monetization_on,
+                      ),
+                      onTap: (){
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => PaymentMethod()));
+                                builder: (context) => AddPaymentMethod()));
                       },
                     ),
                     SizedBox(
