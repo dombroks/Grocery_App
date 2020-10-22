@@ -33,6 +33,27 @@ class AddCardScreen extends StatelessWidget {
               TextField(
                 decoration: InputDecoration(hintText: "Card number"),
               ),
+              Container(
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: TextField(),
+                    ),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    Expanded(
+                      child: TextField(),
+                    ),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    Expanded(
+                      child: TextField(),
+                    ),
+                  ],
+                ),
+              )
             ],
           ),
         ),
