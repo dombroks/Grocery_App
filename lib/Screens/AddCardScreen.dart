@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_app/constants.dart';
 
 class AddCardScreen extends StatelessWidget {
   @override
@@ -59,6 +60,22 @@ class AddCardScreen extends StatelessWidget {
                     ),
                   ],
                 ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  RaisedButton(
+                    onPressed: () {},
+                    color: kPrimaryColor,
+                    child: Text(
+                      "SAVE",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  )
+                ],
               )
             ],
           ),
