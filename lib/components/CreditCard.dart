@@ -11,7 +11,10 @@ class CreditCard extends StatelessWidget {
             children: [
               Text(
                 "Dom Broks",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               Icon(
                 Icons.delete_outline,
