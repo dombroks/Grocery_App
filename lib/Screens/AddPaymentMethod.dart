@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_app/components/AddCard.dart';
 import 'package:grocery_app/components/CreditCard.dart';
 
 import 'package:grocery_app/constants.dart';
@@ -27,7 +28,7 @@ class _AddPaymentMethodState extends State<AddPaymentMethod> {
         centerTitle: true,
       ),
       body: Container(
-        child: CreditCard(),
+        child: AddCard(),
       ),
     );
   }
