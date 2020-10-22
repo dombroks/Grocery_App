@@ -7,8 +7,12 @@ class CreditCard extends StatelessWidget {
       child: Column(
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("Dom Broks"),
+              Text(
+                "Dom Broks",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
               Icon(
                 Icons.delete_outline,
                 color: Colors.grey,
