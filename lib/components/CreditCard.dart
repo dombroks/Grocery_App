@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class CreditCard extends StatelessWidget {
   @override
@@ -54,10 +55,16 @@ class CreditCard extends StatelessWidget {
               SizedBox(
                 height: 30,
               ),
-              Row(children: [
+              Row(
+                children: [
                 Text(
                   "Commercial Bank",
                   style: TextStyle(fontWeight: FontWeight.w600),
+                ),
+                SvgPicture.asset(
+                  "assets/icons/visa.svg",
+                  width: 50,
+                  height: 50,
                 ),
               ]),
             ],
