@@ -22,10 +22,13 @@ class CreditCard extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Icon(
-                    Icons.delete_outline,
-                    color: Colors.grey,
-                    size: 30,
+                  GestureDetector(
+                    child: Icon(
+                      Icons.delete_outline,
+                      color: Colors.grey,
+                      size: 30,
+                    ),
+                    onTap: () {},
                   )
                 ],
               ),
