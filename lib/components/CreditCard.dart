@@ -33,7 +33,7 @@ class CreditCard extends StatelessWidget {
                 height: 15,
               ),
               Text(
-                "· · · ·  · · · ·  · · · ·  5467",
+                "• • • •  • • • •  • • • •  5467",
                 style: TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.bold,
