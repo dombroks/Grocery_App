@@ -11,6 +11,10 @@ class AddCardScreen extends StatelessWidget {
           Icons.close,
           color: Colors.grey,
         ),
+        title: Text(
+          "Add a card",
+        ),
+        centerTitle: true,
       ),
     );
   }
