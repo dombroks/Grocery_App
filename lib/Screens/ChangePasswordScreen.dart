@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_app/components/SaveButton.dart';
 import 'package:grocery_app/constants.dart';
 
 class ChangePasswordScreen extends StatelessWidget {
@@ -42,27 +43,6 @@ class ChangePasswordScreen extends StatelessWidget {
               SaveButton()
             ],
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class SaveButton extends StatelessWidget {
-  const SaveButton({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return RaisedButton(
-      color: kPrimaryColor,
-      onPressed: () {},
-      child: Text(
-        "  SAVE  ",
-        style: TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.bold,
         ),
       ),
     );
