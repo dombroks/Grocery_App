@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:grocery_app/Screens/AddPaymentMethod.dart';
+import 'package:grocery_app/Screens/ChangePasswordScreen.dart';
 import 'package:grocery_app/Screens/PaymentMethod.dart';
 import 'package:grocery_app/Screens/RecipientDetails.dart';
 import 'package:grocery_app/components/DeliveryType.dart';
@@ -154,10 +155,18 @@ class _ProfileState extends State<Profile> {
                     SizedBox(
                       height: 0.5,
                     ),
-                    ProfileCardItem(
-                      itemName: "Change password",
-                      colordata: Colors.pink[300],
-                      icon: Icons.lock,
+                    GestureDetector(
+                      child: ProfileCardItem(
+                        itemName: "Change password",
+                        colordata: Colors.pink[300],
+                        icon: Icons.lock,
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ChangePasswordScreen()));
+                      },
                     ),
                     SizedBox(
                       height: 0.5,
