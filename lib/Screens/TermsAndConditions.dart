@@ -14,7 +14,19 @@ class TermsConditions extends StatelessWidget {
         title: Text("Terms & conditions"),
       ),
       body: Container(
-        child: Column(),
+        child: Padding(
+          padding: const EdgeInsets.all(18.0),
+          child: Column(
+            children: [
+              Text(
+                "Product Terms",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              )
+            ],
+          ),
+        ),
       ),
     );
   }
