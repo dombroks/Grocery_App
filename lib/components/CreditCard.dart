@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class CreditCard extends StatelessWidget {
+class CreditCard extends StatefulWidget {
+  @override
+  _CreditCardState createState() => _CreditCardState();
+}
+
+class _CreditCardState extends State<CreditCard> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -31,7 +36,9 @@ class CreditCard extends StatelessWidget {
                         color: Colors.grey,
                         size: 30,
                       ),
-                      onTap: () {},
+                      onTap: () {
+                        _showAlertDialg();
+                      },
                     )
                   ],
                 ),
@@ -80,6 +87,72 @@ class CreditCard extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  _showAlertDialg() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Row(
+            children: [
+              Container(
+                width: 50,
+                height: 50,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.red,
+                ),
+                child: Icon(
+                  Icons.exit_to_app,
+                  color: Colors.white,
+                ),
+              ),
+              SizedBox(
+                width: 20,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Remove card",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                ],
+              )
+            ],
+          ),
+          content: Text(
+            "  Are you sure you want to remove **** **** **** 6452 card?",
+            style: TextStyle(fontWeight: FontWeight.normal, fontSize: 15),
+          ),
+          actions: <Widget>[
+            FlatButton(
+              child: Text(
+                'No',
+                style: TextStyle(color: Colors.grey),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            FlatButton(
+              color: Colors.red,
+              child: Text('LOGOUT'),
+              onPressed: () async {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_app/Screens/EditCardScreen.dart';
+import 'package:grocery_app/Screens/AddCardScreen.dart';
 
 class AddCard extends StatelessWidget {
   @override
@@ -36,7 +36,7 @@ class AddCard extends StatelessWidget {
       ),
       onTap: () {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => EditCardScreen()));
+            context, MaterialPageRoute(builder: (context) => AddCardScreen()));
       },
     );
   }
