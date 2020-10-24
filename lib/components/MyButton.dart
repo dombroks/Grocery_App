@@ -13,7 +13,7 @@ class MyButton extends StatelessWidget {
       color: kPrimaryColor,
       onPressed: () {},
       child: Text(
-        "  SAVE  ",
+        "$opt",
         style: TextStyle(
           color: Colors.white,
           fontWeight: FontWeight.bold,

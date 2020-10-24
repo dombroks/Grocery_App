@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:grocery_app/Screens/Home.dart';
 import 'package:grocery_app/Screens/PaymentMethod.dart';
 import 'package:grocery_app/Screens/RecipientDetails2.dart';
+import 'package:grocery_app/components/MyButton.dart';
 import 'package:grocery_app/components/PickUpDialog.dart';
 import 'package:grocery_app/components/ProfileCardItem.dart';
 import 'package:grocery_app/constants.dart';
@@ -111,15 +112,7 @@ class _checkoutScreenState extends State<checkoutScreen> {
                 ),
               ),
             ),
-            RaisedButton(
-              elevation: 1,
-              onPressed: () {},
-              color: kPrimaryColor,
-              child: Text(
-                "Proceed",
-                style: TextStyle(color: Colors.white),
-              ),
-            )
+            MyButton("Proceed")
           ],
         ),
       ),
