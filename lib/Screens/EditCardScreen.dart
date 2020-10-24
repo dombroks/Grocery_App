@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_app/constants.dart';
 
-class AddCardScreen extends StatelessWidget {
+import '../constants.dart';
+
+class EditCardScreen extends StatefulWidget {
+  @override
+  _EditCardScreenState createState() => _EditCardScreenState();
+}
+
+class _EditCardScreenState extends State<EditCardScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +24,7 @@ class AddCardScreen extends StatelessWidget {
           },
         ),
         title: Text(
-          "Add a card",
+          "Edit card details",
           style: TextStyle(
             color: Colors.black,
           ),
