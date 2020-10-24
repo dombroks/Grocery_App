@@ -28,8 +28,7 @@ class _AddPaymentMethodState extends State<AddPaymentMethod> {
         centerTitle: true,
       ),
       body: Container(
-
-        child: CreditCard(),
+        child: AddCard(),
       ),
     );
   }
