@@ -22,6 +22,22 @@ class ChangePasswordScreen extends StatelessWidget {
       ),
       body: Container(
         color: Colors.white,
+        child: Padding(
+          padding: const EdgeInsets.only(left: 20, right: 20),
+          child: Column(
+            children: [
+              TextField(
+                decoration: InputDecoration(hintText: ""),
+              ),
+              TextField(
+                decoration: InputDecoration(hintText: ""),
+              ),
+              TextField(
+                decoration: InputDecoration(hintText: ""),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
