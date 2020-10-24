@@ -105,8 +105,9 @@ class _CreditCardState extends State<CreditCard> {
                   color: Colors.red,
                 ),
                 child: Icon(
-                  Icons.exit_to_app,
+                  Icons.delete,
                   color: Colors.white,
+                  size: 30,
                 ),
               ),
               SizedBox(
@@ -130,7 +131,7 @@ class _CreditCardState extends State<CreditCard> {
             ],
           ),
           content: Text(
-            "  Are you sure you want to remove **** **** **** 6452 card?",
+            "Are you sure you want to remove **** **** **** 6452 card?",
             style: TextStyle(fontWeight: FontWeight.normal, fontSize: 15),
           ),
           actions: <Widget>[
@@ -145,7 +146,7 @@ class _CreditCardState extends State<CreditCard> {
             ),
             FlatButton(
               color: Colors.red,
-              child: Text('LOGOUT'),
+              child: Text('Remove'),
               onPressed: () async {
                 Navigator.of(context).pop();
               },
