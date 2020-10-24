@@ -27,13 +27,13 @@ class ChangePasswordScreen extends StatelessWidget {
           child: Column(
             children: [
               TextField(
-                decoration: InputDecoration(hintText: ""),
+                decoration: InputDecoration(hintText: "Old password"),
               ),
               TextField(
-                decoration: InputDecoration(hintText: ""),
+                decoration: InputDecoration(hintText: "New password"),
               ),
               TextField(
-                decoration: InputDecoration(hintText: ""),
+                decoration: InputDecoration(hintText: "Confirm password"),
               ),
             ],
           ),
