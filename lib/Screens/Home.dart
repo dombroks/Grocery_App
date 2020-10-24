@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:grocery_app/Screens/Profile.dart';
+import 'package:grocery_app/Screens/TermsAndConditions.dart';
 
 import '../constants.dart';
 import 'CartScreen.dart';
@@ -30,7 +31,12 @@ class Home extends StatelessWidget {
             ],
           ),
           backgroundColor: kPrimaryColor,
-          leading: Icon(Icons.menu),
+          leading: GestureDetector(child: Icon(Icons.menu),onTap: () {
+            Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => TermsConditions()));
+          },),
           actions: <Widget>[
             Icon(Icons.search),
             SizedBox(
