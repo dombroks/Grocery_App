@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_app/components/SaveButton.dart';
-import 'package:grocery_app/constants.dart';
+import 'package:grocery_app/components/MyButton.dart';
 
 class ChangePasswordScreen extends StatelessWidget {
   @override
@@ -10,9 +9,14 @@ class ChangePasswordScreen extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.white,
         elevation: 0,
-        leading: Icon(
-          Icons.close,
-          color: Colors.grey,
+        leading: GestureDetector(
+          child: Icon(
+            Icons.close,
+            color: Colors.grey,
+          ),
+          onTap: () {
+            Navigator.pop(context);
+          },
         ),
         title: Text(
           "Change passoword",
@@ -41,7 +45,7 @@ class ChangePasswordScreen extends StatelessWidget {
               SizedBox(
                 height: 15,
               ),
-              SaveButton()
+              MyButton("SAVE"),
             ],
           ),
         ),

@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 import '../constants.dart';
 
-class SaveButton extends StatelessWidget {
-  const SaveButton({
-    Key key,
-  }) : super(key: key);
-
+class MyButton extends StatelessWidget {
+  String opt;
+  MyButton(String opt) {
+    this.opt = opt;
+  }
   @override
   Widget build(BuildContext context) {
     return RaisedButton(
