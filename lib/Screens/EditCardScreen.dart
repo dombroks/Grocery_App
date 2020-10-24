@@ -39,35 +39,25 @@ class _EditCardScreenState extends State<EditCardScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              TextField(
-                decoration: InputDecoration(hintText: "Card holder name"),
-              ),
-              TextField(
-                decoration: InputDecoration(hintText: "Card number"),
-              ),
+              TextField(),
+              TextField(),
               Container(
                 child: Row(
                   children: [
                     Expanded(
-                      child: TextField(
-                        decoration: InputDecoration(hintText: "Month"),
-                      ),
+                      child: TextField(),
                     ),
                     SizedBox(
                       width: 15,
                     ),
                     Expanded(
-                      child: TextField(
-                        decoration: InputDecoration(hintText: "Year"),
-                      ),
+                      child: TextField(),
                     ),
                     SizedBox(
                       width: 15,
                     ),
                     Expanded(
-                      child: TextField(
-                        decoration: InputDecoration(hintText: "CVV number"),
-                      ),
+                      child: TextField(),
                     ),
                   ],
                 ),
@@ -82,7 +72,7 @@ class _EditCardScreenState extends State<EditCardScreen> {
                     onPressed: () {},
                     color: kPrimaryColor,
                     child: Text(
-                      "SAVE",
+                      "  SAVE  ",
                       style: TextStyle(color: Colors.white),
                     ),
                   )
