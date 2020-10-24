@@ -7,9 +7,14 @@ class TermsConditions extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kPrimaryColor,
-        leading: Icon(
-          Icons.close,
-          color: Colors.white,
+        leading: GestureDetector(
+          child: Icon(
+            Icons.close,
+            color: Colors.white,
+          ),
+          onTap: () {
+            Navigator.pop(context);
+          },
         ),
         title: Text("Terms & conditions"),
       ),
