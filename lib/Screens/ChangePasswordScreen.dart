@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_app/constants.dart';
 
 class ChangePasswordScreen extends StatelessWidget {
   @override
@@ -35,8 +36,33 @@ class ChangePasswordScreen extends StatelessWidget {
               TextField(
                 decoration: InputDecoration(hintText: "Confirm password"),
               ),
+              SizedBox(
+                height: 15,
+              ),
+              SaveButton()
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class SaveButton extends StatelessWidget {
+  const SaveButton({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return RaisedButton(
+      color: kPrimaryColor,
+      onPressed: () {},
+      child: Text(
+        "  SAVE  ",
+        style: TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
         ),
       ),
     );
