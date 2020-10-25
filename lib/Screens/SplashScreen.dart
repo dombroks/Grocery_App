@@ -60,6 +60,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 child: Text(
                   "SIGN IN",
                   style: TextStyle(
+                    fontSize: 16,
                     color: kPrimaryColor,
                     fontWeight: FontWeight.bold,
                   ),
@@ -77,6 +78,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 child: Text(
                   "SIGN UP",
                   style: TextStyle(
+                    fontSize: 16,
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
                   ),
