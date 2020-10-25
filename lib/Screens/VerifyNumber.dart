@@ -48,7 +48,23 @@ class _VerifyNumberState extends State<VerifyNumber> {
                 SizedBox(
                   height: 15,
                 ),
-                TextField(),
+                Row(
+                  children: [
+                    Flexible(child: TextField()),
+                    SizedBox(
+                      width: 18,
+                    ),
+                    Flexible(child: TextField()),
+                    SizedBox(
+                      width: 18,
+                    ),
+                    Flexible(child: TextField()),
+                    SizedBox(
+                      width: 18,
+                    ),
+                    Flexible(child: TextField()),
+                  ],
+                ),
                 SizedBox(
                   height: 20,
                 ),
