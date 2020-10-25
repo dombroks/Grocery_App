@@ -23,10 +23,12 @@ class _SplashScreenState extends State<SplashScreen> {
       Provider.of<Mediator>(context, listen: false).fetchData();
       Provider.of<Mediator>(context, listen: false).fetchCartElements();
     });
+    /*
     Timer(
         Duration(seconds: 4),
         () => Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => Home(0))));
+            */
     super.initState();
   }
 
@@ -34,13 +36,26 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        width: double.infinity,
+        height: double.infinity,
         color: kPrimaryColor,
-        child: Center(
-          child: SvgPicture.asset(
-            "assets/icons/vegetable.svg",
-            width: 100,
-            height: 100,
-          ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SvgPicture.asset(
+              "assets/icons/vegetable.svg",
+              width: 100,
+              height: 100,
+            ),
+            SizedBox(
+              height: 25,
+            ),
+            RaisedButton(onPressed: (){
+
+            },
+            color: Colors.white,
+            child: Text("SIGN IN",),)
+          ],
         ),
       ),
     );
