@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_app/Screens/AddNumber.dart';
 
 import 'MyButton.dart';
 
@@ -49,7 +50,10 @@ class SignUp extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                MyButton("NEXT"),
+                MyButton("NEXT", () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => AddNumber()));
+                }),
               ],
             )
           ],

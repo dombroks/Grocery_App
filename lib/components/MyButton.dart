@@ -4,14 +4,18 @@ import '../constants.dart';
 
 class MyButton extends StatelessWidget {
   String opt;
-  MyButton(String opt) {
+  Function job;
+  MyButton(String opt, Function job) {
     this.opt = opt;
+    this.job = job;
   }
   @override
   Widget build(BuildContext context) {
     return RaisedButton(
       color: kPrimaryColor,
-      onPressed: () {},
+      onPressed: () {
+        job();
+      },
       child: Text(
         "$opt",
         style: TextStyle(

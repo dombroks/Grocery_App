@@ -45,7 +45,7 @@ class ChangePasswordScreen extends StatelessWidget {
               SizedBox(
                 height: 15,
               ),
-              MyButton("SAVE"),
+              MyButton("SAVE",(){}),
             ],
           ),
         ),

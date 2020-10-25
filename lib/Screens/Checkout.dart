@@ -112,7 +112,7 @@ class _checkoutScreenState extends State<checkoutScreen> {
                 ),
               ),
             ),
-            MyButton("Proceed")
+            MyButton("Proceed",(){})
           ],
         ),
       ),
