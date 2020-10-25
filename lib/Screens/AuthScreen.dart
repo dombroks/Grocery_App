@@ -41,6 +41,10 @@ class _AuthScreenState extends State<AuthScreen> {
       ),
       body: Container(
         color: Colors.white,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [],
+        ),
       ),
     );
   }
