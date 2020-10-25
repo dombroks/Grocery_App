@@ -20,11 +20,12 @@ class _AddNumberState extends State<AddNumber> {
         title: Text("Add number"),
       ),
       body: Card(
+        elevation: 6,
         child: Padding(
           padding: const EdgeInsets.all(18),
           child: Container(
             width: double.infinity,
-            height: double.infinity,
+            height: 208,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
