@@ -2,17 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:grocery_app/components/Sign.dart';
 
 // ignore: must_be_immutable
-class AuthScreen extends StatefulWidget {
+class AuthScreen extends StatelessWidget {
   String _inOrOut;
   AuthScreen(String _inOrOut) {
     this._inOrOut = _inOrOut;
   }
-  @override
-  _AuthScreenState createState() => _AuthScreenState();
-}
 
-class _AuthScreenState extends State<AuthScreen> {
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +41,7 @@ class _AuthScreenState extends State<AuthScreen> {
         ),
         actions: [Text("Sign up")],
       ),
-      body: Sign("In"),
+      body: (_inOrOut == "In") ? Sign("In") : Sign("Out"),
     );
   }
 }
