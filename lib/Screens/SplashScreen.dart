@@ -74,7 +74,10 @@ class _SplashScreenState extends State<SplashScreen> {
               height: 15,
             ),
             FlatButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => AuthScreen("Out")));
+              },
               child: Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: 13, horizontal: 30),
