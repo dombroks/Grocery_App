@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_app/components/MyButton.dart';
 
 class AuthScreen extends StatefulWidget {
   @override
@@ -64,6 +65,30 @@ class _AuthScreenState extends State<AuthScreen> {
                   fontSize: 15,
                   color: Colors.grey,
                 ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              TextField(
+                decoration: InputDecoration(hintText: "Email address"),
+              ),
+              TextField(
+                decoration: InputDecoration(hintText: "Password"),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Forgot passwod?",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  MyButton("SIGN IN"),
+                ],
               )
             ],
           ),
