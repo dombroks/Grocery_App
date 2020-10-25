@@ -9,6 +9,30 @@ class AddNumber extends StatelessWidget {
         backgroundColor: kPrimaryColor,
         title: Text("Add number"),
       ),
+      body: Card(
+        child: Container(
+          width: double.infinity,
+          height: double.infinity,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "What's your number",
+                style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text(
+                "Enter mobile number to continue",
+                style: TextStyle(
+                  color: Colors.grey,
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
