@@ -51,12 +51,12 @@ class _SplashScreenState extends State<SplashScreen> {
               height: 25,
             ),
             RaisedButton(
-              elevation: 5,
+              elevation: 4,
               onPressed: () {},
               color: Colors.white,
               child: Padding(
                 padding:
-                    const EdgeInsets.symmetric(vertical: 13, horizontal: 30),
+                    const EdgeInsets.symmetric(vertical: 11, horizontal: 31),
                 child: Text(
                   "SIGN IN",
                   style: TextStyle(
