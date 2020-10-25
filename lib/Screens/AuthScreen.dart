@@ -55,6 +55,9 @@ class _AuthScreenState extends State<AuthScreen> {
                   fontWeight: FontWeight.w500,
                 ),
               ),
+              SizedBox(
+                height: 5,
+              ),
               Text(
                 "Enter email & password to continue",
                 style: TextStyle(
