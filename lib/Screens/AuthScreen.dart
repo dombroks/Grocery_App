@@ -82,7 +82,7 @@ class _AuthScreenState extends State<AuthScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Forgot passwod?",
+                    "Forgot password?",
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.grey,
