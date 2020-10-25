@@ -10,29 +10,36 @@ class AddNumber extends StatelessWidget {
         title: Text("Add number"),
       ),
       body: Card(
-        child: Container(
-          width: double.infinity,
-          height: double.infinity,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "What's your number",
-                style: TextStyle(
-                  fontSize: 25,
-                  fontWeight: FontWeight.bold,
+        child: Padding(
+          padding: const EdgeInsets.all(18),
+          child: Container(
+            width: double.infinity,
+            height: double.infinity,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: 10,
                 ),
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              Text(
-                "Enter mobile number to continue",
-                style: TextStyle(
-                  color: Colors.grey,
+                Text(
+                  "What's your number",
+                  style: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              )
-            ],
+                SizedBox(
+                  height: 5,
+                ),
+                Text(
+                  "Enter mobile number to continue",
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontWeight: FontWeight.w500,
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),
