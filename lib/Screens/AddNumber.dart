@@ -37,7 +37,11 @@ class AddNumber extends StatelessWidget {
                     color: Colors.grey,
                     fontWeight: FontWeight.w500,
                   ),
-                )
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                
               ],
             ),
           ),
