@@ -84,9 +84,10 @@ class _AddNumberState extends State<AddNumber> {
                   ],
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 25,
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [MyButton("SEND", () {})],
                 )
               ],
