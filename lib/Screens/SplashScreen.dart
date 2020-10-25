@@ -65,6 +65,23 @@ class _SplashScreenState extends State<SplashScreen> {
                   ),
                 ),
               ),
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            FlatButton(
+              onPressed: () {},
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 13, horizontal: 30),
+                child: Text(
+                  "SIGN UP",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
             )
           ],
         ),
