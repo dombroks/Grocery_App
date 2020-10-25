@@ -1,7 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_app/components/MyButton.dart';
 import 'package:grocery_app/constants.dart';
 
-class AddNumber extends StatelessWidget {
+class AddNumber extends StatefulWidget {
+  @override
+  _AddNumberState createState() => _AddNumberState();
+}
+
+class _AddNumberState extends State<AddNumber> {
+  String _firstCountryPrefix = "+213";
+
+  List<String> _countriesPrefixs = ["+213", "+01", "+43"];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +51,44 @@ class AddNumber extends StatelessWidget {
                 SizedBox(
                   height: 20,
                 ),
-                
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    DropdownButton(
+                      icon: Icon(
+                        Icons.arrow_drop_down,
+                        color: kPrimaryColor,
+                      ),
+                      value: _firstCountryPrefix,
+                      items: _countriesPrefixs.map((value) {
+                        return DropdownMenuItem(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
+                      onChanged: (newValue) {
+                        setState(() {
+                          _firstCountryPrefix = newValue;
+                        });
+                      },
+                    ),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Flexible(
+                        child: TextField(
+                      keyboardType: TextInputType.phone,
+                      decoration:
+                          InputDecoration(hintText: "Your mobile number"),
+                    )),
+                  ],
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  children: [MyButton("SEND", () {})],
+                )
               ],
             ),
           ),
