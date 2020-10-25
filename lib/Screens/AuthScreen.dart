@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_app/components/Sign.dart';
+import 'package:grocery_app/components/SignIn.dart';
+import 'package:grocery_app/components/SignOut.dart';
 
 // ignore: must_be_immutable
 class AuthScreen extends StatelessWidget {
@@ -41,7 +42,7 @@ class AuthScreen extends StatelessWidget {
         ),
         actions: [Text("Sign up")],
       ),
-      body: (_inOrOut == "In") ? Sign("In") : Sign("Out"),
+      body: (_inOrOut == "In") ? SignIn() : SignOut(),
     );
   }
 }

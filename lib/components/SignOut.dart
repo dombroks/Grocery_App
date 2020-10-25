@@ -2,12 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'MyButton.dart';
 
-class Sign extends StatelessWidget {
-  String _inOrOut;
-  Sign(String _inOrOut) {
-    this._inOrOut = _inOrOut;
-  }
-
+class SignOut extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,7 +15,7 @@ class Sign extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Sign in to Grocery App",
+              "Welcom to Grocery App",
               style: TextStyle(
                 fontSize: 25,
                 fontWeight: FontWeight.w500,
@@ -30,7 +25,7 @@ class Sign extends StatelessWidget {
               height: 5,
             ),
             Text(
-              "Enter email & password to continue",
+              "Let's get started",
               style: TextStyle(
                 fontSize: 15,
                 color: Colors.grey,
@@ -38,6 +33,9 @@ class Sign extends StatelessWidget {
             ),
             SizedBox(
               height: 20,
+            ),
+            TextField(
+              decoration: InputDecoration(hintText: "Username"),
             ),
             TextField(
               decoration: InputDecoration(hintText: "Email address"),
@@ -49,17 +47,9 @@ class Sign extends StatelessWidget {
               height: 20,
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Text(
-                  "Forgot password?",
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.grey,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                MyButton("SIGN IN"),
+                MyButton("NEXT"),
               ],
             )
           ],
