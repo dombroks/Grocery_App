@@ -43,16 +43,27 @@ class _AuthScreenState extends State<AuthScreen> {
         width: double.infinity,
         height: double.infinity,
         color: Colors.white,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "Sign in to Grocery App",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
+        child: Padding(
+          padding: const EdgeInsets.all(18),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Sign in to Grocery App",
+                style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
-            )
-          ],
+              Text(
+                "Enter email & password to continue",
+                style: TextStyle(
+                  fontSize: 15,
+                  color: Colors.grey,
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
