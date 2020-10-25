@@ -39,7 +39,7 @@ class _VerifyNumberState extends State<VerifyNumber> {
                   height: 5,
                 ),
                 Text(
-                  "4 digits code sent to +213 65 82 02 27 11",
+                  "4 digits code were sent to +213 65 82 02 27 11",
                   style: TextStyle(
                     color: Colors.grey,
                     fontWeight: FontWeight.w500,
