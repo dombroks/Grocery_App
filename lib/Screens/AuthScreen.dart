@@ -84,6 +84,8 @@ class _AuthScreenState extends State<AuthScreen> {
                   Text(
                     "Forgot passwod?",
                     style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.grey,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
