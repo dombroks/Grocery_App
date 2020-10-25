@@ -4,7 +4,6 @@ import "package:flutter/material.dart";
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:grocery_app/Provider/Mediator.dart';
 import 'package:grocery_app/Screens/AuthScreen.dart';
-import 'package:grocery_app/Screens/Home.dart';
 import 'package:grocery_app/constants.dart';
 import 'package:provider/provider.dart';
 
@@ -55,7 +54,7 @@ class _SplashScreenState extends State<SplashScreen> {
               elevation: 4,
               onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => AuthScreen()));
+                    MaterialPageRoute(builder: (context) => AuthScreen("In")));
               },
               color: Colors.white,
               child: Padding(

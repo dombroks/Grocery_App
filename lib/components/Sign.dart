@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'MyButton.dart';
 
 class Sign extends StatelessWidget {
-  const Sign({
-    Key key,
-  }) : super(key: key);
+  String _inOrOut;
+  Sign(String _inOrOut) {
+    this._inOrOut = _inOrOut;
+  }
 
   @override
   Widget build(BuildContext context) {
