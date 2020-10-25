@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:grocery_app/components/SignIn.dart';
 import 'package:grocery_app/components/SignUp.dart';
 
+import '../constants.dart';
+
 // ignore: must_be_immutable
 class AuthScreen extends StatelessWidget {
   String _inOrOut;
@@ -23,7 +25,7 @@ class AuthScreen extends StatelessWidget {
               child: Text(
                 "Sign in",
                 style: TextStyle(
-                    color: Colors.grey,
+                    color: (_inOrOut == "In") ? kPrimaryColor : Colors.grey,
                     fontWeight: FontWeight.bold,
                     fontSize: 18),
               ),
@@ -33,7 +35,7 @@ class AuthScreen extends StatelessWidget {
               child: Text(
                 "Sign up",
                 style: TextStyle(
-                    color: Colors.grey,
+                    color: (_inOrOut == "In") ? Colors.grey : kPrimaryColor,
                     fontWeight: FontWeight.bold,
                     fontSize: 18),
               ),
