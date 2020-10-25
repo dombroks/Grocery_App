@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'MyButton.dart';
 
-class SignOut extends StatelessWidget {
+class SignUp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
