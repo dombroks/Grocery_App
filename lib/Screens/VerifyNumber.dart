@@ -54,7 +54,16 @@ class _VerifyNumberState extends State<VerifyNumber> {
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [Text("Resend"), MyButton("VERIFY", () {})],
+                  children: [
+                    Text(
+                      "Resend",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.grey,
+                      ),
+                    ),
+                    MyButton("VERIFY", () {})
+                  ],
                 )
               ],
             ),
