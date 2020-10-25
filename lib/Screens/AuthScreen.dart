@@ -40,10 +40,19 @@ class _AuthScreenState extends State<AuthScreen> {
         actions: [Text("Sign up")],
       ),
       body: Container(
+        width: double.infinity,
+        height: double.infinity,
         color: Colors.white,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [],
+          children: [
+            Text(
+              "Sign in to Grocery App",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+            )
+          ],
         ),
       ),
     );
