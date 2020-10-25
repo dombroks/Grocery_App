@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_app/Screens/VerifyNumber.dart';
 import 'package:grocery_app/components/MyButton.dart';
 import 'package:grocery_app/constants.dart';
 
@@ -89,7 +90,14 @@ class _AddNumberState extends State<AddNumber> {
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
-                  children: [MyButton("SEND", () {})],
+                  children: [
+                    MyButton("SEND", () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => VerifyNumber()));
+                    })
+                  ],
                 )
               ],
             ),
