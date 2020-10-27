@@ -81,10 +81,11 @@ class _SignInState extends State<SignIn> {
                 MyButton("SIGN IN", () {
                   provider.signInWithEmailAndPassword(
                       emailController.text, passwordController.text);
-
-                  Scaffold.of(context).showSnackBar(SnackBar(
-                    content: Text(provider.authErrorMessage),
-                  ));
+                  if (provider.authErrorMessage != "") {
+                    Scaffold.of(context).showSnackBar(SnackBar(
+                      content: Text(provider.authErrorMessage),
+                    ));
+                  }
                 }),
               ],
             )
