@@ -4,10 +4,27 @@ import 'package:provider/provider.dart';
 
 import 'MyButton.dart';
 
-class SignIn extends StatelessWidget {
+class SignIn extends StatefulWidget {
+  @override
+  _SignInState createState() => _SignInState();
+}
+
+class _SignInState extends State<SignIn> {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<Mediator>(context, listen: false);
+
     return Container(
       width: double.infinity,
       height: double.infinity,
@@ -38,9 +55,11 @@ class SignIn extends StatelessWidget {
               height: 20,
             ),
             TextField(
+              controller: emailController,
               decoration: InputDecoration(hintText: "Email address"),
             ),
             TextField(
+              controller: passwordController,
               decoration: InputDecoration(hintText: "Password"),
             ),
             SizedBox(
