@@ -144,4 +144,8 @@ class Mediator extends ChangeNotifier {
       authErrorMessage = e.message;
     }
   }
+
+  Future isLoggedIn() async {
+    return await _auth.currentUser();
+  }
 }

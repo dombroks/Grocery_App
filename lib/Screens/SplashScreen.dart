@@ -7,6 +7,8 @@ import 'package:grocery_app/Screens/AuthScreen.dart';
 import 'package:grocery_app/constants.dart';
 import 'package:provider/provider.dart';
 
+import 'Home.dart';
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({
     Key key,
@@ -23,12 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
       Provider.of<Mediator>(context, listen: false).fetchData();
       Provider.of<Mediator>(context, listen: false).fetchCartElements();
     });
-    /*
-    Timer(
-        Duration(seconds: 4),
-        () => Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => Home(0))));
-            */
+
     super.initState();
   }
 
@@ -53,7 +50,7 @@ class _SplashScreenState extends State<SplashScreen> {
             RaisedButton(
               elevation: 4,
               onPressed: () {
-                Navigator.push(context,
+                Navigator.pushReplacement(context,
                     MaterialPageRoute(builder: (context) => AuthScreen("In")));
               },
               color: Colors.white,
@@ -75,7 +72,7 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
             FlatButton(
               onPressed: () {
-                Navigator.push(context,
+                Navigator.pushReplacement(context,
                     MaterialPageRoute(builder: (context) => AuthScreen("Out")));
               },
               child: Padding(
