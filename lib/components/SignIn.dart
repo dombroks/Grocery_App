@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_app/Provider/Mediator.dart';
+import 'package:grocery_app/Screens/Home.dart';
 import 'package:provider/provider.dart';
 
 import 'MyButton.dart';
@@ -85,6 +86,9 @@ class _SignInState extends State<SignIn> {
                     Scaffold.of(context).showSnackBar(SnackBar(
                       content: Text(provider.authErrorMessage),
                     ));
+                  } else {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Home(0)));
                   }
                 }),
               ],
