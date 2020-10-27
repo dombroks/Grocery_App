@@ -148,4 +148,8 @@ class Mediator extends ChangeNotifier {
   Future isLoggedIn() async {
     return await _auth.currentUser();
   }
+
+  Future signOut() async {
+    await _auth.signOut();
+  }
 }
