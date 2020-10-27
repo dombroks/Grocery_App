@@ -4,6 +4,7 @@ import 'package:grocery_app/Model/element.dart';
 
 class Mediator extends ChangeNotifier {
   final Firestore _db = Firestore.instance;
+  
 
   List<element> vegetables = [];
   List<element> fruits = [];
