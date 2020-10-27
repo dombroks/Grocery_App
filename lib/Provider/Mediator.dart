@@ -130,5 +130,7 @@ class Mediator extends ChangeNotifier {
     return isExicted;
   }
 
-  Future<void> signInWithEmailAndPassword() async {}
+  Future<void> signInWithEmailAndPassword(String email, String password) async {
+    await _auth.signInWithEmailAndPassword(email: email, password: password);
+  }
 }
