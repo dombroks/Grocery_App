@@ -87,7 +87,7 @@ class _SignInState extends State<SignIn> {
                       content: Text(provider.authErrorMessage),
                     ));
                   } else {
-                    Navigator.push(context,
+                    Navigator.pushReplacement(context,
                         MaterialPageRoute(builder: (context) => Home(0)));
                   }
                 }),
