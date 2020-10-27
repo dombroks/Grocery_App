@@ -1,14 +1,16 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:grocery_app/Provider/Mediator.dart';
 import 'package:grocery_app/Screens/AddPaymentMethod.dart';
+import 'package:grocery_app/Screens/AuthScreen.dart';
 import 'package:grocery_app/Screens/ChangePasswordScreen.dart';
-import 'package:grocery_app/Screens/PaymentMethod.dart';
 import 'package:grocery_app/Screens/RecipientDetails.dart';
-import 'package:grocery_app/components/DeliveryType.dart';
+import 'package:grocery_app/Screens/SplashScreen.dart';
 import 'package:grocery_app/components/ProfileCardItem.dart';
 import 'package:grocery_app/constants.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
 
 class Profile extends StatefulWidget {
   @override
@@ -204,6 +206,7 @@ class _ProfileState extends State<Profile> {
     showDialog(
       context: context,
       builder: (context) {
+        final provider = Provider.of<Mediator>(context, listen: false);
         return AlertDialog(
           title: Row(
             children: [
@@ -257,7 +260,8 @@ class _ProfileState extends State<Profile> {
               color: Colors.red,
               child: Text('LOGOUT'),
               onPressed: () async {
-                Navigator.of(context).pop();
+                provider.signOut();
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>AuthScreen("In")));
               },
             ),
           ],
