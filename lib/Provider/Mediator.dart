@@ -1,10 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:grocery_app/Model/element.dart';
 
 class Mediator extends ChangeNotifier {
   final Firestore _db = Firestore.instance;
-  
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   List<element> vegetables = [];
   List<element> fruits = [];
@@ -128,4 +129,6 @@ class Mediator extends ChangeNotifier {
     });
     return isExicted;
   }
+
+  Future<void> signInWithEmailAndPassword() async {}
 }
