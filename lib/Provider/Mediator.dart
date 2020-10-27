@@ -1,11 +1,17 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:grocery_app/Model/element.dart';
 
 class Mediator extends ChangeNotifier {
+  // Firebase instances
   final Firestore _db = Firestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  // Error massages
+  String authErrorMessage = "";
 
   List<element> vegetables = [];
   List<element> fruits = [];
@@ -130,7 +136,12 @@ class Mediator extends ChangeNotifier {
     return isExicted;
   }
 
-  Future<void> signInWithEmailAndPassword(String email, String password) async {
-    await _auth.signInWithEmailAndPassword(email: email, password: password);
+  Future signInWithEmailAndPassword(String email, String password) async {
+    try {
+      return await _auth.signInWithEmailAndPassword(
+          email: email, password: password);
+    } on PlatformException catch (e) {
+      authErrorMessage = e.message;
+    }
   }
 }
