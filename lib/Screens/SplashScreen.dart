@@ -50,8 +50,11 @@ class _SplashScreenState extends State<SplashScreen> {
             RaisedButton(
               elevation: 4,
               onPressed: () {
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => AuthScreen("In")));
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => AuthScreen("In")),
+                  ModalRoute.withName('/'),
+                );
               },
               color: Colors.white,
               child: Padding(
@@ -72,8 +75,11 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
             FlatButton(
               onPressed: () {
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => AuthScreen("Out")));
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => AuthScreen("Out")),
+                  ModalRoute.withName('/'),
+                );
               },
               child: Padding(
                 padding:
