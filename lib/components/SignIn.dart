@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_app/Provider/Mediator.dart';
+import 'package:grocery_app/Screens/ForgotPassword.dart';
 import 'package:grocery_app/Screens/Home.dart';
 import 'package:provider/provider.dart';
 
@@ -71,13 +72,21 @@ class _SignInState extends State<SignIn> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  "Forgot password?",
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.grey,
-                    fontWeight: FontWeight.bold,
+                GestureDetector(
+                  child: Text(
+                    "Forgot password?",
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.grey,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ForgotPassword()));
+                  },
                 ),
                 MyButton("SIGN IN", () {
                   provider.signInWithEmailAndPassword(

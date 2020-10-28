@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:back_button_interceptor/back_button_interceptor.dart';
 import 'package:flutter/material.dart';
 import 'package:grocery_app/Provider/Mediator.dart';
 import 'package:grocery_app/Screens/AddPaymentMethod.dart';
