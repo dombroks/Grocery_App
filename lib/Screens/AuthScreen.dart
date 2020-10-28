@@ -15,6 +15,7 @@ class AuthScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
+      initialIndex: (_inOrOut == "In") ? 0 : 1,
       length: 2,
       child: Scaffold(
           appBar: AppBar(
