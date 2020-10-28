@@ -264,8 +264,11 @@ class _ProfileState extends State<Profile> {
               child: Text('LOGOUT'),
               onPressed: () async {
                 provider.signOut();
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => AuthScreen("In")));
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => AuthScreen("In")),
+                  ModalRoute.withName('/'),
+                );
               },
             ),
           ],
