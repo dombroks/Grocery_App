@@ -19,7 +19,6 @@ class homeScreen extends StatefulWidget {
 class _homeScreenState extends State<homeScreen> {
   @override
   void initState() {
-   
     super.initState();
   }
 
@@ -173,7 +172,6 @@ class _homeScreenState extends State<homeScreen> {
                   itemCount: vegetables.length,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
-                    
                     element e = vegetables[index];
 
                     return (vegetables.length == 0)
