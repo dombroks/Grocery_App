@@ -7,7 +7,6 @@ import 'package:grocery_app/Screens/AuthScreen.dart';
 import 'package:grocery_app/constants.dart';
 import 'package:provider/provider.dart';
 
-import 'Home.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({

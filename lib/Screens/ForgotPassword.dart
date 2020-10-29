@@ -1,11 +1,26 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:grocery_app/Provider/Mediator.dart';
 import 'package:grocery_app/components/MyButton.dart';
 import 'package:grocery_app/constants.dart';
+import 'package:provider/provider.dart';
 
-class ForgotPassword extends StatelessWidget {
+class ForgotPassword extends StatefulWidget {
+  @override
+  _ForgotPasswordState createState() => _ForgotPasswordState();
+}
+
+class _ForgotPasswordState extends State<ForgotPassword> {
+  final _emailController = TextEditingController();
+  @override
+  void dispose() {
+    _emailController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<Mediator>(context, listen: false);
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kPrimaryColor,
@@ -41,6 +56,7 @@ class ForgotPassword extends StatelessWidget {
                   height: 20,
                 ),
                 TextField(
+                  controller: _emailController,
                   decoration: InputDecoration(hintText: "Email address"),
                 ),
                 SizedBox(
@@ -48,7 +64,12 @@ class ForgotPassword extends StatelessWidget {
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
-                  children: [MyButton("SEND", () {})],
+                  children: [
+                    MyButton("SEND", () async {
+                      await provider
+                          .resetPasswordWithEmail(_emailController.text);
+                    })
+                  ],
                 )
               ],
             ),

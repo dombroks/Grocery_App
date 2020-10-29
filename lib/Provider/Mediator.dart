@@ -179,8 +179,18 @@ class Mediator extends ChangeNotifier {
         phoneNumber: phoneNumber,
         timeout: Duration(seconds: 60),
         verificationCompleted: null,
-        verificationFailed: null,
+        verificationFailed: (AuthException exception) {
+          print(exception.message);
+        },
         codeSent: null,
         codeAutoRetrievalTimeout: null);
+  }
+
+  Future<void> resetPasswordWithEmail(String email) async {
+    try {
+      await _auth.sendPasswordResetEmail(email: email);
+    } catch (e) {
+      print(e.toString());
+    }
   }
 }
