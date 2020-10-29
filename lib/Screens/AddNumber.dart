@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_app/Provider/Mediator.dart';
 import 'package:grocery_app/Screens/VerifyNumber.dart';
 import 'package:grocery_app/components/MyButton.dart';
 import 'package:grocery_app/constants.dart';
+import 'package:provider/provider.dart';
 
 class AddNumber extends StatefulWidget {
   @override
@@ -9,12 +11,19 @@ class AddNumber extends StatefulWidget {
 }
 
 class _AddNumberState extends State<AddNumber> {
+  final phoneNumberController = TextEditingController();
   String _firstCountryPrefix = "+213";
 
   List<String> _countriesPrefixs = ["+213", "+01", "+43"];
+  @override
+  void dispose() {
+    phoneNumberController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<Mediator>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kPrimaryColor,
@@ -79,6 +88,7 @@ class _AddNumberState extends State<AddNumber> {
                     ),
                     Flexible(
                         child: TextField(
+                          controller: phoneNumberController,
                       keyboardType: TextInputType.phone,
                       decoration:
                           InputDecoration(hintText: "Your mobile number"),
@@ -92,6 +102,10 @@ class _AddNumberState extends State<AddNumber> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     MyButton("SEND", () {
+                     
+                      provider.addPhoneNumber("" +
+                          _firstCountryPrefix +
+                          phoneNumberController.text);
                       Navigator.push(
                           context,
                           MaterialPageRoute(

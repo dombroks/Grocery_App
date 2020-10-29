@@ -163,4 +163,14 @@ class Mediator extends ChangeNotifier {
       'email': email,
     });
   }
+
+  Future addPhoneNumber(String phoneNumber) async {
+    final FirebaseUser user = await _auth.currentUser();
+    final uid = user.uid;
+
+    await _db
+        .collection("Users")
+        .document(uid)
+        .updateData({"phoneNumber": phoneNumber});
+  }
 }
