@@ -145,8 +145,9 @@ class Mediator extends ChangeNotifier {
     }
   }
 
-  Future isLoggedIn() async {
-    return await _auth.currentUser();
+  Future<bool> isLoggedIn() async {
+    FirebaseUser user = await _auth.currentUser();
+    return user.uid == null;
   }
 
   Future signOut() async {

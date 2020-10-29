@@ -4,9 +4,9 @@ import "package:flutter/material.dart";
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:grocery_app/Provider/Mediator.dart';
 import 'package:grocery_app/Screens/AuthScreen.dart';
+import 'package:grocery_app/Screens/Home.dart';
 import 'package:grocery_app/constants.dart';
 import 'package:provider/provider.dart';
-
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({
@@ -20,6 +20,16 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
+    /*
+    // ignore: unrelated_type_equality_checks
+    if ((Provider.of<Mediator>(context, listen: false).isLoggedIn()) == true) {
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => Home(0)),
+        ModalRoute.withName('/'),
+      );
+    }
+    */
     Future.delayed(Duration.zero).then((_) async {
       Provider.of<Mediator>(context, listen: false).fetchData();
       Provider.of<Mediator>(context, listen: false).fetchCartElements();
