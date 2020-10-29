@@ -95,12 +95,13 @@ class Mediator extends ChangeNotifier {
   }
 
   Future addElementToCart(element element) async {
+    FirebaseUser user = await _auth.currentUser();
     if (isExisted(cartElements, element) == false) {
       cartElements.add(element);
       totalPrice += double.parse(element.price);
       await _db
           .collection("Cart")
-          .document(element.name)
+          .document(user.uid)
           .setData(element.toMap(element));
     }
 
