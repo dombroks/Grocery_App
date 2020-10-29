@@ -66,10 +66,12 @@ class _SignUpState extends State<SignUp> {
             TextField(
               controller: emailController,
               decoration: InputDecoration(hintText: "Email address"),
+              keyboardType: TextInputType.emailAddress,
             ),
             TextField(
               controller: passwordController,
               decoration: InputDecoration(hintText: "Password"),
+              obscureText: true,
             ),
             SizedBox(
               height: 20,
