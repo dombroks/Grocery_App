@@ -6,10 +6,12 @@ import 'package:provider/provider.dart';
 import 'MyButton.dart';
 
 class SignUp extends StatelessWidget {
-
-@override
+  @override
   Widget build(BuildContext context) {
-    var provider = Provider.of<Mediator>(context, listen: false);  
+    var provider = Provider.of<Mediator>(context, listen: false);
+    TextEditingController usernameController;
+    TextEditingController emailController;
+    TextEditingController passwordController;
     return Container(
       width: double.infinity,
       height: double.infinity,
@@ -40,12 +42,15 @@ class SignUp extends StatelessWidget {
               height: 20,
             ),
             TextField(
+              controller: usernameController,
               decoration: InputDecoration(hintText: "Username"),
             ),
             TextField(
+              controller: emailController,
               decoration: InputDecoration(hintText: "Email address"),
             ),
             TextField(
+              controller: passwordController,
               decoration: InputDecoration(hintText: "Password"),
             ),
             SizedBox(
@@ -55,7 +60,6 @@ class SignUp extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 MyButton("NEXT", () {
-                  
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => AddNumber()));
                 }),
