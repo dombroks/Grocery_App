@@ -88,7 +88,7 @@ class _AddNumberState extends State<AddNumber> {
                     ),
                     Flexible(
                         child: TextField(
-                          controller: phoneNumberController,
+                      controller: phoneNumberController,
                       keyboardType: TextInputType.phone,
                       decoration:
                           InputDecoration(hintText: "Your mobile number"),
@@ -102,7 +102,6 @@ class _AddNumberState extends State<AddNumber> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     MyButton("SEND", () {
-                     
                       provider.addPhoneNumber("" +
                           _firstCountryPrefix +
                           phoneNumberController.text);
