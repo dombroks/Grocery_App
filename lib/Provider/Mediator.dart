@@ -173,4 +173,14 @@ class Mediator extends ChangeNotifier {
         .document(uid)
         .updateData({"phoneNumber": phoneNumber});
   }
+
+  Future verifyPhoneNumber(String phoneNumber) async {
+    _auth.verifyPhoneNumber(
+        phoneNumber: phoneNumber,
+        timeout: Duration(seconds: 60),
+        verificationCompleted: null,
+        verificationFailed: null,
+        codeSent: null,
+        codeAutoRetrievalTimeout: null);
+  }
 }

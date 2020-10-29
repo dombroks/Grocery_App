@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_app/Provider/Mediator.dart';
 import 'package:grocery_app/components/MyButton.dart';
 import 'package:grocery_app/constants.dart';
+import 'package:provider/provider.dart';
 
 class VerifyNumber extends StatefulWidget {
   String _phoneNumber;
@@ -14,6 +16,8 @@ class VerifyNumber extends StatefulWidget {
 class _VerifyNumberState extends State<VerifyNumber> {
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<Mediator>(context, listen: false);
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kPrimaryColor,
@@ -82,7 +86,9 @@ class _VerifyNumberState extends State<VerifyNumber> {
                         color: Colors.grey,
                       ),
                     ),
-                    MyButton("VERIFY", () {})
+                    MyButton("VERIFY", () {
+                      provider.verifyPhoneNumber(widget._phoneNumber);
+                    })
                   ],
                 )
               ],
