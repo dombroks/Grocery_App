@@ -3,6 +3,10 @@ import 'package:grocery_app/components/MyButton.dart';
 import 'package:grocery_app/constants.dart';
 
 class VerifyNumber extends StatefulWidget {
+  String _phoneNumber;
+  VerifyNumber(String _phoneNumber) {
+    this._phoneNumber = _phoneNumber;
+  }
   @override
   _VerifyNumberState createState() => _VerifyNumberState();
 }
@@ -13,7 +17,7 @@ class _VerifyNumberState extends State<VerifyNumber> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kPrimaryColor,
-        title: Text("Add number"),
+        title: Text("Verify number"),
       ),
       body: Card(
         elevation: 6,
@@ -39,7 +43,7 @@ class _VerifyNumberState extends State<VerifyNumber> {
                   height: 5,
                 ),
                 Text(
-                  "4 digits code were sent to +213 65 82 02 27 11",
+                  "4 digits code were sent to " + widget._phoneNumber,
                   style: TextStyle(
                     color: Colors.grey,
                     fontWeight: FontWeight.w500,

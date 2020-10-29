@@ -102,13 +102,14 @@ class _AddNumberState extends State<AddNumber> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     MyButton("SEND", () {
-                      provider.addPhoneNumber("" +
-                          _firstCountryPrefix +
-                          phoneNumberController.text);
+                      provider.addPhoneNumber(
+                          _firstCountryPrefix + phoneNumberController.text);
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => VerifyNumber()));
+                              builder: (context) => VerifyNumber(
+                                  _firstCountryPrefix +
+                                      phoneNumberController.text)));
                     })
                   ],
                 )
