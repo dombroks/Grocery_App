@@ -5,13 +5,31 @@ import 'package:provider/provider.dart';
 
 import 'MyButton.dart';
 
-class SignUp extends StatelessWidget {
+class SignUp extends StatefulWidget {
+  @override
+  _SignUpState createState() => _SignUpState();
+}
+
+class _SignUpState extends State<SignUp> {
+  final usernameController = TextEditingController();
+
+  final emailController = TextEditingController();
+
+  final passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    usernameController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<Mediator>(context, listen: false);
-    TextEditingController usernameController;
-    TextEditingController emailController;
-    TextEditingController passwordController;
+
     return Container(
       width: double.infinity,
       height: double.infinity,
@@ -59,7 +77,9 @@ class SignUp extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                MyButton("NEXT", () {
+                MyButton("NEXT", () async {
+                  provider.signUpWithEmailAndPassword(usernameController.text,
+                      emailController.text, passwordController.text);
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => AddNumber()));
                 }),
