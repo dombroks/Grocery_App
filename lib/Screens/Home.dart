@@ -31,12 +31,13 @@ class Home extends StatelessWidget {
             ],
           ),
           backgroundColor: kPrimaryColor,
-          leading: GestureDetector(child: Icon(Icons.menu),onTap: () {
-            Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => TermsConditions()));
-          },),
+          leading: GestureDetector(
+            child: Icon(Icons.menu),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => TermsConditions()));
+            },
+          ),
           actions: <Widget>[
             Icon(Icons.search),
             SizedBox(
