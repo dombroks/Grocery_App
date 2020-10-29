@@ -152,4 +152,15 @@ class Mediator extends ChangeNotifier {
   Future signOut() async {
     await _auth.signOut();
   }
+
+  Future signUpWithEmailAndPassword(
+      String username, String email, String password) async {
+    AuthResult result = await _auth.createUserWithEmailAndPassword(
+        email: email, password: password);
+    FirebaseUser user = result.user;
+    await _db.collection("Users").document(user.uid).setData({
+      'username': username,
+      'email': email,
+    });
+  }
 }
