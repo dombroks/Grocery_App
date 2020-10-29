@@ -95,7 +95,7 @@ class Mediator extends ChangeNotifier {
   }
 
   Future addElementToCart(element element) async {
-    if (isExicted(cartElements, element) == false) {
+    if (isExisted(cartElements, element) == false) {
       cartElements.add(element);
       totalPrice += double.parse(element.price);
       await _db
@@ -126,14 +126,14 @@ class Mediator extends ChangeNotifier {
     notifyListeners();
   }
 
-  bool isExicted(List<element> data, element e) {
-    bool isExicted = false;
+  bool isExisted(List<element> data, element e) {
+    bool isExisted = false;
     data.forEach((a) {
       if (a.name == e.name) {
-        isExicted = true;
+        isExisted = true;
       }
     });
-    return isExicted;
+    return isExisted;
   }
 
   Future signInWithEmailAndPassword(String email, String password) async {
