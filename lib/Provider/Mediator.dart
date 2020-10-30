@@ -137,7 +137,7 @@ class Mediator extends ChangeNotifier {
     return isExisted;
   }
 
-  Future signInWithEmailAndPassword(String email, String password) async {
+  Future<void> signInWithEmailAndPassword(String email, String password) async {
     try {
       return await _auth.signInWithEmailAndPassword(
           email: email, password: password);
@@ -154,6 +154,7 @@ class Mediator extends ChangeNotifier {
 
   Future signOut() async {
     await _auth.signOut();
+
     signInErrorMessage = "";
     signOutErrorMessage = "";
   }

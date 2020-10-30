@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:grocery_app/Model/element.dart';
 import 'package:grocery_app/Provider/Mediator.dart';
 import 'package:grocery_app/components/category.dart';
-import 'package:grocery_app/components/vegetaleAndFruit.dart';
+import 'package:grocery_app/model/vegetaleAndFruit.dart';
 import 'package:provider/provider.dart';
 
 class homeScreen extends StatefulWidget {
