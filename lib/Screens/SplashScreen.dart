@@ -7,6 +7,7 @@ import 'package:grocery_app/Screens/AuthScreen.dart';
 import 'package:grocery_app/Screens/Home.dart';
 import 'package:grocery_app/constants.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({
@@ -18,11 +19,15 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  Future<int> _loadSessionData() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getInt("isLoggedIn");
+  }
+
   @override
   void initState() {
-    /*
-    // ignore: unrelated_type_equality_checks
-    if ((Provider.of<Mediator>(context, listen: false).isLoggedIn()) == true) {
+/*
+    if (_loadSessionData() == 1) {
       Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(builder: (context) => Home(0)),

@@ -3,6 +3,7 @@ import 'package:grocery_app/Provider/Mediator.dart';
 import 'package:grocery_app/Screens/ForgotPassword.dart';
 import 'package:grocery_app/Screens/Home.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'MyButton.dart';
 
@@ -88,7 +89,7 @@ class _SignInState extends State<SignIn> {
                             builder: (context) => ForgotPassword()));
                   },
                 ),
-                MyButton("SIGN IN", () {
+                MyButton("SIGN IN", () async{
                   provider.signInWithEmailAndPassword(
                       emailController.text, passwordController.text);
                   if (provider.authErrorMessage != "") {
@@ -96,6 +97,8 @@ class _SignInState extends State<SignIn> {
                       content: Text(provider.authErrorMessage),
                     ));
                   } else {
+                    final prefs = await SharedPreferences.getInstance();
+                    prefs.setInt('isLoggedIn', 1);
                     Navigator.pushReplacement(context,
                         MaterialPageRoute(builder: (context) => Home(0)));
                   }
