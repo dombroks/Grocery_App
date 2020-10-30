@@ -4,10 +4,11 @@ import "package:flutter/material.dart";
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:grocery_app/Provider/Mediator.dart';
 import 'package:grocery_app/Screens/AuthScreen.dart';
-import 'package:grocery_app/Screens/Home.dart';
 import 'package:grocery_app/constants.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'Home.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({
@@ -19,27 +20,25 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  Future<int> _loadSessionData() async {
+  void _loadSessionData() async {
     final prefs = await SharedPreferences.getInstance();
-    return prefs.getInt("isLoggedIn");
-  }
-
-  @override
-  void initState() {
-/*
-    if (_loadSessionData() == 1) {
+    bool isLoggedIn = prefs.getBool("isLoggedIn");
+    if (isLoggedIn) {
       Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(builder: (context) => Home(0)),
         ModalRoute.withName('/'),
       );
     }
-    */
+  }
+
+  @override
+  void initState() {
     Future.delayed(Duration.zero).then((_) async {
       Provider.of<Mediator>(context, listen: false).fetchData();
       Provider.of<Mediator>(context, listen: false).fetchCartElements();
     });
-
+    _loadSessionData();
     super.initState();
   }
 

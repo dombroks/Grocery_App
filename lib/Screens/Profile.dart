@@ -10,6 +10,7 @@ import 'package:grocery_app/components/ProfileCardItem.dart';
 import 'package:grocery_app/constants.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Profile extends StatefulWidget {
   @override
@@ -263,6 +264,8 @@ class _ProfileState extends State<Profile> {
               color: Colors.red,
               child: Text('LOGOUT'),
               onPressed: () async {
+                final prefs = await SharedPreferences.getInstance();
+                prefs.remove('isLoggedIn');
                 provider.signOut();
                 Navigator.pushAndRemoveUntil(
                   context,

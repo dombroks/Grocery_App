@@ -98,7 +98,7 @@ class _SignInState extends State<SignIn> {
                     ));
                   } else {
                     final prefs = await SharedPreferences.getInstance();
-                    prefs.setInt('isLoggedIn', 1);
+                    prefs.setBool('isLoggedIn', true);
                     Navigator.pushReplacement(context,
                         MaterialPageRoute(builder: (context) => Home(0)));
                   }
