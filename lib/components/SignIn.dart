@@ -89,7 +89,7 @@ class _SignInState extends State<SignIn> {
                             builder: (context) => ForgotPassword()));
                   },
                 ),
-                MyButton("SIGN IN", () async{
+                MyButton("SIGN IN", () async {
                   provider.signInWithEmailAndPassword(
                       emailController.text, passwordController.text);
                   if (provider.authErrorMessage != "") {
@@ -97,6 +97,12 @@ class _SignInState extends State<SignIn> {
                       content: Text(provider.authErrorMessage),
                     ));
                   } else {
+                    // Collapsing keyboard
+                    FocusScopeNode currentFocus = FocusScope.of(context);
+                    if (!currentFocus.hasPrimaryFocus) {
+                      currentFocus.unfocus();
+                    }
+                    // Saving data to shared preferences for session purpose
                     final prefs = await SharedPreferences.getInstance();
                     prefs.setBool('isLoggedIn', true);
                     Navigator.pushReplacement(context,
