@@ -92,12 +92,13 @@ class _SignInState extends State<SignIn> {
                 MyButton("SIGN IN", () async {
                   provider.signInWithEmailAndPassword(
                       emailController.text, passwordController.text);
-                  if (provider.signInErrorMessage != "") {
+                  if (provider.signInErrorMessage.isNotEmpty) {
                     Scaffold.of(context).showSnackBar(SnackBar(
                       content: Text(provider.signInErrorMessage),
                     ));
                   } else {
                     // Collapsing keyboard
+
                     FocusScopeNode currentFocus = FocusScope.of(context);
                     if (!currentFocus.hasPrimaryFocus) {
                       currentFocus.unfocus();
@@ -105,8 +106,11 @@ class _SignInState extends State<SignIn> {
                     // Saving data to shared preferences for session purpose
                     final prefs = await SharedPreferences.getInstance();
                     prefs.setBool('isLoggedIn', true);
-                    Navigator.pushReplacement(context,
-                        MaterialPageRoute(builder: (context) => Home(0)));
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(builder: (context) => Home(0)),
+                      ModalRoute.withName('/'),
+                    );
                   }
                 }),
               ],

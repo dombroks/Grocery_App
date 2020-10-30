@@ -79,16 +79,19 @@ class _SignUpState extends State<SignUp> {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                MyButton("NEXT", () async {
+                MyButton("NEXT", () {
                   provider.signUpWithEmailAndPassword(usernameController.text,
                       emailController.text, passwordController.text);
-                  if (provider.signOutErrorMessage != "") {
+                  if (provider.signOutErrorMessage.isNotEmpty) {
                     Scaffold.of(context).showSnackBar(SnackBar(
                       content: Text(provider.signOutErrorMessage),
                     ));
                   } else {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => AddNumber()));
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(builder: (context) => AddNumber()),
+                      ModalRoute.withName('/'),
+                    );
                   }
                 }),
               ],
