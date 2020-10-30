@@ -92,9 +92,9 @@ class _SignInState extends State<SignIn> {
                 MyButton("SIGN IN", () async {
                   provider.signInWithEmailAndPassword(
                       emailController.text, passwordController.text);
-                  if (provider.authErrorMessage != "") {
+                  if (provider.signInErrorMessage != "") {
                     Scaffold.of(context).showSnackBar(SnackBar(
-                      content: Text(provider.authErrorMessage),
+                      content: Text(provider.signInErrorMessage),
                     ));
                   } else {
                     // Collapsing keyboard

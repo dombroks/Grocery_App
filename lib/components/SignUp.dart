@@ -82,8 +82,14 @@ class _SignUpState extends State<SignUp> {
                 MyButton("NEXT", () async {
                   provider.signUpWithEmailAndPassword(usernameController.text,
                       emailController.text, passwordController.text);
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => AddNumber()));
+                  if (provider.signOutErrorMessage != "") {
+                    Scaffold.of(context).showSnackBar(SnackBar(
+                      content: Text(provider.signOutErrorMessage),
+                    ));
+                  } else {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => AddNumber()));
+                  }
                 }),
               ],
             )
