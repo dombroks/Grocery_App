@@ -14,6 +14,9 @@ class Mediator extends ChangeNotifier {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseStorage _storage = FirebaseStorage.instance;
 
+  // Profile Image
+  File profileImage;
+  
   // Error massages
   String signInErrorMessage = "";
   String signOutErrorMessage = "";
@@ -223,4 +226,6 @@ class Mediator extends ChangeNotifier {
       print(e.message);
     }
   }
+
+  Future loadProfileImage() async {}
 }
