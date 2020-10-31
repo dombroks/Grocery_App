@@ -230,18 +230,7 @@ class Mediator extends ChangeNotifier {
     }
   }
 
-  Future getProfileImage() async {
-    FirebaseUser user = await _auth.currentUser();
-    final docs = await _db.collection("Users").getDocuments().then((value) {
-      for (int i = 0; i < value.documents.length; i++) {
-        if (value.documents[i].data["id"].toString().trim() == user.uid) {
-          profileImageUrl = value.documents[0].data["profileImageUrl"];
-        } else {
-          print("no picture found");
-        }
-      }
-    });
-  }
+  
 
   Future getProfileDetails() async {
     FirebaseUser user = await _auth.currentUser();

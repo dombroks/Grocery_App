@@ -22,7 +22,7 @@ class _ProfileState extends State<Profile> {
   File _image;
   @override
   void initState() {
-    Provider.of<Mediator>(context, listen: false).getProfileImage();
+    Provider.of<Mediator>(context, listen: false).getProfileDetails();
     super.initState();
   }
 
