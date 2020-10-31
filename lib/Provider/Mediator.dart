@@ -240,8 +240,8 @@ class Mediator extends ChangeNotifier {
     });
   }
 
-  Future editProfileDetails() async {
+  Future getProfileDetails() async {
     FirebaseUser user = await _auth.currentUser();
-    
+
   }
 }
