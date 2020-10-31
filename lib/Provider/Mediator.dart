@@ -253,7 +253,7 @@ class Mediator extends ChangeNotifier {
           username = value.documents[i].data["username"];
           phoneNumber = value.documents[i].data["phoneNumber"];
         } else {
-          print("no picture found");
+          print("some error occured");
         }
       }
     });
