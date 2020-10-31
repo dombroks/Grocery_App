@@ -1,6 +1,8 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:grocery_app/Provider/Mediator.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
 
 import '../constants.dart';
 
@@ -16,6 +18,7 @@ class _RecipientDatailsState extends State<RecipientDatails> {
   List<String> _countriesPrefixs = ["+213", "+01", "+43"];
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<Mediator>(context, listen: false);
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -93,11 +96,15 @@ class _RecipientDatailsState extends State<RecipientDatails> {
                 SizedBox(
                   height: 10,
                 ),
-                TextField(),
+                TextField(
+                  decoration: InputDecoration(hintText: provider.username),
+                ),
                 SizedBox(
                   height: 25,
                 ),
-                TextField(),
+                TextField(
+                  decoration: InputDecoration(hintText: provider.email),
+                ),
                 SizedBox(
                   height: 25,
                 ),
@@ -124,7 +131,11 @@ class _RecipientDatailsState extends State<RecipientDatails> {
                     SizedBox(
                       width: 20,
                     ),
-                    Flexible(child: TextField()),
+                    Flexible(
+                        child: TextField(
+                      decoration:
+                          InputDecoration(hintText: provider.phoneNumber),
+                    )),
                   ],
                 ),
                 SizedBox(
