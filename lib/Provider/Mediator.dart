@@ -14,8 +14,8 @@ class Mediator extends ChangeNotifier {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseStorage _storage = FirebaseStorage.instance;
 
-  // Profile Image
-  File profileImage;
+  // Profile Image url
+  String profileImageUrl;
 
   // Error massages
   String signInErrorMessage = "";
@@ -229,9 +229,14 @@ class Mediator extends ChangeNotifier {
 
   Future getProfileImage() async {
     FirebaseUser user = await _auth.currentUser();
-    final docs = await _db.collection("Users").getDocuments();
-   
- 
-    
+    final docs = await _db.collection("Users").getDocuments().then((value) {
+      for (int i = 0; i < value.documents.length; i++) {
+        if (value.documents[i].data["id"].toString().trim() == user.uid) {
+          profileImageUrl = value.documents[0].data["profileImageUrl"];
+        } else {
+          print("no picture found");
+        }
+      }
+    });
   }
 }

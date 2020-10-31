@@ -20,6 +20,11 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   final picker = ImagePicker();
   File _image;
+  @override
+  void initState() {
+    Provider.of<Mediator>(context, listen: false).getProfileImage();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +53,7 @@ class _ProfileState extends State<Profile> {
                           )),
                       width: 90,
                       height: 90,
-                      child: _image == null
+                      child: provider.profileImageUrl == null
                           ? Icon(
                               Icons.camera,
                               color: kPrimaryColor,
@@ -56,15 +61,15 @@ class _ProfileState extends State<Profile> {
                             )
                           : ClipRRect(
                               borderRadius: BorderRadius.circular(8.0),
-                              child: Image.file(
-                                _image,
+                              child: Image.network(
+                                provider.profileImageUrl,
                                 fit: BoxFit.cover,
                               ),
                             ),
                     ),
                     onTap: () {
-                      getImage()
-                          .whenComplete(() => provider.uploadProfileImageToStorage(_image));
+                      getImage().whenComplete(
+                          () => provider.uploadProfileImageToStorage(_image));
                     },
                   ),
                   SizedBox(
