@@ -215,9 +215,10 @@ class Mediator extends ChangeNotifier {
           _storage.ref().child('profileImages/${user.uid}');
       StorageUploadTask uploadTask = firebaseStorageRef.putFile(image);
       StorageTaskSnapshot taskSnapshot = await uploadTask.onComplete;
-      taskSnapshot.ref.getDownloadURL().then(
-            (value) => print("Done: $value"),
-          );
+      taskSnapshot.ref.getDownloadURL().then((value) async => await _db
+          .collection("Users")
+          .document(user.uid)
+          .updateData({"profileImageUrl": value}));
     } on PlatformException catch (e) {
       print(e.message);
     }
