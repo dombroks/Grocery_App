@@ -16,7 +16,7 @@ class Mediator extends ChangeNotifier {
 
   // Profile Image
   File profileImage;
-  
+
   // Error massages
   String signInErrorMessage = "";
   String signOutErrorMessage = "";
@@ -227,5 +227,11 @@ class Mediator extends ChangeNotifier {
     }
   }
 
-  Future loadProfileImage() async {}
+  Future getProfileImage() async {
+    FirebaseUser user = await _auth.currentUser();
+    final docs = await _db.collection("Users").getDocuments();
+   
+ 
+    
+  }
 }
