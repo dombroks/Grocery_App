@@ -64,7 +64,7 @@ class _ProfileState extends State<Profile> {
                     ),
                     onTap: () {
                       getImage()
-                          .whenComplete(() => provider.uploadFile(_image));
+                          .whenComplete(() => provider.uploadProfileImageToStorage(_image));
                     },
                   ),
                   SizedBox(

@@ -208,11 +208,11 @@ class Mediator extends ChangeNotifier {
     }
   }
 
-  Future uploadFile(File image) async {
+  Future uploadProfileImageToStorage(File image) async {
     FirebaseUser user = await _auth.currentUser();
     try {
       StorageReference firebaseStorageRef =
-          _storage.ref().child('uploads/image');
+          _storage.ref().child('profileImages/${user.uid}');
       StorageUploadTask uploadTask = firebaseStorageRef.putFile(image);
       StorageTaskSnapshot taskSnapshot = await uploadTask.onComplete;
       taskSnapshot.ref.getDownloadURL().then(
