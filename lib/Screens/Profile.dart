@@ -24,6 +24,7 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    var provider = Provider.of<Mediator>(context, listen: false);
 
     return Scaffold(
       body: Container(
@@ -62,7 +63,8 @@ class _ProfileState extends State<Profile> {
                             ),
                     ),
                     onTap: () {
-                      getImage();
+                      getImage()
+                          .whenComplete(() => provider.uploadFile(_image));
                     },
                   ),
                   SizedBox(

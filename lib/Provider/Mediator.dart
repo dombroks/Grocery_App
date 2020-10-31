@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -9,6 +12,7 @@ class Mediator extends ChangeNotifier {
   // Firebase instances
   final Firestore _db = Firestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseStorage _storage = FirebaseStorage.instance;
 
   // Error massages
   String signInErrorMessage = "";
@@ -201,6 +205,21 @@ class Mediator extends ChangeNotifier {
       await _auth.sendPasswordResetEmail(email: email);
     } catch (e) {
       print(e.toString());
+    }
+  }
+
+  Future uploadFile(File image) async {
+    FirebaseUser user = await _auth.currentUser();
+    try {
+      StorageReference firebaseStorageRef =
+          _storage.ref().child('uploads/image');
+      StorageUploadTask uploadTask = firebaseStorageRef.putFile(image);
+      StorageTaskSnapshot taskSnapshot = await uploadTask.onComplete;
+      taskSnapshot.ref.getDownloadURL().then(
+            (value) => print("Done: $value"),
+          );
+    } on PlatformException catch (e) {
+      print(e.message);
     }
   }
 }
