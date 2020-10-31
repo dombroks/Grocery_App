@@ -16,6 +16,7 @@ class _RecipientDatailsState extends State<RecipientDatails> {
   final picker = ImagePicker();
   String _firstCountryPrefix = "+213";
   List<String> _countriesPrefixs = ["+213", "+01", "+43"];
+
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<Mediator>(context, listen: false);
@@ -115,7 +116,7 @@ class _RecipientDatailsState extends State<RecipientDatails> {
                         Icons.arrow_drop_down,
                         color: kPrimaryColor,
                       ),
-                      value: _firstCountryPrefix,
+                      value: provider.numberPrefix,
                       items: _countriesPrefixs.map((value) {
                         return DropdownMenuItem(
                           value: value,

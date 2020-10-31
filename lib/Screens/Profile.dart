@@ -100,9 +100,10 @@ class _ProfileState extends State<Profile> {
                           height: 5,
                         ),
                         Text(
-                          "0777 000 000",
+                          provider.phoneNumber,
                           style: TextStyle(
                             color: Colors.grey,
+                            letterSpacing: 1,
                           ),
                         ),
                       ],
