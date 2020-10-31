@@ -81,7 +81,7 @@ class _ProfileState extends State<Profile> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          "Jessica alison",
+                          provider.username,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 23,
@@ -91,7 +91,7 @@ class _ProfileState extends State<Profile> {
                           height: 5,
                         ),
                         Text(
-                          "tinoutech@gmail.com",
+                          provider.email,
                           style: TextStyle(
                             color: Colors.grey,
                           ),

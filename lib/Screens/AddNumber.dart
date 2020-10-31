@@ -103,7 +103,7 @@ class _AddNumberState extends State<AddNumber> {
                   children: [
                     MyButton("SEND", () {
                       provider.addPhoneNumber(
-                          _firstCountryPrefix + phoneNumberController.text);
+                          phoneNumberController.text, _firstCountryPrefix);
                       Navigator.push(
                           context,
                           MaterialPageRoute(

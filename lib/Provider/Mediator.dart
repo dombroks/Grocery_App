@@ -19,6 +19,7 @@ class Mediator extends ChangeNotifier {
   String username;
   String email;
   String phoneNumber;
+  String numberPrefix;
 
   // Error massages
   String signInErrorMessage = "";
@@ -184,14 +185,14 @@ class Mediator extends ChangeNotifier {
     }
   }
 
-  Future addPhoneNumber(String phoneNumber) async {
+  Future addPhoneNumber(String phoneNumber, String numberPrefix) async {
     final FirebaseUser user = await _auth.currentUser();
     final uid = user.uid;
 
     await _db
         .collection("Users")
         .document(uid)
-        .updateData({"phoneNumber": phoneNumber});
+        .updateData({"phoneNumber": phoneNumber, "numberPrefix": numberPrefix});
   }
 
   Future verifyPhoneNumber(String phoneNumber) async {
@@ -230,17 +231,16 @@ class Mediator extends ChangeNotifier {
     }
   }
 
-  
-
   Future getProfileDetails() async {
     FirebaseUser user = await _auth.currentUser();
     final docs = await _db.collection("Users").getDocuments().then((value) {
       for (int i = 0; i < value.documents.length; i++) {
         if (value.documents[i].data["id"].toString().trim() == user.uid) {
-          profileImageUrl = value.documents[i].data["profileImageUrl"];
           email = value.documents[i].data["email"];
           username = value.documents[i].data["username"];
           phoneNumber = value.documents[i].data["phoneNumber"];
+          numberPrefix = value.documents[i].data["numberPrefix"];
+          profileImageUrl = value.documents[i].data["profileImageUrl"];
         } else {
           print("some error occured");
         }
