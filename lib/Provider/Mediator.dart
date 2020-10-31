@@ -172,10 +172,10 @@ class Mediator extends ChangeNotifier {
       AuthResult result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       FirebaseUser user = result.user;
-      await _db.collection("Users").document(user.uid).setData({
-        'username': username,
-        'email': email,
-      });
+      await _db
+          .collection("Users")
+          .document(user.uid)
+          .setData({'username': username, 'email': email, 'id': user.uid});
     } on PlatformException catch (e) {
       signOutErrorMessage = e.message;
     }
