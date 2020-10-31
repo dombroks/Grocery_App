@@ -239,4 +239,9 @@ class Mediator extends ChangeNotifier {
       }
     });
   }
+
+  Future editProfileDetails() async {
+    FirebaseUser user = await _auth.currentUser();
+    
+  }
 }
