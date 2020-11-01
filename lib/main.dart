@@ -15,9 +15,6 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
         providers: [ChangeNotifierProvider(create: (context) => Mediator())],
         child: MaterialApp(
-            theme: new ThemeData(
-                iconTheme: new IconThemeData(color: kPrimaryColor),
-                primaryColor: kPrimaryColor),
             debugShowCheckedModeBanner: false,
             title: 'My Grocery',
             home: SplashScreen()));
