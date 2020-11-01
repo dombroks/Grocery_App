@@ -232,7 +232,7 @@ class Mediator extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future getProfileDetails() async {
+  Future<bool> getProfileDetails() async {
     FirebaseUser user = await _auth.currentUser();
     final docs = await _db.collection("Users").getDocuments().then((value) {
       for (int i = 0; i < value.documents.length; i++) {
@@ -247,5 +247,6 @@ class Mediator extends ChangeNotifier {
         }
       }
     });
+    return true;
   }
 }
