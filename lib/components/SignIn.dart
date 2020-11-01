@@ -91,7 +91,7 @@ class _SignInState extends State<SignIn> {
                 ),
                 MyButton("SIGN IN", () async {
                   await provider.signInWithEmailAndPassword(
-                      emailController.text, passwordController.text);
+                      emailController.text.trim(), passwordController.text);
                   if (provider.signInErrorMessage.isNotEmpty ||
                       await provider.isLoggedIn() == false) {
                     Scaffold.of(context).showSnackBar(SnackBar(
