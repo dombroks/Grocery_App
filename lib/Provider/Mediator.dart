@@ -245,6 +245,7 @@ class Mediator extends ChangeNotifier {
         }
       }
     });
+    notifyListeners();
     return true;
   }
 }
