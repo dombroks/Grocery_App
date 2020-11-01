@@ -154,7 +154,6 @@ class Mediator extends ChangeNotifier {
           email: email, password: password);
     } on PlatformException catch (e) {
       signInErrorMessage = e.message;
-      print(e.message);
     }
   }
 
@@ -165,7 +164,6 @@ class Mediator extends ChangeNotifier {
 
   Future signOut() async {
     await _auth.signOut();
-
     signInErrorMessage = "";
     signOutErrorMessage = "";
   }
@@ -196,7 +194,7 @@ class Mediator extends ChangeNotifier {
   }
 
   Future verifyPhoneNumber(String phoneNumber) async {
-    _auth.verifyPhoneNumber(
+    return await _auth.verifyPhoneNumber(
         phoneNumber: phoneNumber,
         timeout: Duration(seconds: 60),
         verificationCompleted: null,
