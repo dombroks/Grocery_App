@@ -12,10 +12,16 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
   final usernameController = TextEditingController();
-
   final emailController = TextEditingController();
-
   final passwordController = TextEditingController();
+  bool _obscureText;
+
+  @override
+  void initState() {
+    _obscureText = true;
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   void dispose() {
@@ -29,6 +35,12 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<Mediator>(context, listen: false);
+    void _toggleShowPassword() {
+      setState(() {
+        _obscureText = !_obscureText;
+        print(_obscureText);
+      });
+    }
 
     return Container(
       width: double.infinity,
