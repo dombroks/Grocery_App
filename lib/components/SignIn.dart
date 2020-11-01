@@ -15,6 +15,7 @@ class SignIn extends StatefulWidget {
 class _SignInState extends State<SignIn> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  bool _obscureText;
 
   @override
   void dispose() {
@@ -25,8 +26,22 @@ class _SignInState extends State<SignIn> {
   }
 
   @override
+  void initState() {
+    _obscureText = true;
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     var provider = Provider.of<Mediator>(context, listen: false);
+
+    void _toggleShowPassword() {
+      setState(() {
+        _obscureText = !_obscureText;
+        print(_obscureText);
+      });
+    }
 
     return Container(
       width: double.infinity,
@@ -63,9 +78,16 @@ class _SignInState extends State<SignIn> {
               decoration: InputDecoration(hintText: "Email address"),
             ),
             TextField(
-              obscureText: true,
+              obscureText: _obscureText,
               controller: passwordController,
-              decoration: InputDecoration(hintText: "Password"),
+              decoration: InputDecoration(
+                  hintText: "Password",
+                  suffixIcon: GestureDetector(
+                    child: Icon(Icons.remove_red_eye),
+                    onTap: () {
+                      _toggleShowPassword();
+                    },
+                  )),
             ),
             SizedBox(
               height: 20,
@@ -92,8 +114,7 @@ class _SignInState extends State<SignIn> {
                 MyButton("SIGN IN", () async {
                   await provider.signInWithEmailAndPassword(
                       emailController.text.trim(), passwordController.text);
-                  if (provider.signInErrorMessage.isNotEmpty ||
-                      await provider.isLoggedIn() == false) {
+                  if (provider.signInErrorMessage.isNotEmpty) {
                     Scaffold.of(context).showSnackBar(SnackBar(
                       content: Text(provider.signInErrorMessage),
                     ));
