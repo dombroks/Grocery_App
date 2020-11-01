@@ -4,6 +4,8 @@ import 'package:grocery_app/components/MyButton.dart';
 import 'package:grocery_app/constants.dart';
 import 'package:provider/provider.dart';
 
+import 'Home.dart';
+
 class VerifyNumber extends StatefulWidget {
   String _phoneNumber;
   VerifyNumber(String _phoneNumber) {
@@ -86,8 +88,13 @@ class _VerifyNumberState extends State<VerifyNumber> {
                         color: Colors.grey,
                       ),
                     ),
-                    MyButton("VERIFY", () {
-                      provider.verifyPhoneNumber(widget._phoneNumber);
+                    MyButton("VERIFY", () async {
+                      await provider.verifyPhoneNumber(widget._phoneNumber);
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(builder: (context) => Home(0)),
+                        ModalRoute.withName('/'),
+                      );
                     })
                   ],
                 )

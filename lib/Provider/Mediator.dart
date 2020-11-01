@@ -229,6 +229,7 @@ class Mediator extends ChangeNotifier {
     } on PlatformException catch (e) {
       print(e.message);
     }
+    notifyListeners();
   }
 
   Future getProfileDetails() async {

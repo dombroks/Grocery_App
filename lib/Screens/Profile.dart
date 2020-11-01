@@ -29,7 +29,7 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    var provider = Provider.of<Mediator>(context, listen: false);
+    var provider = Provider.of<Mediator>(context, listen: true);
 
     return Scaffold(
       body: Container(
