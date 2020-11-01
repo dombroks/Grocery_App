@@ -275,7 +275,7 @@ class _ProfileState extends State<Profile> {
               onPressed: () async {
                 final prefs = await SharedPreferences.getInstance();
                 prefs.remove('isLoggedIn');
-                provider.signOut();
+                await provider.signOut();
                 Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(builder: (context) => AuthScreen("In")),
