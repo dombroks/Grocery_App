@@ -24,7 +24,11 @@ class _homeScreenState extends State<homeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var provider = Provider.of<Mediator>(context, listen: false);
+    var provider = Provider.of<Mediator>(context, listen: true);
+    Future.delayed(Duration.zero).then((_) async {
+      await Provider.of<Mediator>(context, listen: false).fetchData();
+      await Provider.of<Mediator>(context, listen: false).fetchCartElements();
+    });
     final fruits = provider.fruits;
     final vegetables = provider.vegetables;
 

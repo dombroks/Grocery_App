@@ -35,8 +35,8 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Future.delayed(Duration.zero).then((_) async {
-      Provider.of<Mediator>(context, listen: false).fetchData();
-      Provider.of<Mediator>(context, listen: false).fetchCartElements();
+      await Provider.of<Mediator>(context, listen: false).fetchData();
+      await Provider.of<Mediator>(context, listen: false).fetchCartElements();
     });
     _loadSessionData();
     super.initState();
