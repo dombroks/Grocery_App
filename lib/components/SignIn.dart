@@ -90,15 +90,15 @@ class _SignInState extends State<SignIn> {
                   },
                 ),
                 MyButton("SIGN IN", () async {
-                  provider.signInWithEmailAndPassword(
+                  await provider.signInWithEmailAndPassword(
                       emailController.text, passwordController.text);
-                  if (provider.signInErrorMessage.isNotEmpty) {
+                  if (provider.signInErrorMessage.isNotEmpty ||
+                      await provider.isLoggedIn() == false) {
                     Scaffold.of(context).showSnackBar(SnackBar(
                       content: Text(provider.signInErrorMessage),
                     ));
                   } else {
                     // Collapsing keyboard
-
                     FocusScopeNode currentFocus = FocusScope.of(context);
                     if (!currentFocus.hasPrimaryFocus) {
                       currentFocus.unfocus();
