@@ -79,9 +79,11 @@ class _SignUpState extends State<SignUp> {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                MyButton("NEXT", () {
-                  provider.signUpWithEmailAndPassword(usernameController.text,
-                      emailController.text, passwordController.text);
+                MyButton("NEXT", () async {
+                  await provider.signUpWithEmailAndPassword(
+                      usernameController.text,
+                      emailController.text,
+                      passwordController.text);
                   if (provider.signOutErrorMessage.isNotEmpty) {
                     Scaffold.of(context).showSnackBar(SnackBar(
                       content: Text(provider.signOutErrorMessage),
