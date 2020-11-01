@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_app/Provider/Mediator.dart';
 import 'package:grocery_app/Screens/SplashScreen.dart';
-import 'package:grocery_app/constants.dart';
 import 'package:provider/provider.dart';
 
 void main() {
