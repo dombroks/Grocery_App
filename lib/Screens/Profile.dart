@@ -55,7 +55,7 @@ class _ProfileState extends State<Profile> {
                       height: 90,
                       child: provider.profileImageUrl == null
                           ? Icon(
-                              Icons.camera,
+                              Icons.photo_camera,
                               color: kPrimaryColor,
                               size: 40,
                             )
