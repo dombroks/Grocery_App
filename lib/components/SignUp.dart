@@ -82,8 +82,15 @@ class _SignUpState extends State<SignUp> {
             ),
             TextField(
               controller: passwordController,
-              decoration: InputDecoration(hintText: "Password"),
-              obscureText: true,
+              decoration: InputDecoration(
+                  hintText: "Password",
+                  suffixIcon: GestureDetector(
+                    child: Icon(Icons.remove_red_eye),
+                    onTap: () {
+                      _toggleShowPassword();
+                    },
+                  )),
+              obscureText: _obscureText,
             ),
             SizedBox(
               height: 20,
