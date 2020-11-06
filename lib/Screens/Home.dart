@@ -23,7 +23,7 @@ class Home extends StatelessWidget {
             children: [
               ListTile(
                 title: Text("te"),
-                trailing: Icon(Icons.ac_unit),
+                leading: Icon(Icons.history),
               ),
             ],
           ),
