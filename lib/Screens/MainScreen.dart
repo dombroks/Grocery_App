@@ -117,7 +117,6 @@ class _homeScreenState extends State<homeScreen> {
                       color: Colors.black,
                       fontSize: 17),
                 ),
-                //  Text("View all >")
               ],
             ),
           ),
