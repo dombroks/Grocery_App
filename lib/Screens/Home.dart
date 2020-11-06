@@ -22,10 +22,13 @@ class Home extends StatelessWidget {
           child: ListView(
             children: [
               ListTile(
-                title: Text("Order history"),
+                title: Text(
+                  "Order history",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
+                ),
                 leading: Container(
-                  width: 40,
-                  height: 40,
+                  width: 50,
+                  height: 50,
                   decoration: BoxDecoration(
                     color: kCategoryColor,
                     shape: BoxShape.circle,
@@ -33,6 +36,7 @@ class Home extends StatelessWidget {
                   child: Icon(
                     Icons.history,
                     color: kPrimaryColor,
+                    size: 30,
                   ),
                 ),
               ),
