@@ -19,11 +19,11 @@ class DrawerListTile extends StatelessWidget {
       child: ListTile(
         title: Text(
           title,
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
+          style: TextStyle(fontWeight: FontWeight.w700, fontSize: 17),
         ),
         leading: Container(
-          width: 50,
-          height: 50,
+          width: 45,
+          height: 45,
           decoration: BoxDecoration(
             color: kCategoryColor,
             shape: BoxShape.circle,
@@ -32,7 +32,7 @@ class DrawerListTile extends StatelessWidget {
             child: Icon(
               iconData,
               color: kPrimaryColor,
-              size: 28,
+              size: 26,
             ),
           ),
         ),
