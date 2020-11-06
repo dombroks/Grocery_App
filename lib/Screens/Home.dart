@@ -13,6 +13,7 @@ class Home extends StatelessWidget {
   int selectedPage;
   Home(this.selectedPage);
 
+  var _drawerKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -20,6 +21,7 @@ class Home extends StatelessWidget {
       length: 3,
       child: Scaffold(
         drawer: Drawer(
+          key: _drawerKey,
           child: ListView(
             children: [
               DrawerListTile(
@@ -76,8 +78,7 @@ class Home extends StatelessWidget {
           leading: GestureDetector(
             child: Icon(Icons.menu),
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => TermsConditions()));
+              _drawerKey.currentState.openDrawer();
             },
           ),
           actions: <Widget>[
