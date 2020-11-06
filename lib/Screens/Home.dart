@@ -32,6 +32,31 @@ class Home extends StatelessWidget {
                 iconData: Icons.place,
                 onClick: () {},
               ),
+              DrawerListTile(
+                title: "Saved carts",
+                iconData: Icons.shopping_cart,
+                onClick: () {},
+              ),
+              DrawerListTile(
+                title: "Store locator",
+                iconData: Icons.store,
+                onClick: () {},
+              ),
+              DrawerListTile(
+                title: "Terms & conditions",
+                iconData: Icons.info,
+                onClick: () {},
+              ),
+              DrawerListTile(
+                title: "Help",
+                iconData: Icons.help,
+                onClick: () {},
+              ),
+              DrawerListTile(
+                title: "Got a question?",
+                iconData: Icons.live_help,
+                onClick: () {},
+              ),
             ],
           ),
         ),
