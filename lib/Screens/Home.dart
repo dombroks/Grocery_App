@@ -25,6 +25,7 @@ class Home extends StatelessWidget {
               DrawerListTile(
                 title: "Order history",
                 iconData: Icons.history,
+                onClick: () {},
               ),
             ],
           ),
