@@ -20,8 +20,8 @@ class Home extends StatelessWidget {
       initialIndex: selectedPage,
       length: 3,
       child: Scaffold(
+        key: _drawerKey,
         drawer: Drawer(
-          key: _drawerKey,
           child: ListView(
             children: [
               DrawerListTile(
