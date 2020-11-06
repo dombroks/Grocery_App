@@ -22,7 +22,10 @@ class Home extends StatelessWidget {
         drawer: Drawer(
           child: ListView(
             children: [
-              DrawerListTile(),
+              DrawerListTile(
+                title: "Order history",
+                iconData: Icons.history,
+              ),
             ],
           ),
         ),
@@ -66,4 +69,3 @@ class Home extends StatelessWidget {
     );
   }
 }
-
