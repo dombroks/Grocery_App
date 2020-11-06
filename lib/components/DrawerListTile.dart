@@ -28,10 +28,12 @@ class DrawerListTile extends StatelessWidget {
             color: kCategoryColor,
             shape: BoxShape.circle,
           ),
-          child: Icon(
-            iconData,
-            color: kPrimaryColor,
-            size: 30,
+          child: Center(
+            child: Icon(
+              iconData,
+              color: kPrimaryColor,
+              size: 28,
+            ),
           ),
         ),
       ),

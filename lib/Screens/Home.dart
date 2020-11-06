@@ -27,6 +27,11 @@ class Home extends StatelessWidget {
                 iconData: Icons.history,
                 onClick: () {},
               ),
+              DrawerListTile(
+                title: "Track orders",
+                iconData: Icons.place,
+                onClick: () {},
+              ),
             ],
           ),
         ),
