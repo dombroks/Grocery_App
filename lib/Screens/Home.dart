@@ -18,6 +18,16 @@ class Home extends StatelessWidget {
       initialIndex: selectedPage,
       length: 3,
       child: Scaffold(
+        drawer: Drawer(
+          child: ListView(
+            children: [
+              ListTile(
+                title: Text("te"),
+                trailing: Icon(Icons.ac_unit),
+              ),
+            ],
+          ),
+        ),
         appBar: AppBar(
           elevation: 0,
           title: Text("Store"),
