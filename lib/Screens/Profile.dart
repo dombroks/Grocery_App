@@ -32,176 +32,183 @@ class _ProfileState extends State<Profile> {
     var provider = Provider.of<Mediator>(context, listen: true);
     provider.getProfileDetails();
 
-    return Scaffold(
-      body: Container(
-        color: Colors.grey[200],
-        child: Column(
-          children: <Widget>[
-            Container(
-              padding: EdgeInsets.all(10),
-              width: double.infinity,
-              height: size.height * 0.15,
-              color: Colors.white,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
+    return (!provider.isLoaded)
+        ? Center(
+            child: CircularProgressIndicator(),
+          )
+        : Scaffold(
+            body: Container(
+              color: Colors.grey[200],
+              child: Column(
                 children: <Widget>[
-                  GestureDetector(
-                    child: Container(
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(
-                            color: kPrimaryColor,
-                          )),
-                      width: 90,
-                      height: 90,
-                      child: provider.profileImageUrl == null
-                          ? Icon(
-                              Icons.photo_camera,
-                              color: kPrimaryColor,
-                              size: 40,
-                            )
-                          : ClipRRect(
-                              borderRadius: BorderRadius.circular(8.0),
-                              child: Image.network(
-                                provider.profileImageUrl,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                    ),
-                    onTap: () {
-                      getImage().whenComplete(
-                          () => provider.uploadProfileImageToStorage(_image));
-                    },
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                  Container(
+                    padding: EdgeInsets.all(10),
+                    width: double.infinity,
+                    height: size.height * 0.15,
+                    color: Colors.white,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
-                        Text(
-                          provider.username,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 23,
+                        GestureDetector(
+                          child: Container(
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                border: Border.all(
+                                  color: kPrimaryColor,
+                                )),
+                            width: 90,
+                            height: 90,
+                            child: provider.profileImageUrl == null
+                                ? Icon(
+                                    Icons.photo_camera,
+                                    color: kPrimaryColor,
+                                    size: 40,
+                                  )
+                                : ClipRRect(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                    child: Image.network(
+                                      provider.profileImageUrl,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
                           ),
+                          onTap: () {
+                            getImage().whenComplete(() =>
+                                provider.uploadProfileImageToStorage(_image));
+                          },
                         ),
                         SizedBox(
-                          height: 5,
+                          width: 20,
                         ),
-                        Text(
-                          provider.email,
-                          style: TextStyle(
-                            color: Colors.grey,
+                        Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                provider.username,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 23,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Text(
+                                provider.email,
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Text(
+                                provider.phoneNumber,
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                  letterSpacing: 1,
+                                ),
+                              ),
+                            ],
                           ),
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Text(
-                          provider.phoneNumber,
-                          style: TextStyle(
-                            color: Colors.grey,
-                            letterSpacing: 1,
-                          ),
-                        ),
+                        )
                       ],
                     ),
-                  )
+                  ),
+                  Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Column(
+                          children: [
+                            GestureDetector(
+                              child: ProfileCardItem(
+                                itemName: "Recipient details",
+                                colordata: Colors.purple,
+                                icon: Icons.account_circle,
+                              ),
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            RecipientDatails()));
+                              },
+                            ),
+                            SizedBox(
+                              height: 0.5,
+                            ),
+                            GestureDetector(
+                              child: ProfileCardItem(
+                                itemName: "Delivery address",
+                                colordata: Colors.blue,
+                                icon: Icons.local_shipping,
+                              ),
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            RecipientDatails()));
+                              },
+                            ),
+                            SizedBox(
+                              height: 0.5,
+                            ),
+                            GestureDetector(
+                              child: ProfileCardItem(
+                                itemName: "Payment Method",
+                                colordata: Colors.green,
+                                icon: Icons.monetization_on,
+                              ),
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            AddPaymentMethod()));
+                              },
+                            ),
+                            SizedBox(
+                              height: 0.5,
+                            ),
+                            GestureDetector(
+                              child: ProfileCardItem(
+                                itemName: "Change password",
+                                colordata: Colors.pink[300],
+                                icon: Icons.lock,
+                              ),
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            ChangePasswordScreen()));
+                              },
+                            ),
+                            SizedBox(
+                              height: 0.5,
+                            ),
+                            GestureDetector(
+                              child: ProfileCardItem(
+                                itemName: "Logout",
+                                colordata: Colors.red[700],
+                                icon: Icons.exit_to_app,
+                              ),
+                              onTap: () {
+                                _showAlertDialg();
+                              },
+                            ),
+                          ],
+                        ),
+                      ))
                 ],
               ),
             ),
-            Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Container(
-                  decoration:
-                      BoxDecoration(borderRadius: BorderRadius.circular(10)),
-                  child: Column(
-                    children: [
-                      GestureDetector(
-                        child: ProfileCardItem(
-                          itemName: "Recipient details",
-                          colordata: Colors.purple,
-                          icon: Icons.account_circle,
-                        ),
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => RecipientDatails()));
-                        },
-                      ),
-                      SizedBox(
-                        height: 0.5,
-                      ),
-                      GestureDetector(
-                        child: ProfileCardItem(
-                          itemName: "Delivery address",
-                          colordata: Colors.blue,
-                          icon: Icons.local_shipping,
-                        ),
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => RecipientDatails()));
-                        },
-                      ),
-                      SizedBox(
-                        height: 0.5,
-                      ),
-                      GestureDetector(
-                        child: ProfileCardItem(
-                          itemName: "Payment Method",
-                          colordata: Colors.green,
-                          icon: Icons.monetization_on,
-                        ),
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => AddPaymentMethod()));
-                        },
-                      ),
-                      SizedBox(
-                        height: 0.5,
-                      ),
-                      GestureDetector(
-                        child: ProfileCardItem(
-                          itemName: "Change password",
-                          colordata: Colors.pink[300],
-                          icon: Icons.lock,
-                        ),
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      ChangePasswordScreen()));
-                        },
-                      ),
-                      SizedBox(
-                        height: 0.5,
-                      ),
-                      GestureDetector(
-                        child: ProfileCardItem(
-                          itemName: "Logout",
-                          colordata: Colors.red[700],
-                          icon: Icons.exit_to_app,
-                        ),
-                        onTap: () {
-                          _showAlertDialg();
-                        },
-                      ),
-                    ],
-                  ),
-                ))
-          ],
-        ),
-      ),
-    );
+          );
   }
 
   Future getImage() async {

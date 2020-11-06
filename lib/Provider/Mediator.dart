@@ -15,6 +15,7 @@ class Mediator extends ChangeNotifier {
   final FirebaseStorage _storage = FirebaseStorage.instance;
 
   // User Data
+  bool isLoaded = false;
   String profileImageUrl;
   String username;
   String email;
@@ -230,7 +231,7 @@ class Mediator extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<bool> getProfileDetails() async {
+  Future<void> getProfileDetails() async {
     FirebaseUser user = await _auth.currentUser();
     final docs = await _db.collection("Users").getDocuments().then((value) {
       for (int i = 0; i < value.documents.length; i++) {
@@ -246,6 +247,7 @@ class Mediator extends ChangeNotifier {
       }
     });
     notifyListeners();
-    return true;
+    isLoaded = true;
+    
   }
 }
