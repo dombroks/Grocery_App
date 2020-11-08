@@ -17,6 +17,20 @@ class _RecipientDatailsState extends State<RecipientDatails> {
   String _firstCountryPrefix = "+213";
   List<String> _countriesPrefixs = ["+213", "+01", "+43"];
 
+  final usernameController = TextEditingController();
+  final emailController = TextEditingController();
+  final phoneNumberPrefixController = TextEditingController();
+  final phoneNumberController = TextEditingController();
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    emailController.dispose();
+    phoneNumberController.dispose();
+    phoneNumberPrefixController.dispose();
+    usernameController.dispose();
+    super.dispose();
+  }
+
   @override
   void initState() {
     super.initState();
@@ -104,12 +118,14 @@ class _RecipientDatailsState extends State<RecipientDatails> {
                   height: 10,
                 ),
                 TextField(
+                  controller: usernameController,
                   decoration: InputDecoration(hintText: provider.username),
                 ),
                 SizedBox(
                   height: 25,
                 ),
                 TextField(
+                  controller: emailController,
                   decoration: InputDecoration(hintText: provider.email),
                 ),
                 SizedBox(
@@ -118,6 +134,7 @@ class _RecipientDatailsState extends State<RecipientDatails> {
                 Row(
                   children: [
                     DropdownButton(
+                      
                       icon: Icon(
                         Icons.arrow_drop_down,
                         color: kPrimaryColor,
@@ -140,6 +157,7 @@ class _RecipientDatailsState extends State<RecipientDatails> {
                     ),
                     Flexible(
                         child: TextField(
+                          controller: phoneNumberController,
                       decoration:
                           InputDecoration(hintText: provider.phoneNumber),
                     )),
