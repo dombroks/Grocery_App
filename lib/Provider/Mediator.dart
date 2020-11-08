@@ -7,6 +7,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:grocery_app/Model/element.dart';
+import 'package:grocery_app/model/CountryPrefixCode.dart';
 
 class Mediator extends ChangeNotifier {
   // Firebase instances
@@ -21,7 +22,7 @@ class Mediator extends ChangeNotifier {
   String email;
   String phoneNumber;
   String numberPrefix;
-  List<String> countriesPrefixCode = [];
+  List<CountryPrefixCode> countriesPrefixCode = [];
 
   // Error massages
   String signInErrorMessage = "";
@@ -254,7 +255,7 @@ class Mediator extends ChangeNotifier {
   Future<void> getContriesPrefixCode() async {
     final codes = await _db.collection("Countries prefix code").getDocuments();
     codes.documents.forEach((document) {
-      countriesPrefixCode.add(document.data.values.toString());
+      countriesPrefixCode.add(CountryPrefixCode.fromJson(document.data));
     });
     print(countriesPrefixCode);
   }
