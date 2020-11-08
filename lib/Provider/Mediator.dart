@@ -250,6 +250,23 @@ class Mediator extends ChangeNotifier {
     userDataIsLoaded = true;
   }
 
-  Future<void> updateRecipientDetails(String username, String email,
-      String phoneNumber, String phoneNumberPrefix) async {}
+  Future<void> updateRecipientDetails(String uname, String emailAddress,
+      String phone, String phonePrefix) async {
+    FirebaseUser user = await _auth.currentUser();
+    if (uname.isEmpty) uname = username;
+    if (emailAddress.isEmpty) emailAddress = email;
+    if (phone.isEmpty) phone = phoneNumber;
+    if (phonePrefix.isEmpty) phonePrefix = numberPrefix;
+
+    try {
+      await _db.collection("Users").document(user.uid).updateData({
+        "email": emailAddress,
+        "username": uname,
+        "numberPrefix": phonePrefix,
+        "phoneNumber": phone
+      });
+    } catch (e) {
+      print(e.toString());
+    }
+  }
 }

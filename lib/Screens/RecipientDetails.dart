@@ -134,7 +134,6 @@ class _RecipientDatailsState extends State<RecipientDatails> {
                 Row(
                   children: [
                     DropdownButton(
-                      
                       icon: Icon(
                         Icons.arrow_drop_down,
                         color: kPrimaryColor,
@@ -157,7 +156,7 @@ class _RecipientDatailsState extends State<RecipientDatails> {
                     ),
                     Flexible(
                         child: TextField(
-                          controller: phoneNumberController,
+                      controller: phoneNumberController,
                       decoration:
                           InputDecoration(hintText: provider.phoneNumber),
                     )),
@@ -170,7 +169,14 @@ class _RecipientDatailsState extends State<RecipientDatails> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     RaisedButton(
-                      onPressed: () {},
+                      onPressed: () async {
+                        await provider.updateRecipientDetails(
+                            usernameController.text,
+                            emailController.text,
+                            phoneNumberController.text,
+                            _firstCountryPrefix);
+                        Navigator.pop(context);
+                      },
                       color: kPrimaryColor,
                       child: Text(
                         "SAVE",
