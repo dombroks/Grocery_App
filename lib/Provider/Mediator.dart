@@ -15,7 +15,7 @@ class Mediator extends ChangeNotifier {
   final FirebaseStorage _storage = FirebaseStorage.instance;
 
   // User Data
-  bool isLoaded = false;
+  bool userDataIsLoaded = false;
   String profileImageUrl;
   String username;
   String email;
@@ -247,7 +247,7 @@ class Mediator extends ChangeNotifier {
       }
     });
     notifyListeners();
-    isLoaded = true;
+    userDataIsLoaded = true;
     
   }
 }

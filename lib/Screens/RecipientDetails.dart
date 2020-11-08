@@ -18,8 +18,13 @@ class _RecipientDatailsState extends State<RecipientDatails> {
   List<String> _countriesPrefixs = ["+213", "+01", "+43"];
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    var provider = Provider.of<Mediator>(context, listen: false);
+    var provider = Provider.of<Mediator>(context, listen: true);
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -66,7 +71,7 @@ class _RecipientDatailsState extends State<RecipientDatails> {
                           ),
                           width: 90,
                           height: 90,
-                          child: _image == null
+                          child: provider.profileImageUrl == null
                               ? Icon(
                                   Icons.camera_alt,
                                   color: kPrimaryColor,
@@ -74,15 +79,16 @@ class _RecipientDatailsState extends State<RecipientDatails> {
                                 )
                               : ClipRRect(
                                   borderRadius: BorderRadius.circular(8.0),
-                                  child: Image.file(
-                                    _image,
+                                  child: Image.network(
+                                    provider.profileImageUrl,
                                     fit: BoxFit.cover,
                                   ),
                                 ),
                         ),
                       ),
                       onTap: () {
-                        getImage();
+                        getImage().whenComplete(
+                            () => provider.uploadProfileImageToStorage(_image));
                       },
                     ),
                     SizedBox(

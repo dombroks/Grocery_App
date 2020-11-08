@@ -32,7 +32,7 @@ class _ProfileState extends State<Profile> {
     var provider = Provider.of<Mediator>(context, listen: true);
     provider.getProfileDetails();
 
-    return (!provider.isLoaded)
+    return (!provider.userDataIsLoaded)
         ? Center(
             child: CircularProgressIndicator(),
           )
