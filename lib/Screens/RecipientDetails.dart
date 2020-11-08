@@ -19,9 +19,9 @@ class _RecipientDatailsState extends State<RecipientDatails> {
   final usernameController = TextEditingController();
   final emailController = TextEditingController();
   final phoneNumberController = TextEditingController();
+
   @override
   void dispose() {
-    // Clean up the controller when the widget is disposed.
     emailController.dispose();
     phoneNumberController.dispose();
     usernameController.dispose();
