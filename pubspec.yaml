@@ -34,7 +34,6 @@ dependencies:
   firebase_database: ^3.1.6
   cloud_firestore: ^0.13.7
   provider: ^4.0.2
-  flutter_bloc: ^6.0.1
   rxdart: ^0.24.1
   expandable: ^4.1.4
   intl: ^0.16.1

@@ -8,7 +8,7 @@ class CountryPrefixCode {
   
   
 
-  CountryPrefixCode.fromJson(Map<String, String> parsedJson)
+  CountryPrefixCode.fromJson(Map<String, dynamic> parsedJson)
       : code = parsedJson['code'];
 
   

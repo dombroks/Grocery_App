@@ -22,12 +22,12 @@ class Mediator extends ChangeNotifier {
   String email;
   String phoneNumber;
   String numberPrefix;
-  List<CountryPrefixCode> countriesPrefixCode = [];
 
   // Error massages
   String signInErrorMessage = "";
   String signOutErrorMessage = "";
 
+  List<String> prefixCodes = [];
   List<element> vegetables = [];
   List<element> fruits = [];
   List<element> cartElements = [];
@@ -253,11 +253,14 @@ class Mediator extends ChangeNotifier {
   }
 
   Future<void> getContriesPrefixCode() async {
+    List<CountryPrefixCode> countriesPrefixCode = [];
     final codes = await _db.collection("Countries prefix code").getDocuments();
     codes.documents.forEach((document) {
       countriesPrefixCode.add(CountryPrefixCode.fromJson(document.data));
     });
-    print(countriesPrefixCode);
+    countriesPrefixCode.forEach((element) {
+      prefixCodes.add(element.code);
+    });
   }
 
   Future<void> updateRecipientDetails(String uname, String emailAddress,
