@@ -140,9 +140,9 @@ class _RecipientDatailsState extends State<RecipientDatails> {
                         color: kPrimaryColor,
                       ),
                       value: provider.numberPrefix,
-                      items: _countriesPrefixs.map((value) {
-                        return DropdownMenuItem(
-                          value: value,
+                      items: _countriesPrefixs.map((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value.trim(),
                           child: Text(value),
                         );
                       }).toList(),

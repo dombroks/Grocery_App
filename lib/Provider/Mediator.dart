@@ -259,7 +259,7 @@ class Mediator extends ChangeNotifier {
       countriesPrefixCode.add(CountryPrefixCode.fromJson(document.data));
     });
     countriesPrefixCode.forEach((element) {
-      prefixCodes.add(element.code);
+      if (!prefixCodes.contains(element.code)) prefixCodes.add(element.code);
     });
   }
 
