@@ -21,6 +21,7 @@ class Mediator extends ChangeNotifier {
   String email;
   String phoneNumber;
   String numberPrefix;
+  List<String> countriesPrefixCode = [];
 
   // Error massages
   String signInErrorMessage = "";
@@ -248,6 +249,14 @@ class Mediator extends ChangeNotifier {
     });
     notifyListeners();
     userDataIsLoaded = true;
+  }
+
+  Future<void> getContriesPrefixCode() async {
+    final codes = await _db.collection("Countries prefix code").getDocuments();
+    codes.documents.forEach((document) {
+      countriesPrefixCode.add(document.data.values.toString());
+    });
+    print(countriesPrefixCode);
   }
 
   Future<void> updateRecipientDetails(String uname, String emailAddress,

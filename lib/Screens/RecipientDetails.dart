@@ -31,6 +31,7 @@ class _RecipientDatailsState extends State<RecipientDatails> {
 
   @override
   void initState() {
+    Provider.of<Mediator>(context, listen: false).getContriesPrefixCode();
     super.initState();
   }
 
