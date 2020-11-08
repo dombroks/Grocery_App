@@ -248,6 +248,8 @@ class Mediator extends ChangeNotifier {
     });
     notifyListeners();
     userDataIsLoaded = true;
-    
   }
+
+  Future<void> updateRecipientDetails(String username, String email,
+      String phoneNumber, String phoneNumberPrefix) async {}
 }
