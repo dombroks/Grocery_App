@@ -15,7 +15,7 @@ class _RecipientDatailsState extends State<RecipientDatails> {
   File _image;
   final picker = ImagePicker();
   String _firstCountryPrefix = "+213";
-
+  List<String> _countriesPrefixs;
   final usernameController = TextEditingController();
   final emailController = TextEditingController();
   final phoneNumberController = TextEditingController();
@@ -37,7 +37,7 @@ class _RecipientDatailsState extends State<RecipientDatails> {
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<Mediator>(context, listen: true);
-    List<String> _countriesPrefixs =
+    _countriesPrefixs =
         Provider.of<Mediator>(context, listen: false).prefixCodes;
 
     return Scaffold(
