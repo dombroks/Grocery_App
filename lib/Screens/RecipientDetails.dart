@@ -14,8 +14,6 @@ class RecipientDatails extends StatefulWidget {
 class _RecipientDatailsState extends State<RecipientDatails> {
   File _image;
   final picker = ImagePicker();
-  String _firstCountryPrefix = "+213";
-  List<String> _countriesPrefixs = ["+213", "+01", "+43"];
 
   final usernameController = TextEditingController();
   final emailController = TextEditingController();
@@ -32,12 +30,17 @@ class _RecipientDatailsState extends State<RecipientDatails> {
   @override
   void initState() {
     Provider.of<Mediator>(context, listen: false).getContriesPrefixCode();
+
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<Mediator>(context, listen: true);
+    List<String> _countriesPrefixs =
+        Provider.of<Mediator>(context, listen: false).prefixCodes;
+    String _firstCountryPrefix = "+213";
+
     return Scaffold(
       body: SafeArea(
         child: Container(
