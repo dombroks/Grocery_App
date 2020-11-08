@@ -1,6 +1,6 @@
 class CountryPrefixCode {
   String code;
-  
+
   CountryPrefixCode({
     this.code,
     
@@ -10,5 +10,7 @@ class CountryPrefixCode {
 
   CountryPrefixCode.fromJson(Map<String, String> parsedJson)
       : code = parsedJson['code'];
+
+  
   
 }
