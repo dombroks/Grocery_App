@@ -15,7 +15,7 @@ class _SavedCartsState extends State<SavedCarts> {
         backgroundColor: kPrimaryColor,
         title: Text("Saved cart"),
       ),
-      body: Saved_card(),
+      body: SavedCart(),
     );
   }
 }
