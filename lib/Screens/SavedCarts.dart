@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_app/components/Saved_card.dart';
 import 'package:grocery_app/constants.dart';
 
 class SavedCarts extends StatefulWidget {
@@ -14,6 +15,7 @@ class _SavedCartsState extends State<SavedCarts> {
         backgroundColor: kPrimaryColor,
         title: Text("Saved cart"),
       ),
+      body: Saved_card(),
     );
   }
 }
