@@ -92,7 +92,11 @@ class _SaveCartState extends State<SaveCart> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    MyButton("NEXT", () {
+                    MyButton("NEXT", () async {
+                      await provider.saveCart(
+                          nameController.text,
+                          provider.cartElements,
+                          provider.totalPrice.toString());
                       Navigator.push(
                           context,
                           MaterialPageRoute(
