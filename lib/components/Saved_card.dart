@@ -41,10 +41,19 @@ class Saved_card extends StatelessWidget {
                         SizedBox(
                           height: 15,
                         ),
-                        Text("Subtotal : 1,820.00",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                            ))
+                        Text(
+                          "Subtotal : 1,820.00",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(height: 5,),
+                        Text(
+                          "Subtotal : 1,820.00",
+                          style: TextStyle(
+                            color: Colors.grey,
+                          ),
+                        
                       ],
                     ),
                   ],
