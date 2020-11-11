@@ -64,9 +64,14 @@ class Saved_card extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Icon(
-                      Icons.delete_outline,
-                      color: Colors.grey,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Icon(
+                          Icons.delete_outline,
+                          color: Colors.grey,
+                        ),
+                      ],
                     )
                   ],
                 ),
