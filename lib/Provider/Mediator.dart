@@ -7,7 +7,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:grocery_app/Model/element.dart';
-import 'package:grocery_app/model/CountryPrefixCode.dart';
+import 'package:grocery_app/Model/CountryPrefixCode.dart';
 
 class Mediator extends ChangeNotifier {
   // Firebase instances
