@@ -24,6 +24,11 @@ class SaveCart extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
+                      child: Icon(
+                        Icons.shopping_cart,
+                        size: 30,
+                        color: Colors.white,
+                      ),
                       width: 65,
                       height: 65,
                       decoration: BoxDecoration(
