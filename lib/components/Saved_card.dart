@@ -3,6 +3,9 @@ import 'package:grocery_app/components/MyButton.dart';
 import 'package:grocery_app/constants.dart';
 
 class Saved_card extends StatelessWidget {
+  String savedCartName;
+  String totalPrice;
+  String itemsNumber;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -78,7 +81,6 @@ class Saved_card extends StatelessWidget {
                 SizedBox(
                   height: 30,
                 ),
-              
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
