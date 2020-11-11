@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_app/components/Saved_card.dart';
+import 'package:grocery_app/components/SavedCart.dart';
 import 'package:grocery_app/constants.dart';
 
 class SavedCarts extends StatefulWidget {
