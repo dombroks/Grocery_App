@@ -78,6 +78,7 @@ class _SaveCartState extends State<SaveCart> {
                   height: 25,
                 ),
                 TextField(
+                  controller: nameController,
                   decoration: InputDecoration(hintText: "Enter cart name"),
                 ),
                 SizedBox(
