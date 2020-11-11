@@ -17,6 +17,7 @@ class Saved_card extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
                       child: Icon(
@@ -29,6 +30,9 @@ class Saved_card extends StatelessWidget {
                         shape: BoxShape.circle,
                         color: kPrimaryColor,
                       ),
+                    ),
+                    SizedBox(
+                      width: 15,
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -50,47 +54,19 @@ class Saved_card extends StatelessWidget {
                         SizedBox(
                           height: 5,
                         ),
-                        Text("Total items: 04",
-                            style: TextStyle(
-                              color: Colors.grey,
-                            )),
+                        Text(
+                          "Total items: 04",
+                          style: TextStyle(
+                            color: Colors.grey,
+                          ),
+                        ),
                       ],
                     ),
                   ],
                 ),
                 SizedBox(
-                  height: 15,
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                Text(
-                  "Month / Year",
-                  style: TextStyle(
-                    color: Colors.grey,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Text(
-                  "06 / 2022",
-                  style: TextStyle(fontWeight: FontWeight.w600),
-                ),
-                SizedBox(
                   height: 30,
                 ),
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Commercial Bank",
-                        style: TextStyle(fontWeight: FontWeight.w600),
-                      ),
-                      SvgPicture.asset(
-                        "assets/icons/card1.svg",
-                        width: 50,
-                        height: 50,
-                      ),
-                    ]),
               ],
             ),
           ),
