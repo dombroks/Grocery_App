@@ -56,9 +56,14 @@ class SaveCart extends StatelessWidget {
                     ),
                   ],
                 ),
+                TextField(
+                  decoration: InputDecoration(
+                    hintText: "Enter cart name"
+                  ),
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
-                  children: [MyButton("SEND", () {})],
+                  children: [MyButton("NEXT", () {})],
                 )
               ],
             ),
