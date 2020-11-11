@@ -56,10 +56,14 @@ class SaveCart extends StatelessWidget {
                     ),
                   ],
                 ),
+                SizedBox(
+                  height: 25,
+                ),
                 TextField(
-                  decoration: InputDecoration(
-                    hintText: "Enter cart name"
-                  ),
+                  decoration: InputDecoration(hintText: "Enter cart name"),
+                ),
+                SizedBox(
+                  height: 18,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
