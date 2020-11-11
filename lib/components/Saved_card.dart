@@ -17,27 +17,34 @@ class Saved_card extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      width: 40,
-                      height: 40,
+                      child: Icon(
+                        Icons.shopping_cart,
+                        color: Colors.white,
+                      ),
+                      width: 50,
+                      height: 50,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: kPrimaryColor,
                       ),
-                    )
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Vegetables",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 18),
+                        ),
+                        Text("Subtotal : 1,820.00")
+                      ],
+                    ),
                   ],
                 ),
                 SizedBox(
                   height: 15,
-                ),
-                Text(
-                  "• • • •  • • • •  • • • •  5467",
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                  ),
                 ),
                 SizedBox(
                   height: 15,
