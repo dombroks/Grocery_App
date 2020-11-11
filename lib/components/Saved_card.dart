@@ -78,6 +78,7 @@ class Saved_card extends StatelessWidget {
                 SizedBox(
                   height: 30,
                 ),
+              
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
