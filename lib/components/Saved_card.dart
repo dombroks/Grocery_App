@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:grocery_app/components/MyButton.dart';
 import 'package:grocery_app/constants.dart';
 
 class Saved_card extends StatelessWidget {
@@ -12,7 +12,7 @@ class Saved_card extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(15.0),
           child: Container(
-            height: 190,
+            height: 170,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -64,11 +64,30 @@ class Saved_card extends StatelessWidget {
                         ),
                       ],
                     ),
+                    Icon(
+                      Icons.delete_outline,
+                      color: Colors.grey,
+                    )
                   ],
                 ),
                 SizedBox(
                   height: 30,
                 ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    FlatButton(
+                      onPressed: () {},
+                      child: Text(
+                        "VIEW CART",
+                        style: TextStyle(
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ),
+                    MyButton("CHECK OUT", () {})
+                  ],
+                )
               ],
             ),
           ),
