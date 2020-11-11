@@ -104,8 +104,7 @@ class _CartScreenState extends State<CartScreen> {
                       padding: const EdgeInsets.only(right: 15),
                       child: Visibility(
                         visible: cartData.isNotEmpty,
-                        child: RaisedButton(
-                          color: kPrimaryColor,
+                        child: FlatButton(
                           onPressed: () {
                             Navigator.push(
                                 context,
@@ -114,7 +113,9 @@ class _CartScreenState extends State<CartScreen> {
                           },
                           child: Text(
                             "  SAVE CART  ",
-                            style: TextStyle(color: Colors.white),
+                            style: TextStyle(
+                                color: kPrimaryColor,
+                                fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),
