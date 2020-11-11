@@ -98,17 +98,20 @@ class _CartScreenState extends State<CartScreen> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(right: 15),
-                  child: RaisedButton(
-                    color: kPrimaryColor,
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => checkoutScreen()));
-                    },
-                    child: Text(
-                      "  CHECK OUT  ",
-                      style: TextStyle(color: Colors.white),
+                  child: Visibility(
+                    visible: cartData.isNotEmpty,
+                    child: RaisedButton(
+                      color: kPrimaryColor,
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => checkoutScreen()));
+                      },
+                      child: Text(
+                        "  CHECK OUT  ",
+                        style: TextStyle(color: Colors.white),
+                      ),
                     ),
                   ),
                 ),

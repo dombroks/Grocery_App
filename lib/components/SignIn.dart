@@ -28,7 +28,6 @@ class _SignInState extends State<SignIn> {
   @override
   void initState() {
     _obscureText = true;
-    // TODO: implement initState
     super.initState();
   }
 
