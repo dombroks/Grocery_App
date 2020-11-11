@@ -43,12 +43,13 @@ class Saved_card extends StatelessWidget {
                               fontWeight: FontWeight.bold, fontSize: 18),
                         ),
                         SizedBox(
-                          height: 15,
+                          height: 13,
                         ),
                         Text(
                           "Subtotal : 1,820.00",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
+                            fontSize: 16,
                           ),
                         ),
                         SizedBox(
@@ -58,6 +59,7 @@ class Saved_card extends StatelessWidget {
                           "Total items: 04",
                           style: TextStyle(
                             color: Colors.grey,
+                            fontSize: 14,
                           ),
                         ),
                       ],
