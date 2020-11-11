@@ -3,7 +3,20 @@ import 'package:grocery_app/components/MyButton.dart';
 
 import '../constants.dart';
 
-class SaveCart extends StatelessWidget {
+class SaveCart extends StatefulWidget {
+  @override
+  _SaveCartState createState() => _SaveCartState();
+}
+
+class _SaveCartState extends State<SaveCart> {
+  final nameController = TextEditingController();
+
+  @override
+  void dispose() {
+    nameController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
