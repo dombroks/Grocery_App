@@ -96,24 +96,48 @@ class _CartScreenState extends State<CartScreen> {
                     ],
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 15),
-                  child: Visibility(
-                    visible: cartData.isNotEmpty,
-                    child: RaisedButton(
-                      color: kPrimaryColor,
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => checkoutScreen()));
-                      },
-                      child: Text(
-                        "  CHECK OUT  ",
-                        style: TextStyle(color: Colors.white),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 15),
+                      child: Visibility(
+                        visible: cartData.isNotEmpty,
+                        child: RaisedButton(
+                          color: kPrimaryColor,
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => checkoutScreen()));
+                          },
+                          child: Text(
+                            "  SAVE CART  ",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
                       ),
                     ),
-                  ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 15),
+                      child: Visibility(
+                        visible: cartData.isNotEmpty,
+                        child: RaisedButton(
+                          color: kPrimaryColor,
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => checkoutScreen()));
+                          },
+                          child: Text(
+                            "  CHECK OUT  ",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
