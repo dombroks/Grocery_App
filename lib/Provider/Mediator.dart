@@ -282,4 +282,17 @@ class Mediator extends ChangeNotifier {
       print(e.toString());
     }
   }
+
+  Future<void> saveCart(
+      String cartName, List<element> cartElements, String price) async {
+    FirebaseUser user = await _auth.currentUser();
+    cartElements.forEach((element) async{
+      await _db
+          .collection("Saved Carts")
+          .document(user.uid)
+          .collection(cartName)
+          .add(element.toMap(element));
+    });
+    int totalItems = cartElements.length;
+  }
 }
