@@ -6,6 +6,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:grocery_app/Model/Cart.dart';
 import 'package:grocery_app/Model/element.dart';
 import 'package:grocery_app/Model/CountryPrefixCode.dart';
 
@@ -296,6 +297,8 @@ class Mediator extends ChangeNotifier {
 
   Future<void> getSavedCarts() async {
     FirebaseUser user = await _auth.currentUser();
+    List<Cart> carts;
+    var data = await _db.collection("Saved Carts").document(user.uid).get();
     
   }
 }
