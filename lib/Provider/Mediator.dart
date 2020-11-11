@@ -298,7 +298,7 @@ class Mediator extends ChangeNotifier {
   Future<void> getSavedCarts() async {
     FirebaseUser user = await _auth.currentUser();
     List<Cart> carts;
-    var data = await _db.collection("Saved Carts").document(user.uid).get();
+
     
   }
 }
