@@ -9,7 +9,7 @@ class SaveCart extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kPrimaryColor,
-        title: Text("Add number"),
+        title: Text("Save cart"),
       ),
       body: Card(
         elevation: 6,
