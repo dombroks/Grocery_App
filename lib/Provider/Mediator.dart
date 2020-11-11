@@ -283,8 +283,7 @@ class Mediator extends ChangeNotifier {
     }
   }
 
-  Future<void> saveCart(
-      String cartName, List<element> cartElements) async {
+  Future<void> saveCart(String cartName, List<element> cartElements) async {
     FirebaseUser user = await _auth.currentUser();
     cartElements.forEach((element) async {
       await _db
@@ -293,5 +292,9 @@ class Mediator extends ChangeNotifier {
           .collection(cartName)
           .add(element.toMap(element));
     });
+  }
+
+  Future<void> getSavedCarts() async {
+    FirebaseUser user = await _auth.currentUser();
   }
 }
