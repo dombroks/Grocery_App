@@ -94,9 +94,9 @@ class _SaveCartState extends State<SaveCart> {
                   children: [
                     MyButton("NEXT", () async {
                       await provider.saveCart(
-                          nameController.text,
-                          provider.cartElements,
-                          provider.totalPrice.toString());
+                        nameController.text,
+                        provider.cartElements,
+                      );
                       Navigator.push(
                           context,
                           MaterialPageRoute(
