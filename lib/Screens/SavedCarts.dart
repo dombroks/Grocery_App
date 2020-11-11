@@ -12,8 +12,8 @@ class _SavedCartsState extends State<SavedCarts> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kPrimaryColor,
+        title: Text("Saved cart"),
       ),
-      
     );
   }
 }
