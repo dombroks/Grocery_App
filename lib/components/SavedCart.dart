@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:grocery_app/components/MyButton.dart';
 import 'package:grocery_app/constants.dart';
 
+// ignore: must_be_immutable
 class SavedCart extends StatelessWidget {
   String savedCartName;
   String totalPrice;
