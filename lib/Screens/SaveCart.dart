@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_app/Screens/SavedCarts.dart';
 import 'package:grocery_app/components/MyButton.dart';
 
 import '../constants.dart';
@@ -86,7 +87,14 @@ class _SaveCartState extends State<SaveCart> {
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
-                  children: [MyButton("NEXT", () {})],
+                  children: [
+                    MyButton("NEXT", () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SavedCarts()));
+                    })
+                  ],
                 )
               ],
             ),
