@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_app/Provider/Mediator.dart';
 import 'package:grocery_app/components/SavedCart.dart';
 import 'package:grocery_app/constants.dart';
-import 'package:provider/provider.dart';
 
 class SavedCarts extends StatefulWidget {
   @override
