@@ -12,7 +12,6 @@ class SavedCarts extends StatefulWidget {
 class _SavedCartsState extends State<SavedCarts> {
   @override
   void initState() {
-    Provider.of<Mediator>(context, listen: false).getSavedCarts();
     super.initState();
   }
 
