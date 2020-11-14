@@ -6,7 +6,6 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:grocery_app/Model/Cart.dart';
 import 'package:grocery_app/Model/element.dart';
 import 'package:grocery_app/Model/CountryPrefixCode.dart';
 
@@ -28,6 +27,7 @@ class Mediator extends ChangeNotifier {
   String signInErrorMessage = "";
   String signOutErrorMessage = "";
 
+  var savedCarts;
   List<String> prefixCodes = [];
   List<element> vegetables = [];
   List<element> fruits = [];
@@ -287,10 +287,19 @@ class Mediator extends ChangeNotifier {
   Future<void> saveCart(String cartName, List<element> cartElements) async {
     FirebaseUser user = await _auth.currentUser();
     cartElements.forEach((element) async {
-      await _db.collection("Saved Carts")
-      .add(element.toMap(element));
+      await _db
+          .collection("Saved Carts")
+          .document(user.uid)
+          .collection(cartName)
+          .add(element.toMap(element));
     });
   }
 
-  
+  Stream<QuerySnapshot> getSavedCarts() {
+    return _db
+        .collection("Saved Carts")
+        .document("u6FTiZ2nSYSAnbNt2M5LehtGpXz1")
+        .collection("cart1")
+        .snapshots();
+  }
 }

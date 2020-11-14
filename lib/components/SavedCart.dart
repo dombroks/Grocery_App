@@ -7,6 +7,9 @@ class SavedCart extends StatelessWidget {
   String savedCartName;
   String totalPrice;
   String itemsNumber;
+
+  SavedCart({Key key, this.savedCartName, this.totalPrice, this.itemsNumber})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -42,7 +45,7 @@ class SavedCart extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Vegetables",
+                          savedCartName,
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 18),
                         ),
@@ -50,7 +53,7 @@ class SavedCart extends StatelessWidget {
                           height: 13,
                         ),
                         Text(
-                          "Subtotal : 1,820.00",
+                          totalPrice,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 16,
@@ -60,7 +63,7 @@ class SavedCart extends StatelessWidget {
                           height: 5,
                         ),
                         Text(
-                          "Total items: 04",
+                          "Total items: $itemsNumber",
                           style: TextStyle(
                             color: Colors.grey,
                             fontSize: 14,
