@@ -289,9 +289,8 @@ class Mediator extends ChangeNotifier {
     cartElements.forEach((element) async {
       await _db
           .collection("Saved Carts")
-          .document(user.uid)
-          .collection(cartName)
-          .add(element.toMap(element));
+          .document(cartName)
+          .updateData(element.toMap(element));
     });
   }
 

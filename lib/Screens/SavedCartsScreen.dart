@@ -34,7 +34,7 @@ class _SavedCartsState extends State<SavedCarts> {
                       DocumentSnapshot userData =
                           userSnapshot.data.documents[index];
                       return SavedCart(
-                          savedCartName: "to",
+                          savedCartName: userData.data["amount"],
                           totalPrice: "111",
                           itemsNumber: "10");
                     })
