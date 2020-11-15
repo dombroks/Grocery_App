@@ -1,7 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:grocery_app/Provider/Mediator.dart';
-import 'package:grocery_app/components/SavedCart.dart';
 import 'package:grocery_app/constants.dart';
 import 'package:provider/provider.dart';
 
@@ -19,17 +18,26 @@ class _SavedCartsState extends State<SavedCarts> {
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<Mediator>(context, listen: false);
+    final FirebaseDatabase _firebaseDatabase = FirebaseDatabase.instance;
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kPrimaryColor,
         title: Text("Saved cart"),
       ),
       body: StreamBuilder(
-          stream: provider.getSavedCarts().onValue,
+          stream: _firebaseDatabase
+              .reference()
+              .child("Saved carts")
+              .child("u6FTiZ2nSYSAnbNt2M5LehtGpXz1")
+              .limitToFirst(1)
+              .onValue,
           builder: (context, userSnapshot) {
-            print(userSnapshot.data);
+            print(userSnapshot.data.snapshot.value.toString());
             return userSnapshot.hasData
-                ? Text(userSnapshot.data)
+                ? ListTile(
+                    title: Text(userSnapshot.data.snapshot.value.toString()),
+                  )
                 : CircularProgressIndicator();
           }),
     );
