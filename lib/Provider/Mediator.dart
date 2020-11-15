@@ -291,12 +291,6 @@ class Mediator extends ChangeNotifier {
     FirebaseUser user = await _auth.currentUser();
     Cart cart = Cart(cartElements, cartName, "1000");
     cartElements.forEach((element) async {
-      /*
-      await _db
-          .collection("Saved Carts")
-          .document(cartName)
-          .setData(cart.toMap(cart));
-          */
       await _firebaseDatabase
           .reference()
           .child("Saved carts")
@@ -307,11 +301,11 @@ class Mediator extends ChangeNotifier {
     });
   }
 
-  Stream<QuerySnapshot> getSavedCarts() {
-    return _db
-        .collection("Saved Carts")
-        .document("u6FTiZ2nSYSAnbNt2M5LehtGpXz1")
-        .collection("cart1")
-        .snapshots();
+  getSavedCarts() {
+    return _firebaseDatabase
+        .reference()
+        .child("Saved carts")
+        .child("u6FTiZ2nSYSAnbNt2M5LehtGpXz1")
+        .limitToFirst(10);
   }
 }

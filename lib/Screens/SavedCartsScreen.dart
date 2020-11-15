@@ -25,19 +25,11 @@ class _SavedCartsState extends State<SavedCarts> {
         title: Text("Saved cart"),
       ),
       body: StreamBuilder(
-          stream: provider.getSavedCarts(),
+          stream: provider.getSavedCarts().onValue,
           builder: (context, userSnapshot) {
+            print(userSnapshot.data);
             return userSnapshot.hasData
-                ? ListView.builder(
-                    itemCount: userSnapshot.data.documents.length,
-                    itemBuilder: (context, index) {
-                      DocumentSnapshot userData =
-                          userSnapshot.data.documents[index];
-                      return SavedCart(
-                          savedCartName: userData.data["amount"],
-                          totalPrice: "111",
-                          itemsNumber: "10");
-                    })
+                ? Text(userSnapshot.data)
                 : CircularProgressIndicator();
           }),
     );
