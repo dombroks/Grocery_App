@@ -1,6 +1,7 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:grocery_app/Provider/Mediator.dart';
+import 'package:grocery_app/components/SavedCart.dart';
 import 'package:grocery_app/constants.dart';
 import 'package:provider/provider.dart';
 
@@ -30,13 +31,21 @@ class _SavedCartsState extends State<SavedCarts> {
               .reference()
               .child("Saved carts")
               .child("u6FTiZ2nSYSAnbNt2M5LehtGpXz1")
-              .limitToFirst(1)
+              .limitToFirst(10)
               .onValue,
           builder: (context, userSnapshot) {
-            print(userSnapshot.data.snapshot.value.toString());
+
+            
             return userSnapshot.hasData
-                ? ListTile(
-                    title: Text(userSnapshot.data.snapshot.value['fin'].toString()),
+                ? ListView.builder(
+                    itemCount: userSnapshot.data.snapshot.value.length,
+                    itemBuilder: (context, index) {
+                      return SavedCart(
+                        savedCartName:
+                            userSnapshot.data.snapshot.value[0].toString(),
+                        totalPrice: "10",
+                      );
+                    },
                   )
                 : CircularProgressIndicator();
           }),
