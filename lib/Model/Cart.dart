@@ -16,4 +16,6 @@ class Cart {
       'totalPrice': cart.totalPrice
     };
   }
+
+  Cart.fromMap(Map<String, dynamic> parsedJson);
 }

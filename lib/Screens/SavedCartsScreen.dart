@@ -36,7 +36,7 @@ class _SavedCartsState extends State<SavedCarts> {
             print(userSnapshot.data.snapshot.value.toString());
             return userSnapshot.hasData
                 ? ListTile(
-                    title: Text(userSnapshot.data.snapshot.value.toString()),
+                    title: Text(userSnapshot.data.snapshot.value['fin'].toString()),
                   )
                 : CircularProgressIndicator();
           }),
