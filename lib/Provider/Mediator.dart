@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +16,7 @@ class Mediator extends ChangeNotifier {
   final Firestore _db = Firestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseStorage _storage = FirebaseStorage.instance;
+  final FirebaseDatabase _firebaseDatabase = FirebaseDatabase.instance;
 
   // User Data
   bool userDataIsLoaded = false;
@@ -289,10 +291,19 @@ class Mediator extends ChangeNotifier {
     FirebaseUser user = await _auth.currentUser();
     Cart cart = Cart(cartElements, cartName, "1000");
     cartElements.forEach((element) async {
+      /*
       await _db
           .collection("Saved Carts")
           .document(cartName)
           .setData(cart.toMap(cart));
+          */
+      await _firebaseDatabase
+          .reference()
+          .child("Saved carts")
+          .child(user.uid)
+          .child(cartName)
+          .child(element.name)
+          .set(element.toMap(element));
     });
   }
 
