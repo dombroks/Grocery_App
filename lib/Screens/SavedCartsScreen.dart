@@ -34,8 +34,6 @@ class _SavedCartsState extends State<SavedCarts> {
               .limitToFirst(10)
               .onValue,
           builder: (context, userSnapshot) {
-
-            
             return userSnapshot.hasData
                 ? ListView.builder(
                     itemCount: userSnapshot.data.snapshot.value.length,
