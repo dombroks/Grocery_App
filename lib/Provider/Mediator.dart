@@ -306,4 +306,13 @@ class Mediator extends ChangeNotifier {
         .child(userId)
         .limitToFirst(10);
   }
+
+  Future deleteSavedCart(String cartName) async {
+    return await _firebaseDatabase
+        .reference()
+        .child('Saved carts')
+        .child(userId)
+        .child(cartName)
+        .remove();
+  }
 }

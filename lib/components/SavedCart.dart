@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_app/Provider/Mediator.dart';
 import 'package:grocery_app/components/MyButton.dart';
 import 'package:grocery_app/constants.dart';
+import 'package:provider/provider.dart';
 
 // ignore: must_be_immutable
 class SavedCart extends StatelessWidget {
@@ -74,9 +76,15 @@ class SavedCart extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Icon(
-                          Icons.delete_outline,
-                          color: Colors.grey,
+                        GestureDetector(
+                          child: Icon(
+                            Icons.delete_outline,
+                            color: Colors.grey,
+                          ),
+                          onTap: () {
+                            Provider.of<Mediator>(context, listen: false)
+                                .deleteSavedCart(savedCartName);
+                          },
                         ),
                       ],
                     )
