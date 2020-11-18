@@ -21,7 +21,7 @@ class SavedCart extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(15.0),
           child: Container(
-            height: 170,
+            height: 150,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
