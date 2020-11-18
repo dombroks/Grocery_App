@@ -105,6 +105,9 @@ class SavedCart extends StatelessWidget {
                         ),
                       ),
                     ),
+                    SizedBox(
+                      width: 5,
+                    ),
                     MyButton("CHECK OUT", () {})
                   ],
                 )
