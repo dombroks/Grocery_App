@@ -13,9 +13,9 @@ class SavedCart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(12.0),
+      padding: const EdgeInsets.only(left: 12.0, right: 12, top: 8),
       child: Card(
-        elevation: 4,
+        elevation: 3,
         child: Padding(
           padding: const EdgeInsets.all(15.0),
           child: Container(
