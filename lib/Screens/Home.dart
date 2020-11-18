@@ -6,6 +6,7 @@ import 'package:grocery_app/components/DrawerListTile.dart';
 import '../constants.dart';
 import 'CartScreen.dart';
 import 'MainScreen.dart';
+import 'SavedCartsScreen.dart';
 
 // ignore: must_be_immutable
 class Home extends StatelessWidget {
@@ -36,7 +37,10 @@ class Home extends StatelessWidget {
               DrawerListTile(
                 title: "Saved carts",
                 iconData: Icons.shopping_cart,
-                onClick: () {},
+                onClick: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => SavedCarts()));
+                },
               ),
               DrawerListTile(
                 title: "Store locator",
