@@ -25,6 +25,7 @@ class Mediator extends ChangeNotifier {
   String email;
   String phoneNumber;
   String numberPrefix;
+  String userId = "";
 
   // Error massages
   String signInErrorMessage = "";
@@ -180,23 +181,19 @@ class Mediator extends ChangeNotifier {
     try {
       AuthResult result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
-      FirebaseUser user = result.user;
       await _db
           .collection("Users")
-          .document(user.uid)
-          .setData({'username': username, 'email': email, 'id': user.uid});
+          .document(userId)
+          .setData({'username': username, 'email': email, 'id': userId});
     } on PlatformException catch (e) {
       signOutErrorMessage = e.message;
     }
   }
 
   Future addPhoneNumber(String phoneNumber, String numberPrefix) async {
-    final FirebaseUser user = await _auth.currentUser();
-    final uid = user.uid;
-
     await _db
         .collection("Users")
-        .document(uid)
+        .document(userId)
         .updateData({"phoneNumber": phoneNumber, "numberPrefix": numberPrefix});
   }
 
@@ -221,15 +218,14 @@ class Mediator extends ChangeNotifier {
   }
 
   Future uploadProfileImageToStorage(File image) async {
-    FirebaseUser user = await _auth.currentUser();
     try {
       StorageReference firebaseStorageRef =
-          _storage.ref().child('profileImages/${user.uid}');
+          _storage.ref().child('profileImages/$userId');
       StorageUploadTask uploadTask = firebaseStorageRef.putFile(image);
       StorageTaskSnapshot taskSnapshot = await uploadTask.onComplete;
       taskSnapshot.ref.getDownloadURL().then((value) async => await _db
           .collection("Users")
-          .document(user.uid)
+          .document(userId)
           .updateData({"profileImageUrl": value}));
     } on PlatformException catch (e) {
       print(e.message);
@@ -238,10 +234,9 @@ class Mediator extends ChangeNotifier {
   }
 
   Future<void> getProfileDetails() async {
-    FirebaseUser user = await _auth.currentUser();
     final docs = await _db.collection("Users").getDocuments().then((value) {
       for (int i = 0; i < value.documents.length; i++) {
-        if (value.documents[i].data["id"].toString().trim() == user.uid) {
+        if (value.documents[i].data["id"].toString().trim() == userId) {
           email = value.documents[i].data["email"];
           username = value.documents[i].data["username"];
           phoneNumber = value.documents[i].data["phoneNumber"];
@@ -269,14 +264,13 @@ class Mediator extends ChangeNotifier {
 
   Future<void> updateRecipientDetails(String uname, String emailAddress,
       String phone, String phonePrefix) async {
-    FirebaseUser user = await _auth.currentUser();
     if (uname.isEmpty) uname = username;
     if (emailAddress.isEmpty) emailAddress = email;
     if (phone.isEmpty) phone = phoneNumber;
     if (phonePrefix.isEmpty) phonePrefix = numberPrefix;
 
     try {
-      await _db.collection("Users").document(user.uid).updateData({
+      await _db.collection("Users").document(userId).updateData({
         "email": emailAddress,
         "username": uname,
         "numberPrefix": phonePrefix,
@@ -288,24 +282,28 @@ class Mediator extends ChangeNotifier {
   }
 
   Future<void> saveCart(String cartName, List<element> cartElements) async {
-    FirebaseUser user = await _auth.currentUser();
     Cart cart = Cart(cartElements, cartName, "1000");
     cartElements.forEach((element) async {
       await _firebaseDatabase
           .reference()
           .child("Saved carts")
-          .child(user.uid)
+          .child(userId)
           .child(cartName)
           .child(element.name)
           .set(element.toMap(element));
     });
   }
 
+  Future getUserId() async {
+    FirebaseUser user = await _auth.currentUser();
+    userId = user.uid;
+  }
+
   getSavedCarts() {
     return _firebaseDatabase
         .reference()
         .child('Saved carts')
-        .child('u6FTiZ2nSYSAnbNt2M5LehtGpXz1')
+        .child(userId)
         .limitToFirst(10);
   }
 }

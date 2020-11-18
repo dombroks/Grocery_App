@@ -19,6 +19,7 @@ class homeScreen extends StatefulWidget {
 class _homeScreenState extends State<homeScreen> {
   @override
   void initState() {
+    Provider.of<Mediator>(context, listen: false).getUserId();
     super.initState();
   }
 
