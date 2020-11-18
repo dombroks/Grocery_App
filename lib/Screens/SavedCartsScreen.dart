@@ -34,11 +34,15 @@ class _SavedCartsState extends State<SavedCarts> {
                 Animation<double> animation, int index) {
               Map map = snap.value;
 
-              return SavedCart(
-                savedCartName: snap.key,
-                totalPrice: "10",
-                itemsNumber: snap.value.length.toString(),
-              );
+              return (snap == null)
+                  ? Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  : SavedCart(
+                      savedCartName: snap.key,
+                      totalPrice: "10",
+                      itemsNumber: snap.value.length.toString(),
+                    );
             }));
   }
 }
