@@ -22,7 +22,6 @@ class _SavedCartsState extends State<SavedCarts> {
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<Mediator>(context, listen: false);
-    final FirebaseDatabase _firebaseDatabase = FirebaseDatabase.instance;
 
     return Scaffold(
         appBar: AppBar(
@@ -30,10 +29,7 @@ class _SavedCartsState extends State<SavedCarts> {
           title: Text("Saved cart"),
         ),
         body: FirebaseAnimatedList(
-            query: _firebaseDatabase
-                .reference()
-                .child('Saved carts')
-                .child("u6FTiZ2nSYSAnbNt2M5LehtGpXz1"),
+            query: provider.getSavedCarts(),
             itemBuilder: (BuildContext context, DataSnapshot snap,
                 Animation<double> animation, int index) {
               Map map = snap.value;
