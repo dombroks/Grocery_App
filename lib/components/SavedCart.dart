@@ -55,10 +55,10 @@ class SavedCart extends StatelessWidget {
                           height: 13,
                         ),
                         Text(
-                          totalPrice,
+                          "Price: \$ $totalPrice",
                           style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
+                            color: Colors.grey,
+                            fontSize: 14,
                           ),
                         ),
                         SizedBox(
