@@ -304,8 +304,8 @@ class Mediator extends ChangeNotifier {
   getSavedCarts() {
     return _firebaseDatabase
         .reference()
-        .child("Saved carts")
-        .child("u6FTiZ2nSYSAnbNt2M5LehtGpXz1")
+        .child('Saved carts')
+        .child('u6FTiZ2nSYSAnbNt2M5LehtGpXz1')
         .limitToFirst(10);
   }
 }
