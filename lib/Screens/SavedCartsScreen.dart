@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +35,6 @@ class _SavedCartsState extends State<SavedCarts> {
             itemBuilder: (BuildContext context, DataSnapshot snap,
                 Animation<double> animation, int index) {
               Map map = snap.value;
-              print(map.values.toString());
 
               return (snap == null)
                   ? Center(
