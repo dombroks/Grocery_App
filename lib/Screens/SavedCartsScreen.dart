@@ -33,7 +33,7 @@ class _SavedCartsState extends State<SavedCarts> {
             itemBuilder: (BuildContext context, DataSnapshot snap,
                 Animation<double> animation, int index) {
               //Map map = snap.value;
-            
+
               return (snap == null)
                   ? Center(
                       child: CircularProgressIndicator(),

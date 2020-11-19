@@ -281,7 +281,7 @@ class Mediator extends ChangeNotifier {
     }
   }
 
-  Future<void> saveCart(String cartName, List<element> cartElements) async {
+  Future<void> saveCart(String cartName) async {
     Cart cart = Cart(cartElements, cartName, "1000");
     cartElements.forEach((element) async {
       await _firebaseDatabase
