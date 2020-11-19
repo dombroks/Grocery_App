@@ -95,7 +95,6 @@ class _SaveCartState extends State<SaveCart> {
                     MyButton("NEXT", () async {
                       await provider.saveCart(
                         nameController.text,
-                        provider.cartElements,
                       );
                       Navigator.push(
                           context,
