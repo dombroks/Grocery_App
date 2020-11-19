@@ -26,15 +26,30 @@ class SavedCart extends StatelessWidget {
             child: Column(
               children: [
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    GestureDetector(
+                      child: Icon(
+                        Icons.delete_outline,
+                        color: Colors.grey,
+                      ),
+                      onTap: () {
+                        Provider.of<Mediator>(context, listen: false)
+                            .deleteSavedCart(savedCartName);
+                      },
+                    ),
+                  ],
+                ),
+                Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
+                      width: 50,
+                      height: 50,
                       child: Icon(
                         Icons.shopping_cart,
                         color: Colors.white,
                       ),
-                      width: 50,
-                      height: 50,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: kPrimaryColor,
@@ -74,21 +89,6 @@ class SavedCart extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        GestureDetector(
-                          child: Icon(
-                            Icons.delete_outline,
-                            color: Colors.grey,
-                          ),
-                          onTap: () {
-                            Provider.of<Mediator>(context, listen: false)
-                                .deleteSavedCart(savedCartName);
-                          },
-                        ),
-                      ],
-                    )
                   ],
                 ),
                 SizedBox(
