@@ -32,7 +32,8 @@ class _SavedCartsState extends State<SavedCarts> {
             query: provider.getSavedCarts(),
             itemBuilder: (BuildContext context, DataSnapshot snap,
                 Animation<double> animation, int index) {
-              //Map map = snap.value;
+              Map map = snap.value;
+              print(map.values.toString());
 
               return (snap == null)
                   ? Center(

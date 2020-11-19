@@ -21,7 +21,7 @@ class SavedCart extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(15.0),
           child: Container(
-            height: 150,
+            height: 175,
             width: double.infinity,
             child: Column(
               children: [
