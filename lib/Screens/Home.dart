@@ -24,6 +24,9 @@ class Home extends StatelessWidget {
         drawer: Drawer(
           child: ListView(
             children: [
+              SizedBox(
+                height: 60,
+              ),
               DrawerListTile(
                 title: "Order history",
                 iconData: Icons.history,
