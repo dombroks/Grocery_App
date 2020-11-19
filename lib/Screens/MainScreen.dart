@@ -141,6 +141,7 @@ class _homeScreenState extends State<homeScreen> {
                           price: e.price,
                           amount: e.amount,
                           imageUrl: e.image,
+                        
                           addToCart: () {
                             provider.addElementToCart(e);
                           },
