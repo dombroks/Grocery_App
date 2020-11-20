@@ -5,15 +5,10 @@ import 'package:grocery_app/Provider/Mediator.dart';
 import 'package:grocery_app/Screens/Checkout.dart';
 import 'package:grocery_app/Screens/SaveCart.dart';
 import 'package:grocery_app/components/CartElement.dart';
-import 'package:grocery_app/components/SavedCart.dart';
 import 'package:grocery_app/constants.dart';
 import 'package:provider/provider.dart';
 
 class CartScreen extends StatefulWidget {
-  List<element> savedCartList;
-  CartScreen(List<element> savedCartList) {
-    this.savedCartList = savedCartList;
-  }
   @override
   _CartScreenState createState() => _CartScreenState();
 }
@@ -36,9 +31,7 @@ class _CartScreenState extends State<CartScreen> {
     bool checkoutButtonVisibility = false;
     var provider = Provider.of<Mediator>(context, listen: true);
 
-    var cartData = (widget.savedCartList.isNotEmpty)
-        ? widget.savedCartList
-        : provider.cartElements;
+    var cartData = provider.cartElements;
     var totalPrice = provider.totalPrice;
 
     // ignore: prefer_is_not_empty

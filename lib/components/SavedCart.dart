@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_app/Model/element.dart';
 import 'package:grocery_app/Provider/Mediator.dart';
+import 'package:grocery_app/Screens/SavedCartsDetailsScreen.dart';
 import 'package:grocery_app/components/MyButton.dart';
 import 'package:grocery_app/constants.dart';
 import 'package:provider/provider.dart';
@@ -12,7 +13,12 @@ class SavedCart extends StatelessWidget {
   String itemsNumber;
   List<element> elements;
 
-  SavedCart({Key key, this.savedCartName, this.totalPrice, this.itemsNumber, this.elements})
+  SavedCart(
+      {Key key,
+      this.savedCartName,
+      this.totalPrice,
+      this.itemsNumber,
+      this.elements})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -100,13 +106,19 @@ class SavedCart extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     FlatButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    SavedCartsDetailsScreen(elements,totalPrice)));
+                      },
                       child: Text(
-                        "VIEW CART",
-                        style: TextStyle(
-                          color: Colors.grey,
+                          "VIEW CART",
+                          style: TextStyle(
+                            color: Colors.grey,
+                          ),
                         ),
-                      ),
                     ),
                     SizedBox(
                       width: 5,

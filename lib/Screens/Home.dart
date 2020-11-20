@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_app/Model/element.dart';
 
 import 'package:grocery_app/Screens/Profile.dart';
 import 'package:grocery_app/components/DrawerListTile.dart';
@@ -11,6 +12,7 @@ import 'SavedCartsScreen.dart';
 // ignore: must_be_immutable
 class Home extends StatelessWidget {
   int selectedPage;
+  
   Home(this.selectedPage);
 
   var _drawerKey = GlobalKey<ScaffoldState>();
@@ -100,7 +102,7 @@ class Home extends StatelessWidget {
         ),
         body: TabBarView(children: [
           homeScreen(),
-          CartScreen([]),
+          CartScreen(),
           Profile(),
         ]),
       ),
