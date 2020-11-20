@@ -111,7 +111,7 @@ class SavedCart extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    SavedCartsDetailsScreen(elements,totalPrice)));
+                                    SavedCartsDetailsScreen(elements,totalPrice,savedCartName)));
                       },
                       child: Text(
                           "VIEW CART",

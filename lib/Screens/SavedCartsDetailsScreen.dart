@@ -10,9 +10,10 @@ import 'package:provider/provider.dart';
 
 // ignore: must_be_immutable
 class SavedCartsDetailsScreen extends StatefulWidget {
+  String cartName;
   List<element> cartData;
   String totalPrice;
-  SavedCartsDetailsScreen(this.cartData, this.totalPrice);
+  SavedCartsDetailsScreen(this.cartData, this.totalPrice, this.cartName);
 
   @override
   _SavedCartsDetailsScreenState createState() =>
@@ -30,7 +31,7 @@ class _SavedCartsDetailsScreenState extends State<SavedCartsDetailsScreen> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: Text("cartName"),
+        title: Text(widget.cartName),
         elevation: 0,
         backgroundColor: kPrimaryColor,
       ),
