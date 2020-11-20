@@ -100,7 +100,7 @@ class Home extends StatelessWidget {
         ),
         body: TabBarView(children: [
           homeScreen(),
-          CartScreen(),
+          CartScreen([]),
           Profile(),
         ]),
       ),

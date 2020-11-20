@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_app/Model/element.dart';
 import 'package:grocery_app/Provider/Mediator.dart';
 import 'package:grocery_app/components/MyButton.dart';
 import 'package:grocery_app/constants.dart';
@@ -9,8 +10,9 @@ class SavedCart extends StatelessWidget {
   String savedCartName;
   String totalPrice;
   String itemsNumber;
+  List<element> elements;
 
-  SavedCart({Key key, this.savedCartName, this.totalPrice, this.itemsNumber})
+  SavedCart({Key key, this.savedCartName, this.totalPrice, this.itemsNumber, this.elements})
       : super(key: key);
   @override
   Widget build(BuildContext context) {

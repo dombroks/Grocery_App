@@ -1,11 +1,11 @@
 import 'dart:convert';
+import 'dart:ffi';
 
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:grocery_app/Model/element.dart';
 import 'package:grocery_app/Provider/Mediator.dart';
-import 'package:grocery_app/components/CartElement.dart';
 import 'package:grocery_app/components/SavedCart.dart';
 import 'package:grocery_app/constants.dart';
 import 'package:provider/provider.dart';
@@ -35,15 +35,28 @@ class _SavedCartsState extends State<SavedCarts> {
             itemBuilder: (BuildContext context, DataSnapshot snap,
                 Animation<double> animation, int index) {
               Map map = snap.value;
-              
+              double totalPrice = 0;
+              List<element> elements = [];
+              map.forEach((key, value) {
+                totalPrice += double.parse(value['price']) *
+                  value['amountForBuying'];
+                element e = element(
+                    value['name'],
+                    value['price'],
+                    value['image'],
+                    value['amount'],
+                    value['amountForBuying'].toInt());
+                elements.add(e);
+              });
               return (snap == null)
                   ? Center(
                       child: CircularProgressIndicator(),
                     )
                   : SavedCart(
                       savedCartName: snap.key,
-                      totalPrice: "10",
+                      totalPrice: totalPrice.toString(),
                       itemsNumber: snap.value.length.toString(),
+                      elements: elements,
                     );
             }));
   }
