@@ -344,7 +344,22 @@ class Mediator extends ChangeNotifier {
       });
       e.decrementAmountForBuying();
     }
+    notifyListeners();
+  }
 
+  Future saveCreditCard(
+      String name, String number, String month, String year, String cvv) async {
+    await _firebaseDatabase
+        .reference()
+        .child("Credit cards")
+        .child(userId)
+        .set({
+      "holderName": name,
+      "number": number,
+      "month": month,
+      "year": year,
+      "cvv": cvv
+    });
     notifyListeners();
   }
 }

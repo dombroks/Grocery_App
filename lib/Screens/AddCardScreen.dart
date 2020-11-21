@@ -55,9 +55,11 @@ class _AddCardScreenState extends State<AddCardScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TextField(
+                controller: name,
                 decoration: InputDecoration(hintText: "Card holder name"),
               ),
               TextField(
+                controller: number ,
                 decoration: InputDecoration(hintText: "Card number"),
               ),
               Container(
@@ -65,6 +67,7 @@ class _AddCardScreenState extends State<AddCardScreen> {
                   children: [
                     Expanded(
                       child: TextField(
+                        controller: month,
                         decoration: InputDecoration(hintText: "Month"),
                       ),
                     ),
@@ -73,6 +76,7 @@ class _AddCardScreenState extends State<AddCardScreen> {
                     ),
                     Expanded(
                       child: TextField(
+                        controller: year,
                         decoration: InputDecoration(hintText: "Year"),
                       ),
                     ),
@@ -81,6 +85,7 @@ class _AddCardScreenState extends State<AddCardScreen> {
                     ),
                     Expanded(
                       child: TextField(
+                        controller: cvv,
                         decoration: InputDecoration(hintText: "CVV number"),
                       ),
                     ),
