@@ -34,27 +34,18 @@ class _AddPaymentMethodState extends State<AddPaymentMethod> {
         centerTitle: true,
       ),
       body: FirebaseAnimatedList(
-          defaultChild: AddCard(),
+          defaultChild: Center(child: CircularProgressIndicator(),),
           query: provider.getCreditCards(),
           itemBuilder: (BuildContext context, DataSnapshot snap,
               Animation<double> animation, int index) {
             Map map = snap.value;
-            List<CreditCardModel> cards = [];
 
-            print(map.entries.elementAt(0).value);
-            /*
-            map.forEach((key, value) {
-              CreditCardModel card = CreditCardModel(value["holderName"],
-                  value["number"], value["cvv"], value["month"], value["year"]);
-              cards.add(card);
-            });
-            */
             return CreditCard(
-                name: "name",
-                number: "8254561615618915",
-                cvv: "285",
-                month: "05",
-                year: "1995");
+                name: map.entries.elementAt(2).value,
+                number: map.entries.elementAt(0).value,
+                cvv: map.entries.elementAt(1).value,
+                month: map.entries.elementAt(3).value,
+                year: map.entries.elementAt(4).value);
           }),
     );
   }

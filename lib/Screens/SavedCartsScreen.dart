@@ -31,6 +31,9 @@ class _SavedCartsState extends State<SavedCarts> {
           title: Text("Saved cart"),
         ),
         body: FirebaseAnimatedList(
+            defaultChild: Center(
+              child: CircularProgressIndicator(),
+            ),
             query: provider.getSavedCarts(),
             itemBuilder: (BuildContext context, DataSnapshot snap,
                 Animation<double> animation, int index) {
@@ -38,8 +41,8 @@ class _SavedCartsState extends State<SavedCarts> {
               double totalPrice = 0;
               List<element> elements = [];
               map.forEach((key, value) {
-                totalPrice += double.parse(value['price']) *
-                  value['amountForBuying'];
+                totalPrice +=
+                    double.parse(value['price']) * value['amountForBuying'];
                 element e = element(
                     value['name'],
                     value['price'],
@@ -48,16 +51,12 @@ class _SavedCartsState extends State<SavedCarts> {
                     value['amountForBuying'].toInt());
                 elements.add(e);
               });
-              return (snap == null)
-                  ? Center(
-                      child: CircularProgressIndicator(),
-                    )
-                  : SavedCart(
-                      savedCartName: snap.key,
-                      totalPrice: totalPrice.toString(),
-                      itemsNumber: snap.value.length.toString(),
-                      elements: elements,
-                    );
+              return SavedCart(
+                savedCartName: snap.key,
+                totalPrice: totalPrice.toString(),
+                itemsNumber: snap.value.length.toString(),
+                elements: elements,
+              );
             }));
   }
 }
