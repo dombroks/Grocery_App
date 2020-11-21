@@ -160,6 +160,7 @@ class _CreditCardState extends State<CreditCard> {
               onPressed: () async {
                 await Provider.of<Mediator>(context, listen: false)
                     .deleteCreditCard(cardNumber);
+                Navigator.of(context).pop();
               },
             ),
           ],
