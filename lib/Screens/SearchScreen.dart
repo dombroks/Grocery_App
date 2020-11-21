@@ -22,7 +22,10 @@ class SearchScreen extends StatelessWidget {
           SizedBox(
             width: 15,
           ),
-          Icon(Icons.close),
+          GestureDetector(
+            child: Icon(Icons.close),
+            onTap: () => Navigator.pop(context),
+          ),
           SizedBox(
             width: 15,
           )
