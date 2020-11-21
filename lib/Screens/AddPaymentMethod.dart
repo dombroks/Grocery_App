@@ -34,7 +34,9 @@ class _AddPaymentMethodState extends State<AddPaymentMethod> {
         centerTitle: true,
       ),
       body: FirebaseAnimatedList(
-          defaultChild: Center(child: CircularProgressIndicator(),),
+          defaultChild: Center(
+            child: CircularProgressIndicator(),
+          ),
           query: provider.getCreditCards(),
           itemBuilder: (BuildContext context, DataSnapshot snap,
               Animation<double> animation, int index) {
