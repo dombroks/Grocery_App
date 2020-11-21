@@ -204,7 +204,7 @@ class _SavedCartsDetailsScreenState extends State<SavedCartsDetailsScreen> {
                                 }
                               },
                               deleteElement: () async {
-                                _showMaterialDialog(cart);
+                                //_showMaterialDialog(cart);
                               },
                             );
                           },
