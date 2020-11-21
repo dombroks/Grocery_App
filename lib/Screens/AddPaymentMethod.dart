@@ -2,6 +2,8 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:grocery_app/Provider/Mediator.dart';
+import 'package:grocery_app/Screens/AddCardScreen.dart';
+import 'package:grocery_app/components/AddCard.dart';
 import 'package:grocery_app/components/CreditCard.dart';
 import 'package:grocery_app/constants.dart';
 import 'package:provider/provider.dart';
@@ -17,6 +19,21 @@ class _AddPaymentMethodState extends State<AddPaymentMethod> {
     var provider = Provider.of<Mediator>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 12.0),
+            child: GestureDetector(
+              child: Icon(
+                Icons.add,
+                size: 26,
+              ),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => AddCardScreen()));
+              },
+            ),
+          )
+        ],
         backgroundColor: kPrimaryColor,
         leading: GestureDetector(
           child: Icon(
