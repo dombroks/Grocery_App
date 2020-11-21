@@ -307,11 +307,44 @@ class Mediator extends ChangeNotifier {
   }
 
   Future deleteSavedCart(String cartName) async {
-    return await _firebaseDatabase
+    await _firebaseDatabase
         .reference()
         .child('Saved carts')
         .child(userId)
         .child(cartName)
         .remove();
+    notifyListeners();
+  }
+
+  Future<void> increaseAmountForBuyingForSavedCart(
+      String cartName, element e) async {
+    await _firebaseDatabase
+        .reference()
+        .child('Saved carts')
+        .child(userId)
+        .child(cartName)
+        .child(e.name)
+        .update({"amountForBuying": e.amountForBuying + 1});
+    e.incrementAmountForBuying();
+    notifyListeners();
+  }
+
+  Future<void> decreaseAmountForBuyingForSavedCart(
+      String cartName, element e) async {
+    if (e.amountForBuying > 1) {
+      await _firebaseDatabase
+          .reference()
+          .child('Saved carts')
+          .child(userId)
+          .child(cartName)
+          .child(e.name)
+          .update({
+        "amountForBuying":
+            (e.amountForBuying > 0) ? e.amountForBuying - 1 : () {}
+      });
+      e.decrementAmountForBuying();
+    }
+
+    notifyListeners();
   }
 }

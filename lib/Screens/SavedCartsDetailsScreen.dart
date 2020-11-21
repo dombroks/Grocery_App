@@ -29,9 +29,11 @@ class _SavedCartsDetailsScreenState extends State<SavedCartsDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    var provider = Provider.of<Mediator>(context, listen: true);
+
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.cartName),
+        title: Text("Saved cart: ${widget.cartName}"),
         elevation: 0,
         backgroundColor: kPrimaryColor,
       ),
@@ -177,8 +179,16 @@ class _SavedCartsDetailsScreenState extends State<SavedCartsDetailsScreen> {
                               amountPerElement: cart.amount,
                               price: cart.price,
                               amount: cart.amountForBuying.toString(),
-                              increaseAmount: () async {},
-                              decreaseAmount: () async {},
+                              increaseAmount: () async {
+                                await provider
+                                    .increaseAmountForBuyingForSavedCart(
+                                        widget.cartName, cart);
+                              },
+                              decreaseAmount: () async {
+                                await provider
+                                    .decreaseAmountForBuyingForSavedCart(
+                                        widget.cartName, cart);
+                              },
                               deleteElement: () async {
                                 _showMaterialDialog(cart);
                               },
