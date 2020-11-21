@@ -20,9 +20,12 @@ class SearchScreen extends StatelessWidget {
         actions: [
           Icon(Icons.mic),
           SizedBox(
-            width: 10,
+            width: 15,
           ),
-          Icon(Icons.close)
+          Icon(Icons.close),
+          SizedBox(
+            width: 15,
+          )
         ],
       ),
     );
