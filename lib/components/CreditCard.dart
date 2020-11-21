@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:grocery_app/Provider/Mediator.dart';
+import 'package:provider/provider.dart';
 
 class CreditCard extends StatefulWidget {
   String name;
@@ -45,7 +47,7 @@ class _CreditCardState extends State<CreditCard> {
                         size: 30,
                       ),
                       onTap: () {
-                        _showAlertDialg();
+                        _showAlertDialg(widget.number);
                       },
                     )
                   ],
@@ -98,7 +100,7 @@ class _CreditCardState extends State<CreditCard> {
     );
   }
 
-  _showAlertDialg() {
+  _showAlertDialg(String cardNumber) {
     showDialog(
       context: context,
       builder: (context) {
@@ -156,7 +158,8 @@ class _CreditCardState extends State<CreditCard> {
               color: Colors.red,
               child: Text('Remove'),
               onPressed: () async {
-                Navigator.of(context).pop();
+                await Provider.of<Mediator>(context, listen: false)
+                    .deleteCreditCard(cardNumber);
               },
             ),
           ],

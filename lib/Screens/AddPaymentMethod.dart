@@ -3,7 +3,6 @@ import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:grocery_app/Provider/Mediator.dart';
 import 'package:grocery_app/Screens/AddCardScreen.dart';
-import 'package:grocery_app/components/AddCard.dart';
 import 'package:grocery_app/components/CreditCard.dart';
 import 'package:grocery_app/constants.dart';
 import 'package:provider/provider.dart';
@@ -44,7 +43,7 @@ class _AddPaymentMethodState extends State<AddPaymentMethod> {
             Navigator.pop(context);
           },
         ),
-        title: Text("Add a payment method"),
+        title: Text("Payment method"),
         centerTitle: true,
       ),
       body: FirebaseAnimatedList(

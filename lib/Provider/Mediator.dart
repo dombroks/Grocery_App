@@ -371,4 +371,14 @@ class Mediator extends ChangeNotifier {
         .child(userId)
         .limitToFirst(10);
   }
+
+  Future deleteCreditCard(String cardNumber) async {
+    await _firebaseDatabase
+        .reference()
+        .child("Credit cards")
+        .child(userId)
+        .child(cardNumber)
+        .remove();
+    notifyListeners();
+  }
 }
