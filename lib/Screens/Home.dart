@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:grocery_app/Model/element.dart';
 
 import 'package:grocery_app/Screens/Profile.dart';
+import 'package:grocery_app/Screens/SearchScreen.dart';
 import 'package:grocery_app/components/DrawerListTile.dart';
 
 import '../constants.dart';
@@ -12,7 +13,7 @@ import 'SavedCartsScreen.dart';
 // ignore: must_be_immutable
 class Home extends StatelessWidget {
   int selectedPage;
-  
+
   Home(this.selectedPage);
 
   var _drawerKey = GlobalKey<ScaffoldState>();
@@ -90,7 +91,13 @@ class Home extends StatelessWidget {
             },
           ),
           actions: <Widget>[
-            Icon(Icons.search),
+            GestureDetector(
+              child: Icon(Icons.search),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => SearchScreen()));
+              },
+            ),
             SizedBox(
               width: 20.0,
             ),
