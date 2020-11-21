@@ -183,11 +183,23 @@ class _SavedCartsDetailsScreenState extends State<SavedCartsDetailsScreen> {
                                 await provider
                                     .increaseAmountForBuyingForSavedCart(
                                         widget.cartName, cart);
+                                setState(() {
+                                  widget.totalPrice =
+                                      (double.parse(widget.totalPrice) +
+                                              double.parse(cart.price))
+                                          .toString();
+                                });
                               },
                               decreaseAmount: () async {
                                 await provider
                                     .decreaseAmountForBuyingForSavedCart(
                                         widget.cartName, cart);
+                                setState(() {
+                                  widget.totalPrice =
+                                      (double.parse(widget.totalPrice) -
+                                              double.parse(cart.price))
+                                          .toString();
+                                });
                               },
                               deleteElement: () async {
                                 _showMaterialDialog(cart);
