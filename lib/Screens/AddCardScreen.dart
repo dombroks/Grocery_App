@@ -1,7 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_app/constants.dart';
 
-class AddCardScreen extends StatelessWidget {
+class AddCardScreen extends StatefulWidget {
+  @override
+  _AddCardScreenState createState() => _AddCardScreenState();
+}
+
+class _AddCardScreenState extends State<AddCardScreen> {
+  TextEditingController name = TextEditingController();
+  TextEditingController number = TextEditingController();
+  TextEditingController month = TextEditingController();
+  TextEditingController year = TextEditingController();
+  TextEditingController cvv = TextEditingController();
+
+  @override
+  void dispose() {
+    name.dispose();
+    number.dispose();
+    month.dispose();
+    year.dispose();
+    cvv.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
