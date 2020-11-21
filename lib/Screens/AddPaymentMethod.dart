@@ -1,6 +1,7 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
+import 'package:grocery_app/Model/CreditCart.dart';
 import 'package:grocery_app/Provider/Mediator.dart';
 import 'package:grocery_app/components/AddCard.dart';
 import 'package:grocery_app/components/CreditCard.dart';
@@ -38,9 +39,18 @@ class _AddPaymentMethodState extends State<AddPaymentMethod> {
           itemBuilder: (BuildContext context, DataSnapshot snap,
               Animation<double> animation, int index) {
             Map map = snap.value;
-            print(map.values.toString());
+            List<CreditCardModel> cards = [];
+
+            print(map.entries.elementAt(0).value);
+            /*
+            map.forEach((key, value) {
+              CreditCardModel card = CreditCardModel(value["holderName"],
+                  value["number"], value["cvv"], value["month"], value["year"]);
+              cards.add(card);
+            });
+            */
             return CreditCard(
-                name: "younes",
+                name: "name",
                 number: "8254561615618915",
                 cvv: "285",
                 month: "05",
