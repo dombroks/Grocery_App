@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_app/Provider/Mediator.dart';
 import 'package:grocery_app/constants.dart';
+import 'package:provider/provider.dart';
 
 class AddCardScreen extends StatefulWidget {
   @override
@@ -25,6 +27,8 @@ class _AddCardScreenState extends State<AddCardScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<Mediator>(context, listen: false);
+
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -59,7 +63,7 @@ class _AddCardScreenState extends State<AddCardScreen> {
                 decoration: InputDecoration(hintText: "Card holder name"),
               ),
               TextField(
-                controller: number ,
+                controller: number,
                 decoration: InputDecoration(hintText: "Card number"),
               ),
               Container(
@@ -99,7 +103,10 @@ class _AddCardScreenState extends State<AddCardScreen> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   RaisedButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      await provider.saveCreditCard(name.text, number.text,
+                          month.text, year.text, cvv.text);
+                    },
                     color: kPrimaryColor,
                     child: Text(
                       "SAVE",

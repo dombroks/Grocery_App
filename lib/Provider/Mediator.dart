@@ -353,6 +353,7 @@ class Mediator extends ChangeNotifier {
         .reference()
         .child("Credit cards")
         .child(userId)
+        .child(number)
         .set({
       "holderName": name,
       "number": number,
@@ -361,5 +362,13 @@ class Mediator extends ChangeNotifier {
       "cvv": cvv
     });
     notifyListeners();
+  }
+
+  getCreditCards() {
+    return _firebaseDatabase
+        .reference()
+        .child("Credit cards")
+        .child(userId)
+        .limitToFirst(10);
   }
 }

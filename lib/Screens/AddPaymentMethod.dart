@@ -1,8 +1,12 @@
+import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
+import 'package:grocery_app/Provider/Mediator.dart';
 import 'package:grocery_app/components/AddCard.dart';
 import 'package:grocery_app/components/CreditCard.dart';
 
 import 'package:grocery_app/constants.dart';
+import 'package:provider/provider.dart';
 
 class AddPaymentMethod extends StatefulWidget {
   @override
@@ -12,6 +16,7 @@ class AddPaymentMethod extends StatefulWidget {
 class _AddPaymentMethodState extends State<AddPaymentMethod> {
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<Mediator>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kPrimaryColor,
@@ -27,9 +32,20 @@ class _AddPaymentMethodState extends State<AddPaymentMethod> {
         title: Text("Add a payment method"),
         centerTitle: true,
       ),
-      body: Container(
-        child: AddCard(),
-      ),
+      body: FirebaseAnimatedList(
+          defaultChild: AddCard(),
+          query: provider.getCreditCards(),
+          itemBuilder: (BuildContext context, DataSnapshot snap,
+              Animation<double> animation, int index) {
+            Map map = snap.value;
+            print(map.values.toString());
+            return CreditCard(
+                name: "younes",
+                number: "8254561615618915",
+                cvv: "285",
+                month: "05",
+                year: "1995");
+          }),
     );
   }
 }

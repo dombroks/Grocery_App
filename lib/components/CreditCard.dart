@@ -2,6 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class CreditCard extends StatefulWidget {
+  String name;
+  String number;
+  String cvv;
+  String month;
+  String year;
+
+  CreditCard({Key key, this.name, this.number, this.cvv, this.month, this.year})
+      : super(key: key);
   @override
   _CreditCardState createState() => _CreditCardState();
 }
@@ -24,7 +32,7 @@ class _CreditCardState extends State<CreditCard> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Dom Broks",
+                      widget.name,
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -46,7 +54,7 @@ class _CreditCardState extends State<CreditCard> {
                   height: 15,
                 ),
                 Text(
-                  "• • • •  • • • •  • • • •  5467",
+                  widget.number,
                   style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.bold,
@@ -63,7 +71,7 @@ class _CreditCardState extends State<CreditCard> {
                   ),
                 ),
                 Text(
-                  "06 / 2022",
+                  "${widget.month} / ${widget.year}",
                   style: TextStyle(fontWeight: FontWeight.w600),
                 ),
                 SizedBox(
