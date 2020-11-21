@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_app/Provider/Mediator.dart';
+import 'package:grocery_app/Screens/AddPaymentMethod.dart';
 import 'package:grocery_app/constants.dart';
 import 'package:provider/provider.dart';
 
@@ -106,6 +107,10 @@ class _AddCardScreenState extends State<AddCardScreen> {
                     onPressed: () async {
                       await provider.saveCreditCard(name.text, number.text,
                           month.text, year.text, cvv.text);
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => AddPaymentMethod()));
                     },
                     color: kPrimaryColor,
                     child: Text(
