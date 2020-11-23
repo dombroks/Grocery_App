@@ -3,7 +3,6 @@ import 'package:grocery_app/Screens/Profile.dart';
 import 'package:grocery_app/Screens/SearchScreen.dart';
 import 'package:grocery_app/Screens/TermsAndConditions.dart';
 import 'package:grocery_app/components/DrawerListTile.dart';
-
 import '../constants.dart';
 import 'CartScreen.dart';
 import 'MainScreen.dart';
