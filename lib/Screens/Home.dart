@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_app/Model/element.dart';
-
 import 'package:grocery_app/Screens/Profile.dart';
 import 'package:grocery_app/Screens/SearchScreen.dart';
+import 'package:grocery_app/Screens/TermsAndConditions.dart';
 import 'package:grocery_app/components/DrawerListTile.dart';
 
 import '../constants.dart';
@@ -56,7 +55,10 @@ class Home extends StatelessWidget {
               DrawerListTile(
                 title: "Terms & conditions",
                 iconData: Icons.info,
-                onClick: () {},
+                onClick: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => TermsConditions()));
+                },
               ),
               DrawerListTile(
                 title: "Help",
