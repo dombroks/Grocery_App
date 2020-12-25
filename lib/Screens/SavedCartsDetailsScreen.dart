@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:grocery_app/Model/element.dart';
+import 'package:grocery_app/Model/Element.dart';
 import 'package:grocery_app/Provider/Mediator.dart';
 import 'package:grocery_app/Screens/Checkout.dart';
 import 'package:grocery_app/Screens/SaveCart.dart';

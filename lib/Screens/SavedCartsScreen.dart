@@ -4,7 +4,7 @@ import 'dart:ffi';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
-import 'package:grocery_app/Model/element.dart';
+import 'package:grocery_app/Model/Element.dart';
 import 'package:grocery_app/Provider/Mediator.dart';
 import 'package:grocery_app/components/SavedCart.dart';
 import 'package:grocery_app/constants.dart';

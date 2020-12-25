@@ -8,7 +8,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:grocery_app/Model/Cart.dart';
-import 'package:grocery_app/Model/element.dart';
+import 'package:grocery_app/Model/Element.dart';
 import 'package:grocery_app/Model/CountryPrefixCode.dart';
 
 class Mediator extends ChangeNotifier {
@@ -179,14 +179,18 @@ class Mediator extends ChangeNotifier {
   Future signUpWithEmailAndPassword(
       String username, String email, String password) async {
     try {
-      AuthResult result = await _auth.createUserWithEmailAndPassword(
-          email: email, password: password);
-      await _db
-          .collection("Users")
-          .document(userId)
-          .setData({'username': username, 'email': email, 'id': userId});
+      await _auth
+          .createUserWithEmailAndPassword(email: email, password: password)
+          .whenComplete(() async{
+        await getUserId();
+        await _db
+            .collection("Users")
+            .document(userId)
+            .setData({'username': username, 'email': email, 'id': userId});
+      });
     } on PlatformException catch (e) {
       signOutErrorMessage = e.message;
+      print(e.message.toString());
     }
   }
 

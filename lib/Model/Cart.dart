@@ -1,4 +1,4 @@
-import 'package:grocery_app/Model/element.dart';
+import 'package:grocery_app/Model/Element.dart';
 
 class Cart {
   String cartName;
