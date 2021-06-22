@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_app/Provider/Mediator.dart';
 import 'package:grocery_app/Screens/ForgotPassword.dart';
 import 'package:grocery_app/Screens/Home.dart';
+import 'package:grocery_app/Viewmodel/SharedViewModel.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -33,7 +33,7 @@ class _SignInState extends State<SignIn> {
 
   @override
   Widget build(BuildContext context) {
-    var provider = Provider.of<Mediator>(context, listen: false);
+    var provider = Provider.of<SharedViewModel>(context, listen: false);
 
     void _toggleShowPassword() {
       setState(() {

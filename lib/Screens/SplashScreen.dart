@@ -2,8 +2,8 @@ import 'dart:async';
 
 import "package:flutter/material.dart";
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:grocery_app/Provider/Mediator.dart';
 import 'package:grocery_app/Screens/AuthScreen.dart';
+import 'package:grocery_app/Viewmodel/SharedViewModel.dart';
 import 'package:grocery_app/constants.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -35,8 +35,8 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Future.delayed(Duration.zero).then((_) async {
-      await Provider.of<Mediator>(context, listen: false).fetchData();
-      await Provider.of<Mediator>(context, listen: false).fetchCartElements();
+      await Provider.of<SharedViewModel>(context, listen: false).fetchData();
+      await Provider.of<SharedViewModel>(context, listen: false).fetchCartElements();
     });
     _loadSessionData();
     super.initState();

@@ -1,8 +1,8 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
-import 'package:grocery_app/Provider/Mediator.dart';
 import 'package:grocery_app/Screens/AddCardScreen.dart';
+import 'package:grocery_app/Viewmodel/SharedViewModel.dart';
 import 'package:grocery_app/components/CreditCard.dart';
 import 'package:grocery_app/constants.dart';
 import 'package:provider/provider.dart';
@@ -15,7 +15,7 @@ class AddPaymentMethod extends StatefulWidget {
 class _AddPaymentMethodState extends State<AddPaymentMethod> {
   @override
   Widget build(BuildContext context) {
-    var provider = Provider.of<Mediator>(context, listen: false);
+    var provider = Provider.of<SharedViewModel>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
         actions: [

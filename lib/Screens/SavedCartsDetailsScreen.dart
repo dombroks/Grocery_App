@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:grocery_app/Model/Element.dart';
-import 'package:grocery_app/Provider/Mediator.dart';
+import 'package:grocery_app/Data/Model/ElementFV.dart';
 import 'package:grocery_app/Screens/Checkout.dart';
 import 'package:grocery_app/Screens/SaveCart.dart';
+import 'package:grocery_app/Viewmodel/SharedViewModel.dart';
 import 'package:grocery_app/components/CartElement.dart';
 import 'package:grocery_app/constants.dart';
 import 'package:provider/provider.dart';
@@ -11,7 +11,7 @@ import 'package:provider/provider.dart';
 // ignore: must_be_immutable
 class SavedCartsDetailsScreen extends StatefulWidget {
   String cartName;
-  List<element> cartData;
+  List<ElementFV> cartData;
   String totalPrice;
   SavedCartsDetailsScreen(this.cartData, this.totalPrice, this.cartName);
 
@@ -29,7 +29,7 @@ class _SavedCartsDetailsScreenState extends State<SavedCartsDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    var provider = Provider.of<Mediator>(context, listen: true);
+    var provider = Provider.of<SharedViewModel>(context, listen: true);
 
     return Scaffold(
       appBar: AppBar(
@@ -171,7 +171,7 @@ class _SavedCartsDetailsScreenState extends State<SavedCartsDetailsScreen> {
                       : ListView.builder(
                           itemCount: widget.cartData.length,
                           itemBuilder: (context, index) {
-                            element cart = widget.cartData[index];
+                            ElementFV cart = widget.cartData[index];
                             return cartElement(
                               imageUrl: cart.image,
                               total: '940.00',
@@ -218,9 +218,9 @@ class _SavedCartsDetailsScreenState extends State<SavedCartsDetailsScreen> {
     );
   }
 
-  _showMaterialDialog(element e) {
+  _showMaterialDialog(ElementFV e) {
     String elementName = e.name.toUpperCase();
-    var provider = Provider.of<Mediator>(context, listen: false);
+    var provider = Provider.of<SharedViewModel>(context, listen: false);
 
     showDialog(
         context: context,

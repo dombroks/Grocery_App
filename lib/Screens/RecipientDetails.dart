@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:grocery_app/Provider/Mediator.dart';
+import 'package:grocery_app/Viewmodel/SharedViewModel.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
@@ -30,15 +30,15 @@ class _RecipientDatailsState extends State<RecipientDatails> {
 
   @override
   void initState() {
-    Provider.of<Mediator>(context, listen: false).getContriesPrefixCode();
+    Provider.of<SharedViewModel>(context, listen: false).getContriesPrefixCode();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    var provider = Provider.of<Mediator>(context, listen: true);
+    var provider = Provider.of<SharedViewModel>(context, listen: true);
     _countriesPrefixs =
-        Provider.of<Mediator>(context, listen: false).prefixCodes;
+        Provider.of<SharedViewModel>(context, listen: false).prefixCodes;
 
     return Scaffold(
       body: SafeArea(

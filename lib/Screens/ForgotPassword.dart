@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_app/Provider/Mediator.dart';
+import 'package:grocery_app/Viewmodel/SharedViewModel.dart';
 import 'package:grocery_app/components/MyButton.dart';
 import 'package:grocery_app/constants.dart';
 import 'package:provider/provider.dart';
@@ -19,7 +19,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
 
   @override
   Widget build(BuildContext context) {
-    var provider = Provider.of<Mediator>(context, listen: false);
+    var provider = Provider.of<SharedViewModel>(context, listen: false);
 
     return Scaffold(
       appBar: AppBar(

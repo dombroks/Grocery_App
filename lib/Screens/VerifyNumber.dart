@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_app/Provider/Mediator.dart';
+import 'package:grocery_app/Viewmodel/SharedViewModel.dart';
 import 'package:grocery_app/components/MyButton.dart';
 import 'package:grocery_app/constants.dart';
 import 'package:provider/provider.dart';
@@ -18,7 +18,7 @@ class VerifyNumber extends StatefulWidget {
 class _VerifyNumberState extends State<VerifyNumber> {
   @override
   Widget build(BuildContext context) {
-    var provider = Provider.of<Mediator>(context, listen: false);
+    var provider = Provider.of<SharedViewModel>(context, listen: false);
 
     return Scaffold(
       appBar: AppBar(

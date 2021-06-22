@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:grocery_app/Provider/Mediator.dart';
+import 'package:grocery_app/Viewmodel/SharedViewModel.dart';
 import 'package:provider/provider.dart';
 
 class CreditCard extends StatefulWidget {
@@ -158,7 +158,7 @@ class _CreditCardState extends State<CreditCard> {
               color: Colors.red,
               child: Text('Remove'),
               onPressed: () async {
-                await Provider.of<Mediator>(context, listen: false)
+                await Provider.of<SharedViewModel>(context, listen: false)
                     .deleteCreditCard(cardNumber);
                 Navigator.of(context).pop();
               },

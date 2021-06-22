@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:grocery_app/Model/Element.dart';
-import 'package:grocery_app/Provider/Mediator.dart';
+import 'package:grocery_app/Data/Model/ElementFV.dart';
+
 import 'package:grocery_app/Screens/Checkout.dart';
 import 'package:grocery_app/Screens/SaveCart.dart';
+import 'package:grocery_app/Viewmodel/SharedViewModel.dart';
 import 'package:grocery_app/components/CartElement.dart';
 import 'package:grocery_app/constants.dart';
 import 'package:provider/provider.dart';
@@ -16,7 +17,7 @@ class CartScreen extends StatefulWidget {
 class _CartScreenState extends State<CartScreen> {
   @override
   void initState() {
-    var provider = Provider.of<Mediator>(context, listen: false);
+    var provider = Provider.of<SharedViewModel>(context, listen: false);
 
     provider.fetchCartElements();
     if (!provider.totalPriceIsLoaded) {
@@ -29,7 +30,7 @@ class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     bool checkoutButtonVisibility = false;
-    var provider = Provider.of<Mediator>(context, listen: true);
+    var provider = Provider.of<SharedViewModel>(context, listen: true);
 
     var cartData = provider.cartElements;
     var totalPrice = provider.totalPrice;
@@ -172,7 +173,7 @@ class _CartScreenState extends State<CartScreen> {
                     : ListView.builder(
                         itemCount: cartData.length,
                         itemBuilder: (context, index) {
-                          element cart = cartData[index];
+                          ElementFV cart = cartData[index];
                           return cartElement(
                             imageUrl: cart.image,
                             total: '940.00',
@@ -200,9 +201,9 @@ class _CartScreenState extends State<CartScreen> {
     );
   }
 
-  _showMaterialDialog(element e) {
+  _showMaterialDialog(ElementFV e) {
     String elementName = e.name.toUpperCase();
-    var provider = Provider.of<Mediator>(context, listen: false);
+    var provider = Provider.of<SharedViewModel>(context, listen: false);
 
     showDialog(
         context: context,

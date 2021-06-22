@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_app/Model/Element.dart';
-import 'package:grocery_app/Provider/Mediator.dart';
+import 'package:grocery_app/Data/Model/ElementFV.dart';
+import 'package:grocery_app/Viewmodel/SharedViewModel.dart';
 import 'package:grocery_app/components/category.dart';
 import 'package:grocery_app/components/vegetaleAndFruit.dart';
 import 'package:provider/provider.dart';
@@ -19,16 +19,16 @@ class homeScreen extends StatefulWidget {
 class _homeScreenState extends State<homeScreen> {
   @override
   void initState() {
-    Provider.of<Mediator>(context, listen: false).getUserId();
+    Provider.of<SharedViewModel>(context, listen: false).getUserId();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    var provider = Provider.of<Mediator>(context, listen: true);
+    var provider = Provider.of<SharedViewModel>(context, listen: true);
     Future.delayed(Duration.zero).then((_) async {
-      await Provider.of<Mediator>(context, listen: false).fetchData();
-      await Provider.of<Mediator>(context, listen: false).fetchCartElements();
+      await Provider.of<SharedViewModel>(context, listen: false).fetchData();
+      await Provider.of<SharedViewModel>(context, listen: false).fetchCartElements();
     });
     final fruits = provider.fruits;
     final vegetables = provider.vegetables;
@@ -134,7 +134,7 @@ class _homeScreenState extends State<homeScreen> {
                       itemCount: fruits.length,
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
-                        element e = fruits[index];
+                        ElementFV e = fruits[index];
 
                         return VegetaleAndFruit(
                           vegetaleOrFruitName: e.name,
@@ -177,7 +177,7 @@ class _homeScreenState extends State<homeScreen> {
                   itemCount: vegetables.length,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
-                    element e = vegetables[index];
+                    ElementFV e = vegetables[index];
 
                     return (vegetables.length == 0)
                         ? Center(

@@ -1,11 +1,9 @@
-import 'dart:convert';
-import 'dart:ffi';
 
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
-import 'package:grocery_app/Model/Element.dart';
-import 'package:grocery_app/Provider/Mediator.dart';
+import 'package:grocery_app/Data/Model/ElementFV.dart';
+import 'package:grocery_app/Viewmodel/SharedViewModel.dart';
 import 'package:grocery_app/components/SavedCart.dart';
 import 'package:grocery_app/constants.dart';
 import 'package:provider/provider.dart';
@@ -23,7 +21,7 @@ class _SavedCartsState extends State<SavedCarts> {
 
   @override
   Widget build(BuildContext context) {
-    var provider = Provider.of<Mediator>(context, listen: false);
+    var provider = Provider.of<SharedViewModel>(context, listen: false);
 
     return Scaffold(
         appBar: AppBar(
@@ -39,11 +37,11 @@ class _SavedCartsState extends State<SavedCarts> {
                 Animation<double> animation, int index) {
               Map map = snap.value;
               double totalPrice = 0;
-              List<element> elements = [];
+              List<ElementFV> elements = [];
               map.forEach((key, value) {
                 totalPrice +=
                     double.parse(value['price']) * value['amountForBuying'];
-                element e = element(
+                ElementFV e = ElementFV(
                     value['name'],
                     value['price'],
                     value['image'],

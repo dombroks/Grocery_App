@@ -1,11 +1,11 @@
-class element {
+class ElementFV {
   String name;
   String price;
   String image;
   String amount = '1';
   int amountForBuying = 1;
 
-  element(
+  ElementFV(
     this.name,
     this.price,
     this.image,
@@ -13,7 +13,7 @@ class element {
     this.amountForBuying,
   );
 
-  element.fromJson(Map<String, dynamic> parsedJson)
+  ElementFV.fromJson(Map<String, dynamic> parsedJson)
       : name = parsedJson['name'],
         image = parsedJson['image'],
         amount = parsedJson['amount'],
@@ -21,7 +21,7 @@ class element {
         amountForBuying = parsedJson['amountForBuying'];
 
   //For uploading as cart element
-  Map<String, dynamic> toMap(element element) {
+  Map<String, dynamic> toMap(ElementFV element) {
     return {
       'name': element.name,
       'image': element.image,

@@ -1,11 +1,11 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:grocery_app/Provider/Mediator.dart';
 import 'package:grocery_app/Screens/AddPaymentMethod.dart';
 import 'package:grocery_app/Screens/AuthScreen.dart';
 import 'package:grocery_app/Screens/ChangePasswordScreen.dart';
 import 'package:grocery_app/Screens/RecipientDetails.dart';
+import 'package:grocery_app/Viewmodel/SharedViewModel.dart';
 import 'package:grocery_app/components/ProfileCardItem.dart';
 import 'package:grocery_app/constants.dart';
 import 'package:image_picker/image_picker.dart';
@@ -22,14 +22,14 @@ class _ProfileState extends State<Profile> {
   File _image;
   @override
   void initState() {
-    Provider.of<Mediator>(context, listen: false).getProfileDetails();
+    Provider.of<SharedViewModel>(context, listen: false).getProfileDetails();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    var provider = Provider.of<Mediator>(context, listen: true);
+    var provider = Provider.of<SharedViewModel>(context, listen: true);
     provider.getProfileDetails();
 
     return (!provider.userDataIsLoaded)
@@ -226,7 +226,7 @@ class _ProfileState extends State<Profile> {
     showDialog(
       context: context,
       builder: (context) {
-        final provider = Provider.of<Mediator>(context, listen: false);
+        final provider = Provider.of<SharedViewModel>(context, listen: false);
         return AlertDialog(
           title: Row(
             children: [

@@ -4,14 +4,22 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:grocery_app/Model/Cart.dart';
-import 'package:grocery_app/Model/Element.dart';
-import 'package:grocery_app/Model/CountryPrefixCode.dart';
+import 'package:grocery_app/Data/Model/CountryPrefixCode.dart';
+import 'package:grocery_app/Data/Model/ElementFV.dart';
 
-class Mediator extends ChangeNotifier {
+class FirebaseSource {
+  static FirebaseSource _firebaseSource;
+
+  static FirebaseSource getInstance() {
+    if (_firebaseSource == null) {
+      _firebaseSource = FirebaseSource();
+      return _firebaseSource;
+    } else {
+      return _firebaseSource;
+    }
+  }
+
   // Firebase instances
   final Firestore _db = Firestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -33,9 +41,9 @@ class Mediator extends ChangeNotifier {
 
   var savedCarts;
   List<String> prefixCodes = [];
-  List<element> vegetables = [];
-  List<element> fruits = [];
-  List<element> cartElements = [];
+  List<ElementFV> vegetables = [];
+  List<ElementFV> fruits = [];
+  List<ElementFV> cartElements = [];
   double totalPrice = 0.00;
 
   bool totalPriceIsLoaded = false;
@@ -53,16 +61,16 @@ class Mediator extends ChangeNotifier {
 
     this.vegetables = [];
     vegetable.documents.forEach((document) async {
-      this.vegetables.add(element.fromJson(document.data));
+      this.vegetables.add(ElementFV.fromJson(document.data));
     });
 
     this.fruits = [];
     fruit.documents.forEach((document) async {
-      this.fruits.add(element.fromJson(document.data));
+      this.fruits.add(ElementFV.fromJson(document.data));
     });
   }
 
-  Future<void> increaseAmount(element cart) async {
+  Future<void> increaseAmount(ElementFV cart) async {
     var ref = _db.collection("Cart").document(cart.name);
     await ref.updateData({'amountForBuying': cart.amountForBuying + 1});
     cartElements.forEach((e) {
@@ -72,10 +80,9 @@ class Mediator extends ChangeNotifier {
       }
     });
     totalPrice = double.parse(totalPrice.toStringAsFixed(2));
-    notifyListeners();
   }
 
-  Future<void> decreaseAmount(element cart) async {
+  Future<void> decreaseAmount(ElementFV cart) async {
     if (cart.amountForBuying == 1) return;
     await _db
         .collection("Cart")
@@ -94,7 +101,6 @@ class Mediator extends ChangeNotifier {
       }
     });
     totalPrice = double.parse(totalPrice.toStringAsFixed(2));
-    notifyListeners();
   }
 
   getCartElementsTotalPrice() {
@@ -109,12 +115,11 @@ class Mediator extends ChangeNotifier {
     this.cartElements = [];
     cart.documents.forEach((document) async {
       if (!cartElements.contains(document.data))
-        this.cartElements.add(element.fromJson(document.data));
+        this.cartElements.add(ElementFV.fromJson(document.data));
     });
-    notifyListeners();
   }
 
-  Future addElementToCart(element element) async {
+  Future addElementToCart(ElementFV element) async {
     if (isExisted(cartElements, element) == false) {
       cartElements.add(element);
       totalPrice += double.parse(element.price);
@@ -125,10 +130,9 @@ class Mediator extends ChangeNotifier {
     }
 
     totalPrice = double.parse(totalPrice.toStringAsFixed(2));
-    notifyListeners();
   }
 
-  Future<void> deleteElementFromCart(element element) async {
+  Future<void> deleteElementFromCart(ElementFV element) async {
     double elementPrice = double.parse(element.price);
     bool isRemoved = cartElements.remove(element);
 
@@ -137,16 +141,14 @@ class Mediator extends ChangeNotifier {
       await _db.collection("Cart").document(element.name).delete();
     }
     totalPrice = double.parse(totalPrice.toStringAsFixed(2));
-    notifyListeners();
   }
 
-  Future<void> romeveElementFromCart(element element) async {
+  Future<void> romeveElementFromCart(ElementFV element) async {
     cartElements.remove(element);
     await _db.collection("Cart").document(element.name).delete();
-    notifyListeners();
   }
 
-  bool isExisted(List<element> data, element e) {
+  bool isExisted(List<ElementFV> data, ElementFV e) {
     bool isExisted = false;
     data.forEach((a) {
       if (a.name == e.name) {
@@ -181,7 +183,7 @@ class Mediator extends ChangeNotifier {
     try {
       await _auth
           .createUserWithEmailAndPassword(email: email, password: password)
-          .whenComplete(() async{
+          .whenComplete(() async {
         await getUserId();
         await _db
             .collection("Users")
@@ -234,7 +236,6 @@ class Mediator extends ChangeNotifier {
     } on PlatformException catch (e) {
       print(e.message);
     }
-    notifyListeners();
   }
 
   Future<void> getProfileDetails() async {
@@ -251,7 +252,6 @@ class Mediator extends ChangeNotifier {
         }
       }
     });
-    notifyListeners();
     userDataIsLoaded = true;
   }
 
@@ -317,11 +317,10 @@ class Mediator extends ChangeNotifier {
         .child(userId)
         .child(cartName)
         .remove();
-    notifyListeners();
   }
 
   Future<void> increaseAmountForBuyingForSavedCart(
-      String cartName, element e) async {
+      String cartName, ElementFV e) async {
     await _firebaseDatabase
         .reference()
         .child('Saved carts')
@@ -330,11 +329,10 @@ class Mediator extends ChangeNotifier {
         .child(e.name)
         .update({"amountForBuying": e.amountForBuying + 1});
     e.incrementAmountForBuying();
-    notifyListeners();
   }
 
   Future<void> decreaseAmountForBuyingForSavedCart(
-      String cartName, element e) async {
+      String cartName, ElementFV e) async {
     if (e.amountForBuying > 1) {
       await _firebaseDatabase
           .reference()
@@ -348,7 +346,6 @@ class Mediator extends ChangeNotifier {
       });
       e.decrementAmountForBuying();
     }
-    notifyListeners();
   }
 
   Future saveCreditCard(
@@ -365,7 +362,6 @@ class Mediator extends ChangeNotifier {
       "year": year,
       "cvv": cvv
     });
-    notifyListeners();
   }
 
   getCreditCards() {
@@ -383,6 +379,5 @@ class Mediator extends ChangeNotifier {
         .child(userId)
         .child(cardNumber)
         .remove();
-    notifyListeners();
   }
 }

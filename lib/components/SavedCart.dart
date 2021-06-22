@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_app/Model/Element.dart';
-import 'package:grocery_app/Provider/Mediator.dart';
+import 'package:grocery_app/Data/Model/ElementFV.dart';
 import 'package:grocery_app/Screens/SavedCartsDetailsScreen.dart';
+import 'package:grocery_app/Viewmodel/SharedViewModel.dart';
 import 'package:grocery_app/components/MyButton.dart';
 import 'package:grocery_app/constants.dart';
 import 'package:provider/provider.dart';
@@ -11,7 +11,7 @@ class SavedCart extends StatelessWidget {
   String savedCartName;
   String totalPrice;
   String itemsNumber;
-  List<element> elements;
+  List<ElementFV> elements;
 
   SavedCart(
       {Key key,
@@ -42,7 +42,7 @@ class SavedCart extends StatelessWidget {
                         color: Colors.grey,
                       ),
                       onTap: () {
-                        Provider.of<Mediator>(context, listen: false)
+                        Provider.of<SharedViewModel>(context, listen: false)
                             .deleteSavedCart(savedCartName);
                       },
                     ),
