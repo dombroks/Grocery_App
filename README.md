@@ -5,7 +5,7 @@
 ### Some details about the project 🔍:
 - Provider as state management.
 - Firebase as backend.
-- MVVM as architecture.
+- MVVM as architectural pattern.
 
 
 ### Some screenshots 📸:
