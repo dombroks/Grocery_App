@@ -6,8 +6,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:grocery_app/Data/Model/CountryPrefixCode.dart';
 import 'package:grocery_app/Data/Model/ElementFV.dart';
-import 'package:grocery_app/Data/Repository/AuthRepository.dart';
-import 'package:grocery_app/Data/Repository/CartRepository.dart';
+import 'package:grocery_app/Data/Remote/Repository/AuthRepository.dart';
+import 'package:grocery_app/Data/Remote/Repository/CartRepository.dart';
+
 
 class SharedViewModel extends ChangeNotifier {
   AuthRepository _auth = AuthRepository.getInstance();
