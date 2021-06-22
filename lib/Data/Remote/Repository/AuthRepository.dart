@@ -79,4 +79,17 @@ class AuthRepository {
   Future getUserId() async {
     _firebaseSource.getUserId();
   }
+
+  Future saveCreditCard(
+      String name, String number, String month, String year, String cvv) async {
+    await _firebaseSource.saveCreditCard(name, number, month, year, cvv);
+  }
+
+  getCreditCards() {
+    return _firebaseSource.getCreditCards();
+  }
+
+  Future deleteCreditCard(String cardNumber) async {
+    await _firebaseSource.deleteCreditCard(cardNumber);
+  }
 }

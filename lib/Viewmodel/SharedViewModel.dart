@@ -8,11 +8,12 @@ import 'package:grocery_app/Data/Model/CountryPrefixCode.dart';
 import 'package:grocery_app/Data/Model/ElementFV.dart';
 import 'package:grocery_app/Data/Remote/Repository/AuthRepository.dart';
 import 'package:grocery_app/Data/Remote/Repository/CartRepository.dart';
-
+import 'package:grocery_app/Data/Remote/Repository/MainRepository.dart';
 
 class SharedViewModel extends ChangeNotifier {
   AuthRepository _auth = AuthRepository.getInstance();
   CartRepository _cart = CartRepository.getInstance();
+  MainRepository _main = MainRepository.getInstance();
 
   final Firestore _db = Firestore.instance;
   final FirebaseDatabase _firebaseDatabase = FirebaseDatabase.instance;
@@ -40,25 +41,7 @@ class SharedViewModel extends ChangeNotifier {
   bool totalPriceIsLoaded = false;
 
   Future<void> fetchData() async {
-    final vegetable = await _db
-        .collection("Vegetable")
-        .where("type", isEqualTo: "vegetable")
-        .getDocuments();
-
-    final fruit = await _db
-        .collection("Vegetable")
-        .where("type", isEqualTo: "fruit")
-        .getDocuments();
-
-    this.vegetables = [];
-    vegetable.documents.forEach((document) async {
-      this.vegetables.add(ElementFV.fromJson(document.data));
-    });
-
-    this.fruits = [];
-    fruit.documents.forEach((document) async {
-      this.fruits.add(ElementFV.fromJson(document.data));
-    });
+    await _main.fetchData();
   }
 
   Future<void> increaseAmount(ElementFV cart) async {
@@ -96,13 +79,7 @@ class SharedViewModel extends ChangeNotifier {
   }
 
   bool isExisted(List<ElementFV> data, ElementFV e) {
-    bool isExisted = false;
-    data.forEach((a) {
-      if (a.name == e.name) {
-        isExisted = true;
-      }
-    });
-    return isExisted;
+    return _cart.isExisted(data, e);
   }
 
   Future<void> signInWithEmailAndPassword(String email, String password) async {
@@ -146,33 +123,12 @@ class SharedViewModel extends ChangeNotifier {
   }
 
   Future<void> getContriesPrefixCode() async {
-    List<CountryPrefixCode> countriesPrefixCode = [];
-    final codes = await _db.collection("Countries prefix code").getDocuments();
-    codes.documents.forEach((document) {
-      countriesPrefixCode.add(CountryPrefixCode.fromJson(document.data));
-    });
-    countriesPrefixCode.forEach((element) {
-      if (!prefixCodes.contains(element.code)) prefixCodes.add(element.code);
-    });
+    await _main.getContriesPrefixCode();
   }
 
   Future<void> updateRecipientDetails(String uname, String emailAddress,
       String phone, String phonePrefix) async {
-    if (uname.isEmpty) uname = username;
-    if (emailAddress.isEmpty) emailAddress = email;
-    if (phone.isEmpty) phone = phoneNumber;
-    if (phonePrefix.isEmpty) phonePrefix = numberPrefix;
-
-    try {
-      await _db.collection("Users").document(userId).updateData({
-        "email": emailAddress,
-        "username": uname,
-        "numberPrefix": phonePrefix,
-        "phoneNumber": phone
-      });
-    } catch (e) {
-      print(e.toString());
-    }
+    await _main.updateRecipientDetails(uname, emailAddress, phone, phonePrefix);
   }
 
   Future<void> saveCart(String cartName) async {
@@ -206,36 +162,16 @@ class SharedViewModel extends ChangeNotifier {
 
   Future saveCreditCard(
       String name, String number, String month, String year, String cvv) async {
-    await _firebaseDatabase
-        .reference()
-        .child("Credit cards")
-        .child(userId)
-        .child(number)
-        .set({
-      "holderName": name,
-      "number": number,
-      "month": month,
-      "year": year,
-      "cvv": cvv
-    });
+    await _auth.saveCreditCard(name, number, month, year, cvv);
     notifyListeners();
   }
 
   getCreditCards() {
-    return _firebaseDatabase
-        .reference()
-        .child("Credit cards")
-        .child(userId)
-        .limitToFirst(10);
+    return _auth.getCreditCards();
   }
 
   Future deleteCreditCard(String cardNumber) async {
-    await _firebaseDatabase
-        .reference()
-        .child("Credit cards")
-        .child(userId)
-        .child(cardNumber)
-        .remove();
+    await _auth.deleteCreditCard(cardNumber);
     notifyListeners();
   }
 }

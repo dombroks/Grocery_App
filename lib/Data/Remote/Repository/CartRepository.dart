@@ -88,4 +88,8 @@ class CartRepository {
   Future<void> increaseAmount(ElementFV cart) async {
     await _firebaseSource.increaseAmount(cart);
   }
+
+  bool isExisted(List<ElementFV> data, ElementFV e) {
+    _firebaseSource.isExisted(data, e);
+  }
 }
