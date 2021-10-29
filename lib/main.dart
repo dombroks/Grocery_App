@@ -12,7 +12,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-        providers: [ChangeNotifierProvider(create: (context) => SharedViewModel())],
+        providers: [
+          ChangeNotifierProvider(create: (context) => SharedViewModel())
+        ],
         child: MaterialApp(
             debugShowCheckedModeBanner: false,
             title: 'My Grocery',

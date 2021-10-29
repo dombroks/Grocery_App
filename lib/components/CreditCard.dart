@@ -26,7 +26,7 @@ class _CreditCardState extends State<CreditCard> {
         child: Padding(
           padding: const EdgeInsets.all(15.0),
           child: Container(
-            height: 190,
+            height: 158,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -44,7 +44,7 @@ class _CreditCardState extends State<CreditCard> {
                       child: Icon(
                         Icons.delete_outline,
                         color: Colors.grey,
-                        size: 30,
+                        size: 25,
                       ),
                       onTap: () {
                         _showAlertDialg(widget.number);
@@ -77,21 +77,15 @@ class _CreditCardState extends State<CreditCard> {
                   style: TextStyle(fontWeight: FontWeight.w600),
                 ),
                 SizedBox(
-                  height: 30,
+                  height: 10,
                 ),
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Commercial Bank",
-                        style: TextStyle(fontWeight: FontWeight.w600),
-                      ),
-                      SvgPicture.asset(
-                        "assets/icons/card1.svg",
-                        width: 50,
-                        height: 50,
-                      ),
-                    ]),
+                Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+                  SvgPicture.asset(
+                    "assets/icons/card1.svg",
+                    width: 50,
+                    height: 50,
+                  ),
+                ]),
               ],
             ),
           ),

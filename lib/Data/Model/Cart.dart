@@ -1,10 +1,10 @@
-import 'package:grocery_app/Model/Element.dart';
+import 'package:grocery_app/Data/Model/ElementFV.dart';
 
 class Cart {
   String cartName;
-  List<element> elements;
+  List<ElementFV> elements;
   String totalPrice;
-  Cart(List<element> elements, String cartName, String totalPrice) {
+  Cart(List<ElementFV> elements, String cartName, String totalPrice) {
     this.elements = elements;
     this.totalPrice = totalPrice;
     this.cartName = cartName;
