@@ -11,14 +11,14 @@ With a seamless user interface and a comprehensive list of features, this app is
 
 ### Some screenshots 📸:
 
-| <img src="Screenshots/Screenshot1.png" width="200"/> | <img src="Screenshots/Screenshot2.png" width="200"/> | <img src="Screenshots/Screenshot8.png" width="200"/> | 
+| <img src="Screenshots/Screenshot1.png" width="200"/> | <img src="Screenshots/Screenshot9.png" width="200"/> | <img src="Screenshots/Screenshot8.png" width="200"/> | 
 |:---:|:---:|:---:|
-|Entry|Sign in|Cart|
+|Entry|Profile|Cart|
 
 
-| <img src="Screenshots/Screenshot4.png" width="200"/> | <img src="Screenshots/Screenshot9.png" width="200"/> | <img src="Screenshots/Screenshot6.png" width="200"/> | 
+| <img src="Screenshots/Screenshot4.png" width="200"/> | <img src="Screenshots/Screenshot2.png" width="200"/> | <img src="Screenshots/Screenshot6.png" width="200"/> | 
 |:---:|:---:|:---:|
-|Phone n° confirmation|Profile|Store|
+|Phone n° confirmation|Sign in|Store|
 
 
 
